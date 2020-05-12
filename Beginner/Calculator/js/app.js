@@ -4,9 +4,10 @@
  *
  */
 
-var before, after, result, operations_area;
+var before, after, result, operations_area, operators;
 
 operations_area = document.getElementById("operations-area").value;
+operationsAreaDOM = document.getElementById("operations-area");
 
 /**
  *
@@ -19,7 +20,7 @@ document.getElementById("btn-7").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "7";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -28,7 +29,7 @@ document.getElementById("btn-8").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "8";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -37,7 +38,7 @@ document.getElementById("btn-9").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "9";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -46,7 +47,7 @@ document.getElementById("btn-4").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "4";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -55,7 +56,7 @@ document.getElementById("btn-5").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "5";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -64,7 +65,7 @@ document.getElementById("btn-6").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "6";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -73,7 +74,7 @@ document.getElementById("btn-1").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "1";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 document.getElementById("btn-2").addEventListener("click", () => {
@@ -81,7 +82,7 @@ document.getElementById("btn-2").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "2";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 document.getElementById("btn-3").addEventListener("click", () => {
@@ -89,7 +90,7 @@ document.getElementById("btn-3").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "3";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 document.getElementById("btn-0").addEventListener("click", () => {
@@ -97,7 +98,7 @@ document.getElementById("btn-0").addEventListener("click", () => {
     alert("Error: Number Limit Exceeded");
   } else {
     operations_area += "0";
-    document.getElementById("operations-area").value = operations_area;
+    operationsAreaDOM.value = operations_area;
   }
 });
 
@@ -107,6 +108,39 @@ document.getElementById("btn-0").addEventListener("click", () => {
  *
  */
 
+document.querySelector(".btn-subtract").addEventListener("click", () => {
+  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
+  console.log(before);
+
+  operator = "-";
+  operationsAreaDOM.value = "";
+  document.querySelector(".btn-subtract").readOnly = "true";
+});
+
+document.querySelector(".btn-add").addEventListener("click", () => {
+  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
+  console.log(before);
+
+  operator = "+";
+  operationsAreaDOM.value = "";
+});
+
+document.querySelector(".btn-multiply").addEventListener("click", () => {
+  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
+  console.log(before);
+
+  operator = "X";
+  operationsAreaDOM.value = "";
+});
+
+document.querySelector(".btn-divide").addEventListener("click", () => {
+  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
+  console.log(before);
+
+  operator = "/";
+  operationsAreaDOM.value = "";
+});
+
 /**
  *
  *  Operations Area
@@ -115,12 +149,22 @@ document.getElementById("btn-0").addEventListener("click", () => {
 
 document.querySelector(".btn-clear").addEventListener("click", function () {
   if (operations_area.length !== 0) {
+    var updated = "";
     var text = operations_area.split("");
-    console.log(text);
     text.pop();
-    console.log(text);
-    document.querySelector("");
+    for (let i = 0; i < text.length; i++) {
+      updated += text[i];
+    }
+    operations_area = updated;
+    operationsAreaDOM.value = operations_area;
   }
+});
+
+document.querySelector(".btn-clear-all").addEventListener("click", function () {
+  operations_area = "";
+  operationsAreaDOM.value = operations_area;
+  before = 0;
+  after = 0;
 });
 
 const operationsAreaExceed = (area) => {
@@ -129,4 +173,8 @@ const operationsAreaExceed = (area) => {
     result = true;
   }
   return result;
+};
+
+const clearOperationsArea = () => {
+  operationsAreaDOM.value = "";
 };
