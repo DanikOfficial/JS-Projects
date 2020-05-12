@@ -85,7 +85,7 @@ html {
   font-family: "Orbitron", sans-serif;
   font-weight: 700;
   font-size: 50x;
-  box-shadow: 0 0 4px rgb(29, 28, 28);
+  box-shadow: 0 0 2px rgb(29, 28, 28);
   transition: background-color 0.2s, border 0.2s;
   border: 1px solid transparent;
 }

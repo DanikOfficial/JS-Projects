@@ -6,6 +6,8 @@
 
 var before, after, result, operations_area, operators;
 
+before = 0;
+
 operations_area = document.getElementById("operations-area").value;
 operationsAreaDOM = document.getElementById("operations-area");
 
@@ -109,12 +111,9 @@ document.getElementById("btn-0").addEventListener("click", () => {
  */
 
 document.querySelector(".btn-subtract").addEventListener("click", () => {
-  if (operations_area === "") {
-    before = 0;
-  } else {
-    before -= parseInt(operations_area);
-    operationsAreaDOM.value = "";
-  }
+  operator = "-";
+  before = parseInt(operations_area);
+  console.log(before);
 });
 
 document.querySelector(".btn-add").addEventListener("click", () => {
