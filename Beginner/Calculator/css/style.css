@@ -4,31 +4,31 @@ Container-Color: #ECF0F1
 Button-Color:hover : #2980B9
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    color: #555;
-    background-color: #3498DB;
-    text-rendering: optimizeLegibility;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  color: #555;
+  background-color: #3498db;
+  text-rendering: optimizeLegibility;
 }
 
 .container {
-    overflow: auto;
-    background-color: #fff;
-    height: 260px;
-    width: 400px;
-    margin: 15px auto 0 auto;
-    border-radius: 1em;
-    box-shadow: 0 0 7px #1b5c85;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
+  height: 300px;
+  width: 400px;
+  margin: 15px auto 0 auto;
+  border-radius: 1em;
+  box-shadow: 0 0 7px #1b5c85;
 }
 
 /*
@@ -37,31 +37,31 @@ html {
 
 */
 .header-calculator {
-    height: 50px;
-    margin: 20px;
+  height: 50px;
+  margin: 20px;
 }
 
 #operations-area {
-    width: 100%;
-    height: 100%;
-    border-radius: 7px;
-    outline-color: #3498db;
-    font-size: 120%;
-    text-align: right;
-    color: #2980B9;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 500;
-    border: 2px solid #3498db;
-    padding-right: 10px;
-    transition: background-color 0.1s;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  outline-color: #3498db;
+  font-size: 120%;
+  text-align: right;
+  color: #2980b9;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  border: 2px solid #3498db;
+  padding-right: 10px;
+  transition: background-color 0.1s;
 }
 
 #operations-area:focus {
-    outline: none;
+  outline: none;
 }
 
 #operations-area:hover {
-    background-color: rgb(236, 236, 236);
+  background-color: rgb(236, 236, 236);
 }
 
 /*
@@ -71,81 +71,85 @@ html {
 */
 
 .body-calculator {
-    margin: 0 20px;
-    text-align: center;
+  margin: 0 20px;
+  text-align: center;
 }
 
 .btn {
-    text-align: center;
-    height: 30px;
-    width: 70px;
-    background-color: #fff;
-    margin-right: 15.5px;
-    border-radius: 5px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 50x;
-    box-shadow: 0 0 8px rgb(190, 190, 190);
-    transition: background-color 0.2s;
-    border: 1px solid transparent;
-}
-
-.btn:last-of-type {
-    margin-left: 1px;
+  text-align: center;
+  height: 30px;
+  width: 70px;
+  background-color: #fff;
+  margin-right: 15.5px;
+  border-radius: 5px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 50x;
+  box-shadow: 0 0 4px rgb(29, 28, 28);
+  transition: background-color 0.2s, border 0.2s;
+  border: 1px solid transparent;
 }
 
 .btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .btn-number:hover {
-    background-color: #2980B9;
-    color: #fff;
+  background-color: #2980b9;
+  color: #fff;
 }
 
-
-.btn-multiply{
-    color: #F1C40F;
+.btn-multiply {
+  color: #f1c40f;
 }
 
 .btn-multiply:hover {
-    background-color: #F1C40F;
-    color: #fff;
+  background-color: #f1c40f;
+  color: #fff;
 }
 
-.btn-add{
-    color: #2ECC71;
+.btn-add {
+  color: #2ecc71;
 }
 
 .btn-add:hover {
-    background-color:#2ECC71;
-    color: #fff;
+  background-color: #2ecc71;
+  color: #fff;
 }
 
 .btn-divide {
-color:#2C3E50;
+  color: #2c3e50;
 }
 
 .btn-divide:hover {
-    color: #fff;
-    background-color: #2C3E50;
+  color: #fff;
+  background-color: #2c3e50;
 }
 
-
 .btn-subtract {
-    color: #E74C3C;
+  color: #e74c3c;
 }
 
 .btn-subtract:hover {
-    background-color: #E74C3C;
-    color: #fff;
+  background-color: #e74c3c;
+  color: #fff;
 }
 
-.btn-c:hover {
-    background-color: #C0392B;
-    color: #fff;
+.btn-clear-all:hover {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+.btn-clear:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 .row {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-result:hover {
+  color: #fff;
+  background-color: #27ae60;
 }
