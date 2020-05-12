@@ -112,8 +112,9 @@ document.getElementById("btn-0").addEventListener("click", () => {
 
 document.querySelector(".btn-subtract").addEventListener("click", () => {
   operator = "-";
-  before = parseInt(operations_area);
-  console.log(before);
+  isNaN(parseInt(operations_area)) ? (before = 0) : (before = parseInt(operations_area));
+  
+  if (isNaN(parseInt()))
 });
 
 document.querySelector(".btn-add").addEventListener("click", () => {
