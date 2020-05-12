@@ -109,12 +109,12 @@ document.getElementById("btn-0").addEventListener("click", () => {
  */
 
 document.querySelector(".btn-subtract").addEventListener("click", () => {
-  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
-  console.log(before);
-
-  operator = "-";
-  operationsAreaDOM.value = "";
-  document.querySelector(".btn-subtract").readOnly = "true";
+  if (operations_area === "") {
+    before = 0;
+  } else {
+    before -= parseInt(operations_area);
+    operationsAreaDOM.value = "";
+  }
 });
 
 document.querySelector(".btn-add").addEventListener("click", () => {
