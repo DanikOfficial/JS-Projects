@@ -105,40 +105,24 @@ document.getElementById("btn-0").addEventListener("click", () => {
 });
 
 /**
- *
+
  * Operators Behavior
- *
  */
 
 document.querySelector(".btn-subtract").addEventListener("click", () => {
-  operator = "-";
-  isNaN(parseInt(operations_area)) ? (before = 0) : (before = parseInt(operations_area));
-  
-  if (isNaN(parseInt()))
+  calculate("-");
 });
 
-document.querySelector(".btn-add").addEventListener("click", () => {
-  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
-  console.log(before);
-
-  operator = "+";
-  operationsAreaDOM.value = "";
+document.querySelector(".btn-add").addEventListener("click", function () {
+  calculate("+");
 });
 
 document.querySelector(".btn-multiply").addEventListener("click", () => {
-  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
-  console.log(before);
-
-  operator = "X";
-  operationsAreaDOM.value = "";
+  calculate("*");
 });
 
 document.querySelector(".btn-divide").addEventListener("click", () => {
-  operations_area === "" ? (before = 0) : (before = parseInt(operations_area));
-  console.log(before);
-
-  operator = "/";
-  operationsAreaDOM.value = "";
+  calculate("/");
 });
 
 /**
@@ -167,6 +151,52 @@ document.querySelector(".btn-clear-all").addEventListener("click", function () {
   after = 0;
 });
 
+document.querySelector(".btn-result").addEventListener("click", function () {
+  var result = 0;
+  if (operations_area) {
+    after = parseInt(operations_area);
+  } else {
+    after = 0;
+  }
+
+  switch (operator) {
+    case "-":
+      result = before - after;
+      operationsAreaDOM.value = result;
+      before = 0;
+      after = 0;
+      operator = "";
+      break;
+
+    case "+":
+      result = before + after;
+      operationsAreaDOM.value = result;
+      before = 0;
+      after = 0;
+      operator = "";
+      break;
+
+    case "*":
+      result = before * after;
+      operationsAreaDOM.value = result;
+      before = 0;
+      after = 0;
+      operator = "";
+      break;
+
+    case "/":
+      result = before / after;
+      operationsAreaDOM.value = result;
+      before = 0;
+      after = 0;
+      operator = "";
+      break;
+
+    default:
+      alert("Error: No Operation Selected");
+  }
+});
+
 const operationsAreaExceed = (area) => {
   result = false;
   if (area.length > 15) {
@@ -175,6 +205,40 @@ const operationsAreaExceed = (area) => {
   return result;
 };
 
-const clearOperationsArea = () => {
-  operationsAreaDOM.value = "";
-};
+function calculate(operation) {
+  if (operations_area) {
+    if (before !== 0) {
+      switch (operation) {
+        case "-":
+          operator = "-";
+          before -= operations_area;
+          break;
+
+        case "+":
+          operator = "+";
+          before += parseInt(operations_area);
+          break;
+
+        case "*":
+          operator = "*";
+          before *= operations_area;
+          break;
+
+        case "/":
+          operator = "/";
+          before /= operations_area;
+          break;
+
+        default:
+          alert("Error, unknown operator");
+      }
+      operations_area = "";
+      operationsAreaDOM.value = before;
+    } else {
+      operator = operation;
+      before = parseInt(operations_area);
+      operations_area = "";
+      operationsAreaDOM.value = "";
+    }
+  }
+}
