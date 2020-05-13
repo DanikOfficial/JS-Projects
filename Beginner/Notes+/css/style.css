@@ -1,3 +1,14 @@
+/**
+Background : #2c3e50
+Hover Effects: #34495E
+*/
+
+/*
+* External Font
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;1,700&display=swap");
+
 *,
 *::after,
 *::before {
@@ -10,6 +21,39 @@ html {
   box-sizing: border-box;
   font-size: 20px;
   text-rendering: optimizeLegibility;
-  color: #ccc;
-  background-color: #3498db;
+  color: #000;
+  background-color: #2c3e50;
+  font-family: "PT Serif", serif;
+}
+
+.container {
+  overflow: auto;
+  margin: 40px auto 0 auto;
+  width: 940px;
+  height: 600px;
+}
+
+.navigation,
+.container {
+}
+
+.navigation {
+  float: left;
+  width: 27%;
+  background-color: #fff;
+  height: 100%;
+  margin-right: 10px;
+  box-shadow: 1px 10px 5px #000000;
+}
+
+.content {
+  float: right;
+  width: 70%;
+  background-color: #fff;
+  height: 100%;
+  box-shadow: 1px -10px 5px #000000;
+}
+
+.clearfix {
+  clear: both;
 }
