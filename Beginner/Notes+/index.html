@@ -4,12 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/a5d5f65819.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Notes+</title>
   </head>
   <body>
     <div class="container">
-      <div class="navigation"></div>
-      <div class="content"></div>
+      <div class="navigation">
+        <div class="important-section">
+          <ul class="search-elements">
+            <li>
+              <input
+                type="text"
+                placeholder="Search anything here..."
+                class="textbox"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <div class="inner-container title">
+          <input
+            type="text"
+            placeholder="Enter the title for your note..."
+            name=""
+            class="note-title"
+          />
+        </div>
+        <div class="inner-container body">
+          <textarea class="note-body">
+
+          </textarea>
+        </div>
+        <div class="inner-container actions"></div>
+      </div>
     </div>
   </body>
 </html>
