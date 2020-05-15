@@ -12,37 +12,38 @@ Hover Effects: #34495E
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 20px;
-  text-rendering: optimizeLegibility;
-  color: #000;
-  background-color: #2c3e50;
-  font-family: "PT Serif", serif;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    color: #000;
+    background-color: #2c3e50;
+    font-family: "PT Serif", serif;
 }
 
 .container {
-  overflow: auto;
-  margin: 40px auto 0 auto;
-  width: 940px;
-  height: 600px;
+    overflow: auto;
+    margin: 40px auto 0 auto;
+    width: 940px;
+    height: 600px;
+    background-color: #f7f9fb;
+    border-radius: 5px;
 }
 
 .content {
-  float: right;
-  width: 62%;
-  background-color: #fff;
-  height: 100%;
-  box-shadow: 1px -10px 5px #000000;
+    float: right;
+    width: 62%;
+    background-color: #f7f9fb;
+    height: 100%;
 }
 
 .searchTab .clearfix {
-  clear: both;
+    clear: both;
 }
 
 /**
@@ -52,13 +53,12 @@ html {
 **/
 
 .navigation {
-  float: left;
-  width: 35%;
-  background-color: #fff;
-  height: 100%;
-  margin-right: 10px;
-  box-shadow: 1px 10px 5px #000000;
-  border-radius: 5px;
+    float: left;
+    width: 35%;
+    background-color: #fff;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 /*
@@ -66,52 +66,51 @@ html {
 */
 
 .important-section {
-  padding: 8px;
-  margin: 15px;
-  display: inline-block;
-  width: 90%;
-  height: 60px;
-  border-radius: 5px;
-  background-color: #ecf0f1;
+    padding: 8px;
+    margin: 15px;
+    display: inline-block;
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
 }
 
 .search-elements {
-  overflow: auto;
-  list-style: none;
+    overflow: auto;
+    list-style: none;
 }
 
 /*
 ** Search Section
 */
 
-.textbox {
-  font-family: "PT Serif", serif;
-  margin-top: 2px;
-  height: 40px;
-  outline: "hidden";
-  background-color: #ecf0f1;
-  font-size: 18px;
-  border-bottom: 2px solid #34495e;
-  border-left: 0;
-  border-top: 0;
-  width: 100%;
-  outline: none;
-  color: #34495e;
-  padding-bottom: 0;
-  transition: border-bottom 0.3s, color 0.7s;
+.search-textbox {
+    font-family: "PT Serif", serif;
+    margin-top: 2px;
+    height: 40px;
+    outline: "hidden";
+    font-size: 18px;
+    border-bottom: 2px solid #34495e;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    width: 100%;
+    outline: none;
+    color: #34495e;
+    padding-bottom: 0;
+    transition: border-bottom 0.3s, color 0.7s;
 }
 
-.textbox::placeholder {
-  color: #34495e;
+.search-textbox::placeholder {
+    color: #34495e;
 }
 
-.textbox:hover::placeholder {
-  color: #2980b9;
+.search-textbox:hover::placeholder {
+    color: #2980b9;
 }
 
-.textbox:hover,
-.textbox:active {
-  border-bottom: 2px solid #2980b9;
+.search-textbox:hover,
+.search-textbox:active {
+    border-bottom: 2px solid #2980b9;
 }
 
 /**
@@ -121,49 +120,95 @@ html {
 **/
 
 .inner-container {
-  margin: 15px auto 0 auto;
-  width: 90%;
+    margin: 15px auto 0 auto;
+    width: 90%;
 }
 
 /* ------------------------ Notes Title -----------------------------*/
 
 .note-title {
-  height: 45px;
-  width: 100%;
-  outline: none;
-  border-bottom: 2px solid #34495e;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  color: #2c3e50;
-  font-family: "PT Serif", serif;
-  font-size: 18px;
-  transition: color 0.2s, border-bottom 0.2s;
+    height: 45px;
+    width: 75%;
+    outline: none;
+    border-bottom: 2px solid #34495e;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    color: #2c3e50;
+    font-family: "PT Serif", serif;
+    font-size: 18px;
+    transition: color 0.2s, border-bottom 0.2s;
+    background-color: #f7f9fb;
 }
 
 .note-title::placeholder {
-  color: #2c3e50;
-  transition: font-size 0.2s, color 0.2s;
+    color: #2c3e50;
+    transition: font-size 0.2s, color 0.2s;
 }
 
 .note-title:hover {
-  color: #2980b9;
-  border-bottom: 2px solid #2980b9;
+    color: #2980b9;
+    border-bottom: 2px solid #2980b9;
 }
 
 .note-title:hover::placeholder {
-  font-size: 12px;
-  color: #2980b9;
+    font-size: 12px;
+    color: #2980b9;
 }
 
 /* ------------------------ Notes Body -----------------------------*/
 
 .note-body {
-  width: 100%;
-  height: 460px;
-  background-color: #ecf0f1;
-  border-radius: 5px;
-  border: 0;
-  outline: none;
-  font-family: "PT Serif", serif;
+    width: 100%;
+    height: 460px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    font-family: "PT Serif", serif;
+    resize: none;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 18px;
+
+}
+
+.note-body::placeholder {
+    color: #2c3e50;
+    transition: color 0.2s;
+}
+
+.note-body:hover::placeholder {
+    color: #3498db;
+
+
+}
+
+
+
+
+/* ------------------- Note Actions ------------------------ */
+
+.action-list {
+    list-style: none;
+}
+
+.btn {
+    display: inline-block;
+    margin-right: 5px;
+    color: #2c3e50;
+    font-size: 26px;
+    transition: color 0.3s;
+}
+
+.btn-create:hover {
+    color: #3498DB;
+}
+
+.title-actions {
+    list-style: none;
+}
+
+.title-actions li {
+    display: inline-block;
 }

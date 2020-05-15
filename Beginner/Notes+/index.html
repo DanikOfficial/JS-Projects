@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/a5d5f65819.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/a5d5f65819.js" crossorigin="anonymous"></script>
     <title>Notes+</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="navigation">
-        <div class="important-section">
-          <ul class="search-elements">
-            <li>
-              <input
-                type="text"
-                placeholder="Search anything here..."
-                class="textbox"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="content">
-        <div class="inner-container title">
-          <input
-            type="text"
-            placeholder="Enter the title for your note..."
-            name=""
-            class="note-title"
-          />
-        </div>
-        <div class="inner-container body">
-          <textarea class="note-body">
+</head>
 
-          </textarea>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <div class="important-section">
+                <ul class="search-elements">
+                    <li>
+                        <input type="text" placeholder="Search anything here..." class="search-textbox" />
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="inner-container actions"></div>
-      </div>
+        <div class="content">
+            <div class="inner-container">
+                <ul class="title-actions">
+                    <li><input type="text" placeholder="Enter the title for your note..." name="" class="note-title" /></li>
+                    <li>
+                        <ul class="action-list">
+                            <li class="btn btn-create">
+                                <ion-icon name="save"></ion-icon>
+                            </li>
+
+                            <li class="btn btn-update">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </li>
+                            <li class="btn btn-delete">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="inner-container body">
+                <textarea resize="none" class="note-body" placeholder="Write anything here..."></textarea>
+
+
+            </div>
+        </div>
     </div>
-  </body>
-</html>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body></html>
