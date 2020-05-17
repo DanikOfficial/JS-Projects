@@ -4,69 +4,126 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Notes+</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Notes++</title>
   </head>
 
-  <body>
-    <div class="container">
-      <div class="navigation">
-        <div class="search-section">
-          <ul class="search-elements">
-            <li>
-              <input
-                type="text"
-                placeholder="Search anything here..."
-                class="search-textbox"
-              />
-            </li>
-          </ul>
-        </div>
-        <div class="notes-list-section">
-          <ul class="notes-list">
-            <li><button class="list-btn btn-new-note">New Note</button></li>
-            <li><button class="list-btn">note-2</button></li>
-            <li><button class="list-btn">note-3</button></li>
-            <li><button class="list-btn">note-4</button></li>
-            <li><button class="list-btn">note-1</button></li>
-            <li><button class="list-btn">note-2</button></li>
-            <li><button class="list-btn">note-3</button></li>
-            <li><button class="list-btn">note-4</button></li>
-          </ul>
-        </div>
-      </div>
-      <div class="content">
-        <div class="inner-container">
-          <ul class="title-and-actions">
-            <li class="title-box">
-              <input
-                type="text"
-                placeholder="Enter the title for your note..."
-                name=""
-                class="note-title"
-              />
-            </li>
-            <li class="actions-box">
-              <ul class="actions-list">
-                <li class="btn btn-create">
-                  <ion-icon name="save"></ion-icon>
-                </li>
+  <main class="container">
+    <h1 class="app-name">
+      Notes+
+    </h1>
 
-                <li class="btn btn-delete">
-                  <ion-icon name="trash"></ion-icon>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="inner-container body">
-          <textarea
-            resize="none"
-            class="note-body"
-            placeholder="Write anything here..."
-          ></textarea>
-        </div>
-      </div>
-    </div>
+    <section class="search-section">
+      <input
+        type="text"
+        name=""
+        id=""
+        class="search-textbox"
+        placeholder="Search any note..."
+      />
+    </section>
+
+    <button class="new-note">New Note</button>
+
+    <section class="notes-container">
+      <table class="notes" border="0">
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="note-title">Note Name</td>
+          <td class="note-actions">
+            <button class="view-note">
+              View Note<ion-icon name="eye-outline"></ion-icon>
+            </button>
+            <button class="delete-note">
+              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </main>
+
+  <body>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
   </body>
 </html>

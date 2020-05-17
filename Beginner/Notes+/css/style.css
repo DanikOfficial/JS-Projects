@@ -1,14 +1,13 @@
 /**
-Background : #2c3e50
-Hover Effects: #34495E
-content-background: #f7f9fb
+
+background-color: #3498db;
+hover color: #2980b9
+
 */
 
 /*
 * External Font
 */
-
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;1,700&display=swap");
 
 *,
 *::after,
@@ -21,64 +20,26 @@ content-background: #f7f9fb
 html {
   box-sizing: border-box;
   font-size: 20px;
-  text-rendering: optimizeLegibility;
-  color: #000;
-  background-color: #2c3e50;
-  font-family: "PT Serif", serif;
+  text-rendering: opti10px 30px 10px 20pxmizelegibility;
+  color: #555;
+  background-color: #3498db;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
   overflow: auto;
   overflow-y: none;
-  margin: 40px auto 0 auto;
-  width: 1140px;
-  height: 600px;
-  background-color: #f7f9fb;
-  border-radius: 5px;
-}
-
-.content {
-  float: right;
-  width: 62%;
-  background-color: #f7f9fb;
-  height: 100%;
-}
-
-.searchTab .clearfix {
-  clear: both;
-}
-
-/* --------------- Reusable components ---------------- */
-
-.notes-list-section,
-.search-section {
-  padding: 8px;
-  margin: 15px;
-  width: 90%;
-}
-
-.search-elements,
-.notes-list {
-  list-style: none;
-}
-
-/**
-
-****************** Navigation Panel ******************
-
-**/
-
-.navigation {
-  float: left;
-  width: 35%;
+  margin: 20px auto 0 auto;
+  width: 980px;
+  height: 620px;
   background-color: #fff;
-  height: 100%;
-  margin-right: 10px;
   border-radius: 5px;
+  box-shadow: 0 0 15px #2980b9;
 }
 
-/* ------------------------- Components -------------------------*/
-
+/*
+*** -------------------------------- Customized Native Components ----------------------------****
+*/
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -93,178 +54,100 @@ html {
   background: #34495e;
 }
 
-/*
-** ----------------- Search Section -----------------
-*/
+/* ----------------------------- App Name ---------------------------------*/
 
+.app-name {
+  color: #1f74ac;
+  font-size: 300%;
+  font-weight: 200;
+  width: 200px;
+  margin: 40px auto 40px auto;
+}
+
+/*
+*** -------------------------------- Search Section ----------------------------****
+*/
 .search-section {
-  height: 60px;
+  width: 600px;
+  margin: 0 auto 50px auto;
 }
 
 .search-textbox {
-  font-family: "PT Serif", serif;
-  margin-top: 2px;
   height: 40px;
-  outline: hidden;
-  font-size: 18px;
-  border-bottom: 2px solid #34495e;
-  border-left: 0;
-  border-top: 0;
-  border-right: 0;
   width: 100%;
+  border-bottom: 1.5px solid #3498db;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  text-align: center;
   outline: none;
-  color: #34495e;
-  padding-bottom: 0;
-  transition: border-bottom 0.3s, color 0.7s;
+  color: #2980b9;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  transition: border-bottom 0.3s;
+}
+
+.search-textbox:hover {
+  border-bottom: 1.5px solid #2980b9;
 }
 
 .search-textbox::placeholder {
-  color: #34495e;
+  color: #2980b9;
+  transition: color 0.3s, font-size 0.2s;
 }
 
 .search-textbox:hover::placeholder {
-  color: #2980b9;
-}
-
-.search-textbox:hover,
-.search-textbox:active {
-  border-bottom: 2px solid #2980b9;
-}
-
-/* --------------------- Notes List Section -------------------------- */
-
-.notes-list-section {
-  overflow-y: scroll;
-  height: 80%;
-}
-
-.btn-new-note {
-  background-color: #2980b9 !important;
-  color: #fff;
-  border: 1px solid #2980b9 !important;
-}
-
-.btn-new-note:hover {
-  background-color: #165f91 !important;
-}
-
-.list-btn {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 15px;
-  background-color: #f7f9fb;
-  border: 0;
-  transition: color 0.3s, background-color 0.3s;
+  color: #3498db;
   font-size: 18px;
 }
 
-.list-btn:hover,
-.list-btn:active {
-  background-color: #2980b9;
+/*
+*** -------------------------------- Notes Section ----------------------------****
+*/
+
+.notes-container {
+  width: 750px;
+  margin: 0 auto;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+/* ----------------------------------- Notes ----------------------------------*/
+
+.new-note {
+  margin-left: 120px;
+  margin-bottom: 10px;
+  border: 1px solid #3498db;
+  background-color: #3498db;
+  border-radius: 2em;
+  padding: 10px 40px;
   color: #fff;
+  outline: none;
+  transition: 0.4s;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-/**
-
-****************** Content Panel ******************
-
-**/
-
-.inner-container {
-  margin: 15px auto 35px auto;
-  width: 90%;
+.new-note:hover,
+.new-note:active {
+  background-color: #1b6291;
 }
 
-/* ------------------------ Notes Title -----------------------------*/
+.notes {
+  border-collapse: collapse;
+}
 
-.title-box {
-  width: 85%;
-  float: left;
+.notes {
+  margin-top: 15px;
+  overflow-y: scroll;
 }
 
 .note-title {
-  height: 45px;
-  width: 100%;
-  outline: none;
-  border-bottom: 2px solid #34495e;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  color: #2c3e50;
-  font-family: "PT Serif", serif;
-  font-size: 18px;
-  transition: color 0.2s, border-bottom 0.2s;
-  background-color: #f7f9fb;
-}
-
-.note-title::placeholder {
-  color: #2c3e50;
-  transition: font-size 0.2s, color 0.2s;
-}
-
-.note-title:hover {
-  color: #2980b9;
-  border-bottom: 2px solid #2980b9;
-}
-
-.note-title:hover::placeholder {
-  font-size: 12px;
-  color: #2980b9;
-}
-
-.title-and-actions {
+  width: 75%;
   height: 40px;
-  list-style: none;
-  margin-bottom: 30px;
+  padding-left: 10px;
 }
 
-.title-and-actions li {
-  display: inline-block;
-}
-
-/* ------------------- Note Actions ------------------------ */
-
-.actions-box {
-  float: right;
-  padding-top: 15px;
-}
-
-.actions-list {
-  list-style: none;
-  display: inline-block;
-}
-
-.btn {
-  display: inline-block;
-  color: #2c3e50;
-  font-size: 23px;
-  transition: color 0.3s;
-}
-
-.btn-create:hover {
-  color: #3498db;
-}
-
-/* ------------------------ Notes Body -----------------------------*/
-
-.note-body {
-  width: 100%;
-  height: 460px;
-  background-color: #ecf0f1;
-  border-radius: 5px;
-  border: 0;
-  outline: none;
-  font-family: "PT Serif", serif;
-  resize: none;
-  padding: 15px;
-  font-size: 18px;
-}
-
-.note-body::placeholder {
-  color: #2c3e50;
-  transition: color 0.2s;
-}
-
-.note-body:hover::placeholder {
-  color: #3498db;
+tr {
+  border-bottom: 2px solid #bdc3c7;
 }
