@@ -10,34 +10,9 @@
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Notes++</title>
+    <title>Notes+</title>
   </head>
-
-  <section class="note-view">
-    <section class="note-view-content">
-      <header class="header-note-view">
-        <button class="close-note"><ion-icon name="close-outline"></ion-icon></button>
-        <input type="text" minlength="6" maxlength="40" class="title-note-view" placeholder="Title...">
-      </header>
-      <section class="body-note-view"><textarea name="" class="text-note-view"></textarea></section>
-      <footer class="actions-note-view">
-        <ul class="actions-list-note-view">
-        <li>
-          <button class="btn-action-note btn-action btn-view-note">
-            Save Note<ion-icon class="icon" name="save-outline"></ion-icon>
-          </button>
-        </li>
-        <li>
-          <button class="btn-action-note btn-action btn-delete-note">
-            Delete Note<ion-icon class="icon" name="trash-outline"></ion-icon>
-            </ion-icon>
-          </button>
-        </li>
-      </ul>
-    </footer>
-    </section>
-  </section>
-
+  <body>
   <main class="container">
     <h1 class="app-name">
       Notes+
@@ -46,8 +21,6 @@
     <section class="search-section">
       <input
         type="text"
-        name=""
-        id=""
         class="search-textbox"
         placeholder="Search any note..."
       />
@@ -95,7 +68,34 @@
   </section>
   </main>
 
-  <body>
+
+
+  <section class="note-view">
+    <section class="note-view-content">
+      <header class="header-note-view">
+        <button class="close-note"><ion-icon name="close-outline"></ion-icon></button>
+        <input type="text" minlength="6" maxlength="40" class="title-note-view" placeholder="Write the title for your note here...">
+      </header>
+      <section class="body-note-view"><textarea placeholder="Write your note here..." name="" class="text-note-view"></textarea></section>
+      <footer class="actions-note-view">
+        <ul class="actions-list-note-view">
+        <li>
+          <button class="btn-action btn-save-note">
+            Save Note<ion-icon class="icon" name="save-outline"></ion-icon>
+          </button>
+        </li>
+        <li>
+          <button class="btn-action btn-delete-note btn-delete-opened-note">
+            Delete Note<ion-icon class="icon" name="trash-outline"></ion-icon>
+            </ion-icon>
+          </button>
+        </li>
+      </ul>
+    </footer>
+    </section>
+  </section>
+
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
