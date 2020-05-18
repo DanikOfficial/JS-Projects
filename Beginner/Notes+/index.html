@@ -3,14 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/style.css" />
 
     <title>Notes++</title>
   </head>
+
+  <section class="note-view">
+    <section class="note-view-content">
+      <header class="header-note-view">
+        <button class="close-note"><ion-icon name="close-outline"></ion-icon></button>
+        <input type="text" minlength="6" maxlength="40" class="title-note-view" placeholder="Title...">
+      </header>
+      <section class="body-note-view"><textarea name="" class="text-note-view"></textarea></section>
+      <footer class="actions-note-view">
+        <ul class="actions-list-note-view">
+        <li>
+          <button class="btn-action-note btn-action btn-view-note">
+            Save Note<ion-icon class="icon" name="save-outline"></ion-icon>
+          </button>
+        </li>
+        <li>
+          <button class="btn-action-note btn-action btn-delete-note">
+            Delete Note<ion-icon class="icon" name="trash-outline"></ion-icon>
+            </ion-icon>
+          </button>
+        </li>
+      </ul>
+    </footer>
+    </section>
+  </section>
 
   <main class="container">
     <h1 class="app-name">
@@ -34,93 +60,39 @@
         <tr class="row">
           <td class="note-title">Note Name</td>
           <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
+            <button class="btn-action btn-view-note">
+              View Note<ion-icon class="icon" name="eye-outline"></span>
             </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
-            </button>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="note-title">Note Name</td>
-          <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            <button class="btn-action btn-delete-note">
+              Delete Note<ion-icon class="icon" name="close-outline"></ion-icon>
             </button>
           </td>
         </tr>
         <tr class="row">
           <td class="note-title">Note Name</td>
           <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
+            <button class="btn-action btn-view-note">
+              View Note<ion-icon class="icon" name="eye-outline"></span>
             </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
-            </button>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="note-title">Note Name</td>
-          <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            <button class="btn-action btn-delete-note">
+              Delete Note<ion-icon class="icon" name="close-outline"></ion-icon>
             </button>
           </td>
         </tr>
         <tr class="row">
           <td class="note-title">Note Name</td>
           <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
+            <button class="btn-action btn-view-note">
+              View Note<ion-icon class="icon" name="eye-outline"></span>
             </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
-            </button>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="note-title">Note Name</td>
-          <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
-            </button>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="note-title">Note Name</td>
-          <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
-            </button>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="note-title">Note Name</td>
-          <td class="note-actions">
-            <button class="view-note">
-              View Note<ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="delete-note">
-              Delete Note<ion-icon name="remove-circle-outline"></ion-icon>
+            <button class="btn-action btn-delete-note">
+              Delete Note<ion-icon class="icon" name="close-outline"></ion-icon>
             </button>
           </td>
         </tr>
       </table>
     </section>
+  </section>
   </main>
 
   <body>
