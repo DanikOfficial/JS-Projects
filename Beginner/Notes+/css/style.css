@@ -53,43 +53,6 @@ html {
 }
 
 /*
-*** -------------------------------- Search Section ----------------------------****
-*/
-.search-section {
-  width: 600px;
-  margin: 0 auto 50px auto;
-}
-
-.search-textbox {
-  height: 40px;
-  width: 100%;
-  border-bottom: 2px solid #3498db;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  text-align: center;
-  outline: none;
-  color: #2980b9;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  transition: border-bottom 0.3s;
-}
-
-.search-textbox:hover {
-  border-bottom: 1.5px solid #2980b9;
-}
-
-.search-textbox::placeholder {
-  color: #2980b9;
-  transition: color 0.3s, font-size 0.2s;
-}
-
-.search-textbox:hover::placeholder {
-  color: #3498db;
-  font-size: 18px;
-}
-
-/*
 *** -------------------------------- Notes Section ----------------------------****
 */
 
@@ -102,8 +65,9 @@ html {
 }
 
 .app-name {
-  font-size: 300%;
+  font-size: 350%;
   margin: 20px auto 40px auto;
+  padding-top: 60px;
   font-weight: 200;
 }
 
@@ -154,7 +118,6 @@ html {
   transition: background-color 0.4s, color 0.4s;
   border-bottom: 3px groove #3498db;
   text-align: left;
-  z-index: 1;
 }
 
 .note:hover {
@@ -172,6 +135,10 @@ html {
 /* Displays the delete note icon */
 .note:hover > .btn-delete-note {
   display: block;
+}
+
+.note-title {
+  pointer-events: none;
 }
 
 /* -------------------------------- Note Actions ---------------------------- */
