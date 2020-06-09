@@ -1,3 +1,94 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Notes+</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="app-name">
+        Notes+
+      </h1>
+	<section class="search-section">
+        <input
+          type="text"
+          class="search-textbox"
+          placeholder="Search anything here..."
+        />
+      </section>
+      <section class="notes-section">
+        <header>
+          <button class="btn-new-note js-new-note">
+            New Note<ion-icon
+              class="icon-note"
+              name="create-outline"
+            ></ion-icon>
+          </button>
+        </header>
+        <h2 class="notes-header">Here are your notes...</h2>
+        <section class="notes-container"></section>
+        <section class="empty-state">
+          <h3 class="empty-state__title">Oops :(</h3>
+          <ion-icon class="icon-big" name="newspaper-outline"></ion-icon>
+          <p class="empty-state__text">Sounds like you have no notes now :(<br>Hit the New Note button so we can be happy together :)</p>
+        </section>
+      </section>
+    </main>
+
+    <section class="note-view">
+      <section class="note-view-content">
+        <header class="header-note-view">
+          <h2 class="note-view-header-title">Create a new note</h2>
+          <span class="close-note">x</span>
+        </header>
+        <section class="body-note-view">
+          <section class="inner-container">
+            <input
+              type="text"
+              maxlength="35"
+              placeholder="Note title..."
+              class="title-note-view"
+            />
+            <textarea id="text" class="text-note-view"></textarea>
+            <footer class="footer-note-view">
+              <ul class="note-view-actions">
+                <li class="note-view-save">
+                  <button class="btn-action btn-save-note-view">
+                    Save<ion-icon class="icon" name="save-outline"></ion-icon>
+                  </button>
+                </li>
+                <li class="note-view-delete">
+                  <button class="btn-action btn-delete-note-view">
+                    Delete<ion-icon
+                      class="icon"
+                      name="trash-outline"
+                    ></ion-icon>
+                  </button>
+                </li>
+              </ul>
+            </footer>
+          </section>
+        </section>
+      </section>
+    </section>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
+
+CSS
+
 /**
 
 background-color: #3498db;
@@ -56,6 +147,7 @@ html {
 *** -------------------------------- Notes Section ----------------------------****
 */
 
+
 /*
 *** -------------------------------- Search Section ----------------------------****
 */
@@ -104,7 +196,7 @@ html {
 .app-name {
   font-size: 350%;
   margin: 20px auto 40px auto;
-  padding-top: 20px;
+  padding-top: 60px;
   font-weight: 200;
 }
 
@@ -179,7 +271,6 @@ html {
   transition: 0.4s;
   text-transform: uppercase;
   font-size: 90%;
-  cursor: pointer;
 }
 
 .btn-new-note:hover,
@@ -393,13 +484,6 @@ html {
 .notes-container {
   height: 270px;
   overflow-y: scroll;
-}
-
-.notes-container:empty {
-  display: none;
-}
-
-.notes-container:empty + .search-section {
   display: none;
 }
 
@@ -409,25 +493,21 @@ html {
   margin: 5px 0 20px 0;
   text-align: center;
   width: 100%;
-  display: block;
+  display: none;
 }
 
 /* ------------- Empty State elements ------------------ */
 
 .empty-state {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   color: rgb(136, 136, 136);
 }
 
-.notes-container:empty + .empty-state {
-  display: flex;
-}
-
 .icon-big {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .empty-state__title {
@@ -437,9 +517,12 @@ html {
 }
 
 .icon-big {
-  font-size: 390%;
+  font-size: 370%;
 }
 
 .empty-state__text {
   font-size: 120%;
 }
+
+
+

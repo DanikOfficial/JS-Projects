@@ -17,7 +17,13 @@
       <h1 class="app-name">
         Notes+
       </h1>
-
+      <section class="search-section">
+        <input
+          type="text"
+          class="search-textbox"
+          placeholder="Search anything here..."
+        />
+      </section>
       <section class="notes-section">
         <header>
           <button class="btn-new-note js-new-note">
@@ -30,8 +36,12 @@
         <h2 class="notes-header">Here are your notes...</h2>
         <section class="notes-container"></section>
         <section class="empty-state">
-          <h3></h3>
-          <ion-icon name="newspaper-outline"></ion-icon>
+          <h3 class="empty-state__title">Oops :(</h3>
+          <ion-icon class="icon-big" name="newspaper-outline"></ion-icon>
+          <p class="empty-state__text">
+            Sounds like you have no notes now :(<br />Hit the New Note button so
+            we can be happy together :)
+          </p>
         </section>
       </section>
     </main>
@@ -76,4 +86,3 @@
     <script src="js/app.js"></script>
   </body>
 </html>
-  

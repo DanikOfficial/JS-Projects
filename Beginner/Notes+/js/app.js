@@ -8,6 +8,11 @@ var noteId = 0;
 var storage = window.localStorage;
 
 /* --- Notes Container --- */
+
+let searchSection = document.querySelector(".search-section");
+
+let notes_header = document.querySelector(".notes-header");
+
 let notesContainer = document.querySelector(".notes-container");
 
 let deleteNoteButton = document.querySelector(".btn-delete-note-view");
@@ -131,6 +136,11 @@ function saveNote(title, text) {
     `
     );
 
+    if (storage !== 0) {
+      notes_header.style.display = "block";
+      searchSection.style.display = "block";
+    }
+
     // Closes the view after inserting the new note
     closeNoteView();
   }
@@ -146,6 +156,12 @@ function deleteNote(id) {
   let noteItem = document.querySelector(`[data-key='${noteId}']`);
   noteItem.remove();
   closeNoteView();
+
+  if (storage.length === 0) {
+    notesContainer.innerHTML = "";
+    searchSection.style.display = "none";
+    notes_header.style.display = "none";
+  }
 }
 
 /**
@@ -180,25 +196,30 @@ function closeNoteView() {
 
 // Render the notes when the app opens
 function renderNotes() {
-  for (let i = 0; i < storage.length; i++) {
-    // Get note key
-    let key = storage.key(i);
+  if (storage.length === 0) {
+    notes_header.style.display = "none";
+  } else {
+    notes_header.style.display = "block";
+    for (let i = 0; i < storage.length; i++) {
+      // Get note key
+      let key = storage.key(i);
 
-    // get note object
-    let object = storage.getItem(key);
+      // get note object
+      let object = storage.getItem(key);
 
-    // Parse to note object
-    let note = JSON.parse(object);
+      // Parse to note object
+      let note = JSON.parse(object);
 
-    notesContainer.insertAdjacentHTML(
-      "beforeend",
+      notesContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+      <div class="note" data-key='${note.id}'>
+              <h3 class="note-title">${note.title}</h3>
+              <button class="btn-delete-note js-delete-note">[X]</button>
+            </div>
       `
-    <div class="note" data-key='${note.id}'>
-            <h3 class="note-title">${note.title}</h3>
-            <button class="btn-delete-note js-delete-note">[X]</button>
-          </div>
-    `
-    );
+      );
+    }
   }
 }
 
