@@ -254,16 +254,20 @@ function clearFields() {
 }
 
 function searchNotes() {
-  // Gets the text from the search note input
-  let input = searchNoteTextField.value;
+  let flag = false;
+
+  // Gets the text from the search note input and prints
+  let input = searchNoteTextField.value.toUpperCase();
 
   // Gets all the notes from the notes container
   let notes = notesContainer.querySelectorAll(".note");
 
+  // Loop throught all the
   for (let i = 0; i < notes.length; i++) {
     let note__title = notes[i].querySelector(".note-title").textContent;
-    console.log("Title:" + note__title);
-    console.log(notes[i].outerHTML);
-    console.log("------ Next Element ------");
+
+    if (note__title.toUpperCase().indexOf(input) > -1) {
+      notesContainer.insertAdjacentHTML("beforeend", notes[i].outerHTML);
+    }
   }
 }
