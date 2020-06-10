@@ -11,6 +11,8 @@ var storage = window.localStorage;
 
 let searchSection = document.querySelector(".search-section");
 
+let searchNoteTextField = document.querySelector(".search-textbox");
+
 let notes_header = document.querySelector(".notes-header");
 
 let notesContainer = document.querySelector(".notes-container");
@@ -29,6 +31,11 @@ let deleteButtonNoteView = document.querySelector(".btn-delete-note-view");
 // Render the notes as soon as the app opens
 renderNotes();
 
+// Searches the note and renders the note if found
+searchNoteTextField.addEventListener("keyup", () => {
+  searchNotes();
+});
+
 // Opens the note view
 document.querySelector(".js-new-note").addEventListener("click", () => {
   displayNoteView();
@@ -39,6 +46,7 @@ document.querySelector(".close-note").addEventListener("click", () => {
   closeNoteView();
 });
 
+// Handles the click event on the note
 notesContainer.addEventListener("click", (event) => {
   // Opens the note when clicks the note box
   if (event.target.classList.contains("note")) {
@@ -73,6 +81,7 @@ deleteButtonNoteView.addEventListener("click", () => {
   deleteNote(this.noteId);
 });
 
+// Saves the note when the Save note button is clicked
 saveNoteButton.addEventListener("click", () => {
   // The title of the note
   let title = document.querySelector(".title-note-view").value;
@@ -242,4 +251,19 @@ function clearFields() {
   document.querySelector(".note-view-header-title").textContent =
     "Create a new note";
   this.noteId = 0;
+}
+
+function searchNotes() {
+  // Gets the text from the search note input
+  let input = searchNoteTextField.value;
+
+  // Gets all the notes from the notes container
+  let notes = notesContainer.querySelectorAll(".note");
+
+  for (let i = 0; i < notes.length; i++) {
+    let note__title = notes[i].querySelector(".note-title").textContent;
+    console.log("Title:" + note__title);
+    console.log(notes[i].outerHTML);
+    console.log("------ Next Element ------");
+  }
 }
