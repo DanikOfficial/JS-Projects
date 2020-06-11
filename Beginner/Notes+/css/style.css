@@ -443,3 +443,8 @@ html {
 .empty-state__text {
   font-size: 120%;
 }
+
+.not-found {
+  color: #3498db;
+  font-size: 120%;
+}

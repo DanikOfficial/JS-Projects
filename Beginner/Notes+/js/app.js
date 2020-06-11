@@ -32,8 +32,8 @@ let deleteButtonNoteView = document.querySelector(".btn-delete-note-view");
 renderNotes();
 
 // Searches the note and renders the note if found
-searchNoteTextField.addEventListener("keyup", () => {
-  searchNotes();
+searchNoteTextField.addEventListener("keyup", (event) => {
+  searchNotes(event);
 });
 
 // Opens the note view
@@ -184,7 +184,7 @@ const noteExists = (noteTitle) => {
 
     let note = JSON.parse(item);
 
-    if (note.title === noteTitle) {
+    if (note.title.toUpperCase() === noteTitle.toUpperCase()) {
       exists = true;
     }
   }
@@ -253,21 +253,41 @@ function clearFields() {
   this.noteId = 0;
 }
 
-function searchNotes() {
-  let flag = false;
-
+function searchNotes(event) {
   // Gets the text from the search note input and prints
   let input = searchNoteTextField.value.toUpperCase();
 
-  // Gets all the notes from the notes container
-  let notes = notesContainer.querySelectorAll(".note");
+  notesContainer.innerHTML = "";
 
   // Loop throught all the
-  for (let i = 0; i < notes.length; i++) {
-    let note__title = notes[i].querySelector(".note-title").textContent;
+  for (let i = 0; i < storage.length; i++) {
+    // get the key
+    let key = storage.key(i);
 
-    if (note__title.toUpperCase().indexOf(input) > -1) {
-      notesContainer.insertAdjacentHTML("beforeend", notes[i].outerHTML);
+    // get the item
+    let item = storage.getItem(key);
+
+    // transform the item into note object
+    let note = JSON.parse(item);
+
+    if (note.title.toUpperCase().indexOf(input) > -1) {
+      insertNoteElement(note);
+    } else {
+      notesContainer.innerHTML = "<p class='not-found'>Note Not found :(</p>";
     }
   }
+
+  // Gets all the notes from the notes container
+}
+
+function insertNoteElement(note) {
+  notesContainer.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="note" data-key='${note.id}'>
+          <h3 class="note-title">${note.title}</h3>
+          <button class="btn-delete-note js-delete-note">[X]</button>
+        </div>
+  `
+  );
 }
