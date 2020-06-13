@@ -61,6 +61,8 @@ notesContainer.addEventListener("click", (event) => {
       "Edit Note: " + note.title;
     document.querySelector(".title-note-view").value = note.title;
     document.querySelector(".text-note-view").value = note.text;
+    document.querySelector(".btn-save-note-view").innerHTML =
+      "Update <ion-icon class='icon' name='save-outline'></ion-icon>";
 
     // Displays the delete note button
     document.querySelector(".btn-delete-note-view").style.display = "block";
@@ -89,10 +91,16 @@ saveNoteButton.addEventListener("click", () => {
   // The text of the note
   let text = document.querySelector(".text-note-view").value;
 
-  if (title && text) {
-    saveNote(title, text);
+  // checks if the fields are empty
+  if (validFields(title, text)) {
+    // checks if the note has changed, true IF changed, false IF NOT changed
+    if (this.noteId !== 0) {
+      updateNote(this.noteId, title, text);
+    } else {
+      saveNote(title, text);
+    }
   } else {
-    alert("Error: The title/text is mandatory");
+    alert("Error: Title/Text note is mandatory");
   }
 });
 
@@ -100,30 +108,9 @@ function saveNote(title, text) {
   // Generates an id for the note
   let id = Math.floor(Math.random() * 100000 + 10000);
 
-  // Checks whether the note already exists when the user tries to create a new note
-  if (noteExists(title) && this.noteId === 0) {
+  if (noteExists(title)) {
     // Alerts the user that the note already exists
     alert("Error: The note title already exists!");
-
-    // Checks whether the note already exists and updates it
-  } else if (noteExists(title) && this.noteId !== 0) {
-    // Get the selected Item
-    let item = storage.getItem(noteId);
-
-    // Parse the item to note object
-    let note = JSON.parse(item);
-
-    // Update the text
-    note.text = text;
-
-    // Remove the old item
-    storage.removeItem(noteId);
-
-    // Save the new item
-    storage.setItem(noteId, JSON.stringify(note));
-    closeNoteView();
-
-    // Creates a new note if none of the conditions above are met
   } else {
     const note = {
       id,
@@ -135,15 +122,7 @@ function saveNote(title, text) {
     storage.setItem(id, JSON.stringify(note));
 
     // Update the UI
-    notesContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-    <div class="note" data-key='${note.id}'>
-            <h3 class="note-title">${note.title}</h3>
-            <button class="btn-delete-note js-delete-note">[X]</button>
-          </div>
-    `
-    );
+    insertNoteElement(note);
 
     if (storage !== 0) {
       notes_header.style.display = "block";
@@ -153,6 +132,37 @@ function saveNote(title, text) {
     // Closes the view after inserting the new note
     closeNoteView();
   }
+}
+
+function updateNote(id, title, text) {
+  // Get the note to be updated
+  let item = storage.getItem(id);
+
+  // Parse the item to a note object
+  let note = JSON.parse(item);
+
+  // Remove the old note
+  storage.removeItem(id);
+
+  // Update the fields
+  note.id = id;
+  note.title = title;
+  note.text = text;
+
+  // Save the updated note
+  storage.setItem(noteId, JSON.stringify(note));
+
+  /**
+   * Update UI
+   *  */
+
+  // Get the note element in the UI
+  let noteElement = document.querySelector(`[data-key='${id}']`);
+
+  // Update the name
+  noteElement.querySelector(".note-title").textContent = note.title;
+
+  closeNoteView();
 }
 
 /**
@@ -179,15 +189,20 @@ function deleteNote(id) {
  */
 const noteExists = (noteTitle) => {
   let exists = false;
-  for (let i = 0; i < storage.length; i++) {
-    let item = storage.getItem(storage.key(i));
 
-    let note = JSON.parse(item);
+  // Only loop through notes if one exists
+  if (storage.length !== 0) {
+    for (let i = 0; i < storage.length; i++) {
+      let item = storage.getItem(storage.key(i));
 
-    if (note.title.toUpperCase() === noteTitle.toUpperCase()) {
-      exists = true;
+      let note = JSON.parse(item);
+
+      if (note.title.toUpperCase() === noteTitle.toUpperCase()) {
+        exists = true;
+      }
     }
   }
+
   return exists;
 };
 
@@ -200,6 +215,7 @@ function displayNoteView() {
 function closeNoteView() {
   document.querySelector(".btn-delete-note-view").style.display = "none";
   clearFields();
+
   noteView.classList.remove("show");
 }
 
@@ -207,8 +223,10 @@ function closeNoteView() {
 function renderNotes() {
   if (storage.length === 0) {
     notes_header.style.display = "none";
+    searchSection.style.display = "none";
   } else {
     notes_header.style.display = "block";
+    searchSection.style.display = "none";
     for (let i = 0; i < storage.length; i++) {
       // Get note key
       let key = storage.key(i);
@@ -219,26 +237,10 @@ function renderNotes() {
       // Parse to note object
       let note = JSON.parse(object);
 
-      notesContainer.insertAdjacentHTML(
-        "beforeend",
-        `
-      <div class="note" data-key='${note.id}'>
-              <h3 class="note-title">${note.title}</h3>
-              <button class="btn-delete-note js-delete-note">[X]</button>
-            </div>
-      `
-      );
+      insertNoteElement(note);
     }
   }
 }
-
-let setNoteId = (id) => {
-  noteId = id;
-};
-
-let getNoteId = () => {
-  return noteId;
-};
 
 const getNoteById = (id) => {
   let note = JSON.parse(storage.getItem(id));
@@ -250,8 +252,18 @@ function clearFields() {
   document.querySelector(".text-note-view").value = "";
   document.querySelector(".note-view-header-title").textContent =
     "Create a new note";
+  document.querySelector(".btn-save-note-view").innerHTML =
+    "Save <ion-icon class='icon' name='save-outline'></ion-icon>";
   this.noteId = 0;
 }
+
+const validFields = (title, text) => {
+  let result = false;
+
+  if (title && text) result = true;
+
+  return result;
+};
 
 function searchNotes(event) {
   // Gets the text from the search note input and prints
@@ -270,16 +282,29 @@ function searchNotes(event) {
     // transform the item into note object
     let note = JSON.parse(item);
 
+    // checks if the typed word exists
     if (note.title.toUpperCase().indexOf(input) > -1) {
       insertNoteElement(note);
-    } else {
-      notesContainer.innerHTML = "<p class='not-found'>Note Not found :(</p>";
     }
   }
 
-  // Gets all the notes from the notes container
+  // Gets all the searched notes
+  let notesList = notesContainer.querySelectorAll(".note");
+
+  // Checks if there are any note found
+  if (notesList.length === 0) {
+    notesContainer.innerHTML =
+      "<div class='not-found'><ion-icon class='not-found__icon'" +
+      " name='sad-outline'></ion-icon><p class='not-found__text'>" +
+      "There are no notes with this title...</p></div>";
+
+    notes_header.style.display = "none";
+  } else {
+    notes_header.style.display = "block";
+  }
 }
 
+// Inserts a new note to the UI
 function insertNoteElement(note) {
   notesContainer.insertAdjacentHTML(
     "beforeend",
