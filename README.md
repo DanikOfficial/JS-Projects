@@ -7,14 +7,14 @@ Author: Pete João Chiboleca
 From Beginner to Advanced
 -------------------------
 
-## Begginer
+# Begginer
 
 My begginer apps are listed bellow
 
-**Calculator**
+**-Calculator**
 -> Simple calculator app with cool UI
 
-**Notes+ or Notes Plus** 
+**-Notes+ or Notes Plus** 
 
 This is an app that you can create, read, update and delete notes.
 
@@ -24,4 +24,6 @@ Features:
 - Deletes Note
 - Filters Note Dynamically
 - Notes are stored permanently using the Web Storage API (localstorage).
+
+# Intermadiate Apps coming soon
 
