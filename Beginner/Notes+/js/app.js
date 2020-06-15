@@ -226,7 +226,7 @@ function renderNotes() {
     searchSection.style.display = "none";
   } else {
     notes_header.style.display = "block";
-    searchSection.style.display = "none";
+    searchSection.style.display = "block";
     for (let i = 0; i < storage.length; i++) {
       // Get note key
       let key = storage.key(i);
