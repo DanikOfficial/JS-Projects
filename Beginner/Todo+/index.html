@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="resources/css/styles.css" />
     <title>Todo+</title>
   </head>
@@ -19,6 +25,13 @@
           />
         </section>
         <ul class="todo-list"></ul>
+        <div class="empty-state">
+          <i class="empty-state__icon fas fa-clipboard-list"></i>
+          <h2 class="empty-state__title">Add your first Todo</h2>
+          <p class="empty-state__description">
+            What do you want to get done today?
+          </p>
+        </div>
       </section>
     </main>
     <script src="resources/js/app.js"></script>

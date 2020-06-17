@@ -167,3 +167,39 @@ html {
   border: 2px solid #c0392b;
   color: #000;
 }
+
+/*** ------------------- Empty State --------------------- ***/
+
+.empty-state {
+  margin-top: 25px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(85, 85, 85);
+}
+
+.empty-state__icon {
+  font-size: 370%;
+}
+
+.empty-state__icon,
+.empty-state__title {
+  margin-bottom: 15px;
+}
+
+.empty-state__title {
+  font-size: 180%;
+}
+
+.empty-state__description {
+  font-size: 25px;
+}
+
+.todo-list:empty {
+  display: none;
+}
+
+.todo-list:empty + .empty-state {
+  display: flex;
+}
