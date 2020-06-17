@@ -11,10 +11,10 @@ From Beginner to Advanced
 
 My begginer apps are listed bellow
 
-**-Calculator**
+**- Calculator**
 -> Simple calculator app with cool UI
 
-**-Notes+ or Notes Plus** 
+**- Notes+ or Notes Plus** 
 
 This is an app that you can create, read, update and delete notes.
 
