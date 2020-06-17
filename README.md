@@ -9,7 +9,7 @@ From Beginner to Advanced
 
 # Begginer
 
-My begginer apps are listed bellow
+The beginner apps are listed bellow:
 
 **- Calculator**
 -> Simple calculator app with cool UI
