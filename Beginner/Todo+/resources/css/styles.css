@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+
 *,
 *::after,
 *::before {
@@ -10,8 +12,7 @@ html {
   box-sizing: border-box;
   font-size: 20px;
   text-rendering: optimizeLegibility;
-  color: #555;
-  font-family: "Roboto", sans-serif;
+  color: #7f8c8d;
 }
 
 /*
@@ -31,7 +32,138 @@ html {
   background: #34495e;
 }
 
-h1 {
-  color: #3498db;
-  top: 0;
+/*
+*** -------------------------------- Base styling ----------------------------****
+*/
+
+.main-section {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 650px;
+  height: 550px;
+  background: #faf8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(228, 228, 228);
+  padding: 5px;
+}
+
+/*** ------------------- Header Section --------------------- ***/
+
+.app-name {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: rgb(85, 85, 85);
+  font-weight: 300;
+  font-size: 280%;
+  font-family: "Suez One", serif;
+}
+
+/*** ------------------- Creation Section --------------------- ***/
+
+.create-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.create-todo {
+  width: 80%;
+  height: 40px;
+  border: 0;
+  border-bottom: 2px solid;
+  outline: none;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  background-color: transparent;
+}
+
+.create-todo::placeholder {
+  transition: color 0.4s;
+}
+
+.create-todo:hover::placeholder {
+  color: #000;
+}
+
+/*** ------------------- List Section --------------------- ***/
+
+.todo-list {
+  flex: 3;
+  background-color: #fff;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  background: #faf8f8;
+}
+
+/*** ------------------- List Element --------------------- ***/
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 17px;
+  margin-bottom: 17px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+/*** ------------------- Task Name --------------------- ***/
+
+.task-name {
+  border-radius: 5px;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 90%;
+  justify-content: flex-start;
+  margin-left: 10px;
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.task-name:hover {
+  background-color: #c0c0c0;
+  color: #fff;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+/*** ------------------- Task Action --------------------- ***/
+
+.delete-todo {
+  height: 100%;
+  padding: 3px 10px 0 10px;
+  border-radius: 50%;
+  border: 2px solid #e74c3c;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 20px;
+  outline: none;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.delete-todo:hover {
+  background-color: #c0392b;
+  border: 2px solid #c0392b;
+  color: #000;
 }

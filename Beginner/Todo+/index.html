@@ -3,12 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="vendors/css/normalize.css" />
     <link rel="stylesheet" href="resources/css/styles.css" />
     <title>Todo+</title>
   </head>
   <body>
-    <h1>Lorem Ipsum</h1>
+    <main class="main-section">
+      <section class="container">
+        <h1 class="app-name">To-do+</h1>
+        <section class="create-section">
+          <input
+            type="text"
+            class="create-todo"
+            placeholder="Enter your task here..."
+            maxlength="40"
+          />
+        </section>
+        <ul class="todo-list"></ul>
+      </section>
+    </main>
     <script src="resources/js/app.js"></script>
   </body>
 </html>
