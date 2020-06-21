@@ -11,8 +11,6 @@ From Beginner to Advanced
 
 The beginner apps are listed bellow:
 
-**- Calculator**
--> Simple calculator app with cool UI
 
 **- Notes+ or Notes Plus** 
 
