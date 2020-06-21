@@ -23,6 +23,8 @@ Features:
 - Filters Note Dynamically
 - Notes are stored permanently using the Web Storage API (localstorage).
 
+**Test this application:** https://codepen.io/danikofficial/pen/OJMpmYa
+
 **- Todo+** 
 
 A simply beautiful To-do list application, with a clean design, built from scratch using HTML5, CSS3 and JS.
@@ -31,6 +33,8 @@ Features:
 - Create To-do.
 - Delete To-do.
 - Mark Task as completed.
+
+**Test this application:** https://codepen.io/danikofficial/pen/RwrpVvM
 
 # Intermadiate Apps coming soon
 
