@@ -1,0 +1,42 @@
+/*
+*  Global Styling
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 22px;
+  text-rendering: optimizeLegibility;
+  color: #555;
+  background-color: #3d6cb9; /* Pale Blue 4 */
+  font-family: "Roboto Condensed", sans-serif;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/*
+* ------------------------------- Application Styling ------------------------------
+*/
+
+.container {
+  padding: 1em;
+  background-color: #fafaf6;
+  height: 500px;
+  width: 500px;
+  border-radius: 0.2em;
+  box-shadow: 0 0 8px #254b88;
+}
