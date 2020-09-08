@@ -43,24 +43,30 @@ h1 {
   flex-direction: column;
   padding: 2em 1em 0;
   background-color: #fff;
-  height: 500px;
+  height: 600px;
   width: 500px;
   border-radius: 0.1em;
   box-shadow: 0 0 8px #254b88;
 }
 
 .container div {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 /* ------------------ Header Section - Start --------------- */
 
 .header-section {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon {
+  font-size: 300%;
 }
 
 .app-name {
-  width: 100%;
   font-weight: 400;
   font-size: 240%;
 }
@@ -69,13 +75,21 @@ h1 {
 
 /* ------------------ Search Section - Start --------------  */
 
+.search-section {
+  display: flex;
+  justify-content: center;
+}
+
 .search-field {
-  width: 100%;
+  border: 1px solid #033fa0;
   border-radius: 0.3em;
-  border: 1px solid #fff;
-  background-color: #94bbfa;
+  width: 80%;
   height: 35px;
   text-align: center;
+  background-image: url(images/search-sharp.svg);
+  background-position: right;
+  background-size: 25px;
+  background-repeat: no-repeat;
 }
 
 .search-field:focus {

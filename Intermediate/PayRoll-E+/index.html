@@ -14,7 +14,10 @@
   <body>
     <div class="app">
       <div class="container">
-        <div class="header-section"><h1 class="app-name">Payroll-E+</h1></div>
+        <div class="header-section">
+          <ion-icon class="app-icon" name="people-sharp"></ion-icon>
+          <h1 class="app-name">Payroll-E+</h1>
+        </div>
         <div class="search-section">
           <input
             type="text"
@@ -23,16 +26,12 @@
             class="search-field"
           />
         </div>
-        <div class="body">
-          <table>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Genre</th>
-          </table>
-        </div>
+        <div class="employee-info"></div>
+        <div class="employees-container"></div>
       </div>
     </div>
 
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
