@@ -28,15 +28,62 @@ html {
   width: 100%;
 }
 
+h1 {
+  margin: 0;
+}
+
 /*
 * ------------------------------- Application Styling ------------------------------
 */
 
+/* -------------------- Container ----------------------*/
+
 .container {
-  padding: 1em;
-  background-color: #fafaf6;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 1em 0;
+  background-color: #fff;
   height: 500px;
   width: 500px;
-  border-radius: 0.2em;
+  border-radius: 0.1em;
   box-shadow: 0 0 8px #254b88;
 }
+
+.container div {
+  margin-bottom: 1em;
+}
+
+/* ------------------ Header Section - Start --------------- */
+
+.header-section {
+  text-align: center;
+}
+
+.app-name {
+  width: 100%;
+  font-weight: 400;
+  font-size: 240%;
+}
+
+/* ------------------ Header Section - End ---------------- */
+
+/* ------------------ Search Section - Start --------------  */
+
+.search-field {
+  width: 100%;
+  border-radius: 0.3em;
+  border: 1px solid #fff;
+  background-color: #94bbfa;
+  height: 35px;
+  text-align: center;
+}
+
+.search-field:focus {
+  outline: none;
+}
+
+.search-field::placeholder {
+  color: #555;
+}
+
+/* ------------------ Search Section - End ---------------- */
