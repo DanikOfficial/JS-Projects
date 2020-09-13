@@ -13,26 +13,56 @@
   </head>
   <body>
     <div class="app">
+      <!-- Main Container - Start -->
       <div class="container">
+        <!-- Main Container Header - Start -->
         <div class="header-section">
-          <ion-icon class="app-icon" name="people-sharp"></ion-icon>
-          <h1 class="app-name">Payroll-E+</h1>
-          <button class="btn-add-new-employee">
-            New Employee
-            <ion-icon class="icon-small" name="person-add-outline"></ion-icon>
-          </button>
+          <!-- Application And Icon Structure - Start-->
+          <div class="app-icon-name">
+            <ion-icon class="app-icon" name="people-sharp"></ion-icon>
+            <h1 class="app-name">Payroll-E+</h1>
+          </div>
+          <!-- Application And Icon Structure - End-->
+          <!-- Employee Creation - Start-->
+          <div class="new-employee-section">
+            <button class="btn-new-employee">
+              New Employee
+              <ion-icon class="icon-small" name="person-add"></ion-icon>
+            </button>
+            <div class="employee-data">
+              <input
+                type="text"
+                placeholder="Employee name..."
+                class="text-field employee-name"
+              />
+              <select class="career-type">
+                <option value="Designer">Designer</option>
+                <option value="Developer">Developer</option>
+                <option value="Tester">Tester</option>
+              </select>
+              <button class="btn btn-add">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </button>
+              <button class="btn btn-cancel">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </button>
+              <!-- Employee Creation - End-->
+            </div>
+          </div>
         </div>
+        <!-- Container Header - End -->
         <div class="search-section">
           <input
             type="text"
             id=""
-            placeholder="Search Employee here..."
-            class="search-field"
+            placeholder="Search any Employee here..."
+            class="text-field search-field"
           />
         </div>
         <div class="employee-info"></div>
         <div class="employees-container"></div>
       </div>
+      <!-- Main Application Container - End -->
     </div>
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>

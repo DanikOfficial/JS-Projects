@@ -11,7 +11,7 @@
 }
 
 html {
-  font-size: 22px;
+  font-size: 19px;
   text-rendering: optimizeLegibility;
   color: #555;
   background-color: #3d6cb9; /* Pale Blue 4 */
@@ -32,6 +32,41 @@ h1 {
   margin: 0;
 }
 
+input,
+button,
+select {
+  outline: none;
+}
+
+/* ---------------------------------------------
+--------------- REUSABLE COMPONENTS ------------
+------------------------------------------------*/
+
+/* ------- Textfields ------- */
+
+.text-field {
+  color: #555;
+  border: 0;
+  border-bottom: 2px solid #033fa0;
+  height: 35px;
+}
+
+.text-field:hover {
+  color: #3d6cb9;
+}
+
+.text-field::placeholder {
+  color: #555;
+}
+
+.text-field:hover::placeholder {
+  color: #033fa0;
+}
+
+/* ------- Buttons ---------- */
+
+/* -------- Icons ----------- */
+
 /*
 * ------------------------------- Application Styling ------------------------------
 */
@@ -39,18 +74,16 @@ h1 {
 /* -------------------- Container ----------------------*/
 
 .container {
+  overflow: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2em 1em 0;
+  padding: 1em 1em 0;
   background-color: #fff;
-  height: 600px;
-  width: 500px;
+  height: 90%;
+  width: 38%;
   border-radius: 0.1em;
   box-shadow: 0 0 8px #254b88;
-}
-
-.container div {
-  margin-bottom: 1.5em;
 }
 
 /* ------------------ Header Section - Start --------------- */
@@ -58,18 +91,108 @@ h1 {
 .header-section {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+/* ----------------- Application Icon and Name - Starts Here --------------- */
+
+.app-icon-name {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
 }
 
+/* --- Application Icon --- */
 .app-icon {
-  font-size: 300%;
+  font-size: 450%;
 }
 
+/* --- Application Name --- */
 .app-name {
   font-weight: 400;
   font-size: 240%;
 }
+
+/* ----------------- Application Icon and Name - Ends Here --------------- */
+
+/* -------------------- New Employee - Start  --------------------- */
+
+.new-employee-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.employee-data,
+.btn-new-employee {
+  margin-left: 0.5em;
+}
+
+/* -------------------- New Employee Button - Start --------------------- */
+
+.btn-new-employee {
+  align-self: flex-start;
+  color: #fafaf6;
+  border: 2px solid transparent;
+  background-color: #3d6cb9;
+  padding: 2px 15px;
+  box-shadow: 0 0 5px rgba(80, 80, 80, 0.822);
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+  margin-bottom: 0.3em;
+}
+
+.btn-add-new:hover {
+  background-color: #2f5799;
+  border: 2px solid #2f5799;
+}
+
+.icon-small {
+  font-weight: 700;
+  font-size: 23px;
+}
+
+/* -------------------- New Employee Button - End -----------------------*/
+
+/* ------------------- Employee Fields - Start ------------------------- */
+
+.employee-name,
+.career-type,
+.btn {
+  margin-right: 1.5%;
+}
+
+/* ---- Employee Name ---- */
+
+.employee-name {
+  width: 50%;
+}
+
+/* ---- Employee Career Type ---- */
+
+.career-type {
+  border: 2.5px solid #2f5799;
+  color: #033fa0;
+}
+
+.career-type:hover {
+  background-color: #033fa0;
+  color: #fafaf6;
+}
+
+/* ---- Options ---- */
+
+.btn-add {
+  border: 2px solid #17b978;
+  background-color: #17b978;
+  color: #fff;
+}
+
+/* ------------------- Employee Fields - End ------------------------- */
+
+/* -------------------- New Employee - End  --------------------- */
 
 /* ------------------ Header Section - End ---------------- */
 
@@ -81,36 +204,16 @@ h1 {
 }
 
 .search-field {
-  color: #555;
-  border: 0;
-  border-bottom: 2px solid #033fa0;
-  width: 80%;
-  height: 35px;
   text-align: center;
   background-image: url(images/search-sharp.svg);
   background-position: right;
   background-size: 25px;
   background-repeat: no-repeat;
+  width: 80%;
 }
-
-.search-field:hover {
-  color: #3d6cb9;
-}
-
-.search-field::placeholder {
-  color: #555;
-}
-
-.search-field:hover::placeholder {
-  color: #033fa0;
-}
-
-
 
 .search-field:focus {
   outline: none;
 }
-
-
 
 /* ------------------ Search Section - End ---------------- */
