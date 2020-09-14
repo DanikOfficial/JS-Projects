@@ -27,7 +27,7 @@
           <div class="new-employee-section">
             <button class="btn-new-employee">
               New Employee
-              <ion-icon class="icon-small" name="person-add"></ion-icon>
+              <ion-icon name="person-add"></ion-icon>
             </button>
             <div class="employee-data">
               <input
@@ -41,16 +41,17 @@
                 <option value="Tester">Tester</option>
               </select>
               <button class="btn btn-add">
-                <ion-icon name="add-circle-outline"></ion-icon>
+                <ion-icon class="icon" name="add-circle-outline"></ion-icon>
               </button>
               <button class="btn btn-cancel">
-                <ion-icon name="remove-circle-outline"></ion-icon>
+                <ion-icon class="icon" name="close-outline"></ion-icon>
               </button>
               <!-- Employee Creation - End-->
             </div>
           </div>
         </div>
         <!-- Container Header - End -->
+        <!-- Search Section - Start -->
         <div class="search-section">
           <input
             type="text"
@@ -59,9 +60,25 @@
             class="text-field search-field"
           />
         </div>
-        <div class="employee-info"></div>
-        <div class="employees-container"></div>
+        <!-- Search Section - Start -->
+        <!-- Employees Container - Start -->
+        <div class="employees-container">
+          <h3 class="list-title">Employees</h3>
+          <div class="employees-list">
+            <div class="employee" id="employee-id">Employee 1</div>
+            <div class="employee" id="employee-id">Employee 2</div>
+            <div class="employee" id="employee-id">Employee 3</div>
+            <div class="employee" id="employee-id">Employee 1</div>
+            <div class="employee" id="employee-id">Employee 2</div>
+            <div class="employee" id="employee-id">Employee 3</div>
+            <div class="employee" id="employee-id">Employee 1</div>
+            <div class="employee" id="employee-id">Employee 2</div>
+            <div class="employee" id="employee-id">Employee 3</div>
+          </div>
+        </div>
       </div>
+      <!-- Employees Container - End -->
+
       <!-- Main Application Container - End -->
     </div>
 

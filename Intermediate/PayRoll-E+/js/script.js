@@ -6,10 +6,16 @@ let DataController = (() => {
     this.name = name;
     this.age = age;
   };
+
+  console.log("Data Controller Working");
 })();
 
 // User Interface Controller
-let UIController = (() => {})();
+let UIController = (() => {
+  console.log("UI Controller Working");
+})();
 
 // Global Controller
-let Controller = ((dataCtrl, uiCtrl) => {})(DataController, UIController);
+let Controller = ((dataCtrl, uiCtrl) => {
+  console.log("UI Controller Working");
+})(DataController, UIController);
