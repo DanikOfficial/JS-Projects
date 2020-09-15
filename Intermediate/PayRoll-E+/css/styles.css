@@ -44,6 +44,23 @@ select {
   outline: none;
 }
 
+/*
+*** -------------------------------- Customized Native Components ----------------------------****
+*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4e667e;
+  margin-left: 5px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #34495e;
+}
+
 /* ---------------------------------------------
 --------------- REUSABLE COMPONENTS ------------
 ------------------------------------------------*/
@@ -186,8 +203,7 @@ select {
 /* ---- Add and Delete Actions ---- */
 
 .btn {
-  padding: 0 8px;
-  color: #fff;
+  background-color: #fff;
   border-radius: 5px;
   cursor: pointer;
   font-size: 22px;
@@ -208,12 +224,14 @@ select {
 
 .btn-cancel {
   border: 2px solid rgb(201, 7, 7);
-  background-color: rgb(201, 7, 7);
+  color: rgb(201, 7, 7);
+  border-radius: 50%;
 }
 
 .btn-cancel:hover {
   border: 2px solid #800;
   background-color: #800;
+  color: #fff;
 }
 
 /* ---- Actions icon --- */
