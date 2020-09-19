@@ -49,6 +49,7 @@ select {
 */
 ::-webkit-scrollbar {
   width: 10px;
+  background-color: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -146,6 +147,10 @@ select {
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+
+.employee-data {
+  display: none;
 }
 
 .employee-data,
@@ -288,7 +293,7 @@ select {
 
 .employees-list {
   overflow: auto;
-  background-color: #f1f3fa;
+  background-color: #f6f8fd;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -296,5 +301,18 @@ select {
 }
 
 .employee {
-  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px 5px;
+  border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.employee:nth-child(even) {
+  background-color: #fff;
+}
+
+.employee:nth-child(even) {
+  background-color: #3d6cb9;
+  color: #fff;
 }
