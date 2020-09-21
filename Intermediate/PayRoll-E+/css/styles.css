@@ -355,20 +355,25 @@ select {
   top: 0;
   left: 0;
   
- 
   position: absolute;
   height: 100%;
   width: 100%;
   z-index: 2;
-  background-color: rgba(0,0,0,0.3);
-  background-color: rgba(0,0,0,0.3);
+
   opacity: 1;
 }
 
 .paychecks-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  background-color: #2011a8;
-  height: 600px;
+  background-color: #f6f6f6;
+  height: 400px;
   width: 510px;
+  box-shadow: 0 0 5px#797979;
+  padding-top: 0;
+}
   
+.header-paychecks__container {
+  align-self: flex-end;
 }
