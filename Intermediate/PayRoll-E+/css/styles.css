@@ -33,6 +33,10 @@ h1 {
   margin: 0;
 }
 
+span {
+  top: 0;
+}
+
 h3 {
   font-size: 140%;
   font-weight: 400;
@@ -216,13 +220,15 @@ select {
   transition: background-color 0.3s, border 0.3s;
 }
 
-.btn-add {
+.btn-add,
+.btn-update {
   border: 2px solid #17b978;
   background-color: #17b978;
   color: #fff;
 }
 
-.btn-add:hover {
+.btn-add:hover,
+.btn-update:hover {
   border: 2px solid #0c7048;
   background-color: #0c7048;
   color: #fff;
@@ -350,11 +356,11 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 
   top: 0;
   left: 0;
-  
+
   position: absolute;
   height: 100%;
   width: 100%;
@@ -368,12 +374,48 @@ select {
   flex-direction: column;
   position: relative;
   background-color: #f6f6f6;
-  height: 400px;
+  height: 530px;
   width: 510px;
   box-shadow: 0 0 5px#797979;
-  padding-top: 0;
 }
-  
+
+/* -------------------- Header ----------------- */
+
 .header-paychecks__container {
-  align-self: flex-end;
+  overflow: auto;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: #2b1ac4;
+  width: 100%;
+}
+
+.close-button {
+  cursor: pointer;
+  top: 0;
+  font-size: 30px;
+  font-weight: 400;
+  color: #f6f6f6;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: rgb(255, 5, 5);
+}
+
+/* ---------------- ------------------------------------*/
+
+.update-employee {
+  margin: 1em;
+}
+
+.update-employee input,
+select {
+  background-color: #f6f6f6;
+}
+
+.update-employee__name {
+  width: 62%;
+  margin-right: 10px;
 }
