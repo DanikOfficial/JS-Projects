@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -30,10 +33,12 @@
               New Employee
               <ion-icon name="person-add"></ion-icon>
             </button>
-            <label class="error-label error-label-register">Error: The employee 'name' is mandatory...</label>
+            <label class="error-label error-label-register"
+              >Error: The employee 'name' is mandatory...</label
+            >
             <div class="employee-data">
               <input
-              maxlength="30"
+                maxlength="30"
                 type="text"
                 placeholder="Employee name..."
                 class="text-field employee-name"
@@ -143,14 +148,16 @@
           <h2 class="paycheck-container__title">Update Employee - Info</h2>
           <button class="close-button">X</button>
         </div>
-        <label class="error-label error-label-update">Error: The employee 'name' is mandatory...</label>
+        <label class="error-label error-label-update"
+          >Error: The employee 'name' is mandatory...</label
+        >
         <div class="update-employee">
           <input
             type="text"
             placeholder="Employee name..."
             class="text-field update-employee__name"
           />
-          <select class="career-type">
+          <select class="career-type-update career-type">
             <option value="Designer">Designer</option>
             <option value="Developer">Developer</option>
             <option value="Tester">Tester</option>
@@ -158,8 +165,14 @@
           <button class="btn btn-update">
             <ion-icon class="icon" name="add-circle-outline"></ion-icon>
           </button>
+          <button class="btn btn-delete">
+            <ion-icon class="icon" name="trash-bin-outline"></ion-icon>
+          </button>
         </div>
-        <div class="paychecks-icon-name"></div>
+        <div class="paychecks-icon-name">
+          <h2>Paychecks</h2>
+          <ion-icon name="newspaper-outline"></ion-icon>
+        </div>
       </div>
     </div>
 
