@@ -47,6 +47,15 @@ input,
 button,
 select {
   outline: none;
+  background-color: #f6f6f6;
+}
+
+select {
+  cursor: pointer;
+}
+
+option {
+  cursor: pointer;
 }
 
 /*
@@ -74,6 +83,7 @@ select {
 /* ------- Textfields ------- */
 
 .text-field {
+  background-color: #fff;
   color: #555;
   border: 0;
   border-bottom: 2px solid #033fa0;
@@ -104,14 +114,14 @@ select {
 
 .container {
   z-index: 1;
-  overflow: auto;
+  overflow: none;
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 1em 1em 0;
   background-color: #fff;
-  height: 90%;
-  width: 40%;
+  height: 650px;
+  width: 540px;
   box-shadow: 0 0 8px #254b88;
 }
 
@@ -130,7 +140,7 @@ select {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 /* --- Application Icon --- */
@@ -155,12 +165,23 @@ select {
 }
 
 .employee-data {
-  display: none;
+  display: flex;
 }
 
 .employee-data,
-.btn-new-employee {
+.btn-new-employee,
+.error-label-register {
   margin-left: 0.5em;
+}
+
+.error-label {
+  color: #ff304f;
+  font-size: 18px;
+}
+
+.error-label-register {
+  margin-bottom: 0.3em;
+  display: none;
 }
 
 /* -------------------- New Employee Button - Start --------------------- */
@@ -173,7 +194,7 @@ select {
   padding: 2px 15px;
   box-shadow: 0 0 5px rgba(80, 80, 80, 0.822);
   cursor: pointer;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.8em;
   transition: all 0.4s;
 }
 
@@ -189,13 +210,13 @@ select {
 .employee-name,
 .career-type,
 .btn {
-  margin-right: 1.5%;
+  margin-right: 2.5%;
 }
 
 /* ---- Employee Name ---- */
 
 .employee-name {
-  width: 50%;
+  width: 60%;
 }
 
 /* ---- Employee Career Type ---- */
@@ -214,7 +235,7 @@ select {
 
 .btn {
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   font-size: 22px;
   transition: background-color 0.3s, border 0.3s;
@@ -222,15 +243,17 @@ select {
 
 .btn-add,
 .btn-update {
-  border: 2px solid #17b978;
-  background-color: #17b978;
+  padding: 0 5px;
+  border: 2px solid #2b1ac4;
+  background-color: #2b1ac4;
   color: #fff;
+  box-shadow: 0 0 5px rgba(80, 80, 80, 0.822);
 }
 
 .btn-add:hover,
 .btn-update:hover {
-  border: 2px solid #0c7048;
-  background-color: #0c7048;
+  border: 2px solid #0a2755;
+  background-color: #0a2755;
   color: #fff;
 }
 
@@ -238,6 +261,7 @@ select {
   border: 2px solid rgb(201, 7, 7);
   color: rgb(201, 7, 7);
   border-radius: 50%;
+  box-shadow: 0 0 5px rgba(238, 146, 146, 0.822);
 }
 
 .btn-cancel:hover {
@@ -288,7 +312,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 45%;
+  height: 40%;
   border-radius: 5px;
   padding-top: 5px;
 }
@@ -353,7 +377,7 @@ select {
 --------------------------------------------------------- */
 
 .paychecks-section {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -401,7 +425,6 @@ select {
 }
 
 .close-button {
-  font-family: "Lato", sans-serif;
   border: 0;
   background-color: #2b1ac4;
   cursor: pointer;
@@ -409,6 +432,8 @@ select {
   font-size: 22px;
   font-weight: 100;
   font-family: serif;
+  margin-right: 10px;
+  transition: all 0.5s;
 }
 
 .close-button:hover {
@@ -419,11 +444,6 @@ select {
 
 .update-employee {
   margin: 1em;
-}
-
-.update-employee input,
-select {
-  background-color: #f6f6f6;
 }
 
 .update-employee__name {

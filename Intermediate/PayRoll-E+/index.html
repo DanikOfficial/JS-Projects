@@ -30,8 +30,10 @@
               New Employee
               <ion-icon name="person-add"></ion-icon>
             </button>
+            <label class="error-label error-label-register">Error: The employee 'name' is mandatory...</label>
             <div class="employee-data">
               <input
+              maxlength="30"
                 type="text"
                 placeholder="Employee name..."
                 class="text-field employee-name"
@@ -42,7 +44,7 @@
                 <option value="Tester">Tester</option>
               </select>
               <button class="btn btn-add">
-                <ion-icon class="icon" name="add-circle-outline"></ion-icon>
+                <ion-icon class="icon" name="save-outline"></ion-icon>
               </button>
               <button class="btn btn-cancel">
                 <ion-icon class="icon" name="close-outline"></ion-icon>
@@ -119,6 +121,15 @@
                 ></ion-icon>
               </button>
             </div>
+            <div class="item" id="employee-id">
+              <span class="employee-name">Item 1</span>
+              <button class="delete-employee">
+                <ion-icon
+                  class="list-item-button"
+                  name="close-outline"
+                ></ion-icon>
+              </button>
+            </div>
           </div>
         </div>
         <!-- Employees Container - End -->
@@ -132,7 +143,7 @@
           <h2 class="paycheck-container__title">Update Employee - Info</h2>
           <button class="close-button">X</button>
         </div>
-       
+        <label class="error-label error-label-update">Error: The employee 'name' is mandatory...</label>
         <div class="update-employee">
           <input
             type="text"
