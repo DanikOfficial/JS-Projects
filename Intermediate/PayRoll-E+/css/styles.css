@@ -382,22 +382,33 @@ select {
 /* -------------------- Header ----------------- */
 
 .header-paychecks__container {
+  height: 40px;
   overflow: auto;
   position: relative;
+
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   background-color: #2b1ac4;
   width: 100%;
 }
 
-.close-button {
-  cursor: pointer;
-  top: 0;
-  font-size: 30px;
+.paycheck-container__title {
+  color: #fff;
   font-weight: 400;
-  color: #f6f6f6;
-  transition: color 0.3s;
+  margin-left: 1em;
+}
+
+.close-button {
+  font-family: "Lato", sans-serif;
+  border: 0;
+  background-color: #2b1ac4;
+  cursor: pointer;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 100;
+  font-family: serif;
 }
 
 .close-button:hover {
