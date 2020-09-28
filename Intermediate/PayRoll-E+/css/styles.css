@@ -21,6 +21,7 @@ html {
 }
 
 .app {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +64,7 @@ option {
 */
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -83,7 +84,7 @@ option {
 /* ------- Textfields ------- */
 
 .text-field {
-  background-color: #fff;
+  background-color: transparent;
   color: #555;
   border: 0;
   border-bottom: 2px solid #033fa0;
@@ -388,30 +389,44 @@ option {
 --------------------------------------------------------- */
 
 .paychecks-section {
+  position: absolute;
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
+  left: -100%;
   top: 0;
-  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(10, 19, 100, 0.048);
 
-  position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 2;
 
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s, left 0.3s;
+}
+
+.show {
   opacity: 1;
+  left: 0;
 }
 
 .paychecks-container {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  position: relative;
   background-color: #f6f6f6;
   height: 530px;
   width: 510px;
   box-shadow: 0 0 5px#797979;
+}
+
+.wrapper {
+  margin: 0 1em 1em;
 }
 
 /* -------------------- Header ----------------- */
@@ -423,27 +438,29 @@ option {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #2b1ac4;
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .paycheck-container__title {
   color: #fff;
   font-weight: 400;
-  margin-left: 1em;
+  letter-spacing: 2px;
 }
 
 .close-button {
+  position: absolute;
+  right: 12px;
+  display: flex;
   border: 0;
   background-color: #2b1ac4;
   cursor: pointer;
   color: #fff;
   font-size: 22px;
   font-weight: 100;
-  font-family: serif;
-  margin-right: 10px;
   transition: all 0.5s;
 }
 
@@ -452,17 +469,28 @@ option {
 }
 
 .error-label-update {
-  margin: 1em 1em 0.5em;
+  margin: 1.5em 0;
+  visibility: hidden;
 }
 
-/* ---------------- ------------------------------------*/
-
 .update-employee {
-  margin-left: 1em;
+  margin-bottom: 1em;
 }
 
 .update-employee__name {
-  width: 50%;
+  width: 47%;
   margin-right: 10px;
-  background-color: transparent;
+}
+
+/* --------------- Body  ---------------*/
+
+.paychecks-caption {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  font-weight: bolder;
+}
+
+.paychecks-list {
+  height: 100%;
 }

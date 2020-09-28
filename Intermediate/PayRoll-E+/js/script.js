@@ -17,5 +17,11 @@ let UIController = (() => {
 
 // Global Controller
 let Controller = ((dataCtrl, uiCtrl) => {
-  console.log("UI Controller Working");
+  document.querySelector(".close-button").addEventListener("click", () => {
+    document.querySelector(".paychecks-section").classList.remove("show");
+  });
+
+  document.querySelector(".btn-new-employee").addEventListener("click", () => {
+    document.querySelector(".paychecks-section").classList.add("show");
+  });
 })(DataController, UIController);
