@@ -360,7 +360,8 @@ option {
   color: #f6f6f6;
 }
 
-.item:hover > .delete-employee {
+.item:hover > .delete-employee,
+.item:hover .btn-pay {
   visibility: visible;
   color: #fff;
   border: 1px solid #ffffff;
@@ -369,7 +370,8 @@ option {
 
 /* -------------- Item Data ------------------- */
 
-.delete-employee {
+.delete-employee,
+.btn-pay {
   visibility: hidden;
   background-color: transparent;
   border: 1px solid #2011a8;
@@ -427,6 +429,27 @@ option {
 
 .wrapper {
   margin: 0 1em 1em;
+}
+
+/* --------------------- Employee Information ----------------------- */
+.employee-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-info h2 {
+  font-weight: 400;
+  color: #2f1dd1;
+}
+
+.employee-info span {
+  margin-top: 0.5em;
+}
+
+.employee-info button {
+  margin-top: 0.5em;
+  align-self: flex-start;
+  padding: 0 15px;
 }
 
 /* -------------------- Header ----------------- */

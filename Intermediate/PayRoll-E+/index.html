@@ -90,15 +90,6 @@
                 ></ion-icon>
               </button>
             </div>
-            <div class="-1" id="employee-id">
-              <span class="employee-name">Item 1</span>
-              <button class="delete-employee">
-                <ion-icon
-                  class="list-item-button"
-                  name="close-outline"
-                ></ion-icon>
-              </button>
-            </div>
             <div class="item" id="employee-id">
               <span class="employee-name">Item 1</span>
               <button class="delete-employee">
@@ -148,10 +139,17 @@
           <h2 class="paycheck-container__title">Paychecks</h2>
           <button class="close-button">X</button>
         </div>
+
         <div class="wrapper">
+          <div class="employee-info">
+            <h2>Employee Information</h2>
+            <span class="name"><strong>Name:</strong> Jack</span>
+            <span class="career"><strong>Career:</strong> Developer</span>
+            <button class="edit-employee">Edit</button>
+          </div>
           <label class="error-label error-label-update"
-            >Error: The employee 'name' is mandatory!</label
-          >
+            >Error: The employee 'name' is mandatory!
+          </label>
           <div class="update-employee">
             <input
               type="text"
@@ -178,38 +176,32 @@
           <div class="data-container">
             <div class="items-list paychecks-list">
               <div class="item" id="employee-id">
-                <span>Item 1</span>
-                <button class="delete-employee">
+                <span class="paycheck-month">Item 1</span>
+                <span class="paycheck-status">Not Paid</span>
+                <button class="btn-pay">
                   <ion-icon
                     class="list-item-button"
-                    name="close-outline"
+                    name="checkmark-outline"
                   ></ion-icon>
                 </button>
               </div>
               <div class="item" id="employee-id">
-                <span>Item 1</span>
-                <button class="delete-employee">
+                <span class="paycheck-month">Item 1</span>
+                <span class="paycheck-status">Not Paid</span>
+                <button class="btn-pay">
                   <ion-icon
                     class="list-item-button"
-                    name="close-outline"
+                    name="checkmark-outline"
                   ></ion-icon>
                 </button>
               </div>
               <div class="item" id="employee-id">
-                <span>Item 1</span>
-                <button class="delete-employee">
+                <span class="paycheck-month">Item 1</span>
+                <span class="paycheck-status">Paid</span>
+                <button class="btn-pay">
                   <ion-icon
                     class="list-item-button"
-                    name="close-outline"
-                  ></ion-icon>
-                </button>
-              </div>
-              <div class="item" id="employee-id">
-                <span>Item 1</span>
-                <button class="delete-employee">
-                  <ion-icon
-                    class="list-item-button"
-                    name="close-outline"
+                    name="checkmark-outline"
                   ></ion-icon>
                 </button>
               </div>

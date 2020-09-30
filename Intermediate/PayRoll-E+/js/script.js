@@ -7,6 +7,8 @@ let DataController = (() => {
     this.age = age;
   };
 
+  
+
   console.log("Data Controller Working");
 })();
 
