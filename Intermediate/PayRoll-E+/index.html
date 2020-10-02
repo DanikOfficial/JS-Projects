@@ -142,10 +142,17 @@
 
         <div class="wrapper">
           <div class="employee-info">
-            <h2>Employee Information</h2>
-            <span class="name"><strong>Name:</strong> Jack</span>
-            <span class="career"><strong>Career:</strong> Developer</span>
-            <button class="edit-employee">Edit</button>
+            <h2 class="employee-info__title">Employee Information</h2>
+            <span class="employee-info__label employee-info__name"
+              ><strong>Name:</strong> Jack</span
+            >
+            <span class="employee-info__label employee-info__career"
+              ><strong>Career:</strong> Developer</span
+            >
+            <button class="btn-edit">
+              Edit
+              <ion-icon class="icon" name="create-outline"></ion-icon>
+            </button>
           </div>
           <label class="error-label error-label-update"
             >Error: The employee 'name' is mandatory!
