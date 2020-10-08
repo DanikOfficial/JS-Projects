@@ -204,6 +204,16 @@
               </div>
               <div class="item" id="employee-id">
                 <span class="paycheck-month">Item 1</span>
+                <span class="paycheck-status">Not Paid</span>
+                <button class="btn-pay">
+                  <ion-icon
+                    class="list-item-button"
+                    name="checkmark-outline"
+                  ></ion-icon>
+                </button>
+              </div>
+              <div class="item" id="employee-id">
+                <span class="paycheck-month">Item 1</span>
                 <span class="paycheck-status">Paid</span>
                 <span></span>
               </div>
@@ -223,7 +233,14 @@
       </div>
     </div>
 
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="js/script.js"></script>
   </body>
 </html>

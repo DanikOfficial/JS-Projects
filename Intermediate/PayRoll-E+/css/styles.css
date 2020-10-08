@@ -55,10 +55,6 @@ select {
   cursor: pointer;
 }
 
-option {
-  cursor: pointer;
-}
-
 /*
 *** -------------------------------- Customized Native Components ----------------------------****
 */
@@ -82,6 +78,14 @@ option {
 ------------------------------------------------*/
 
 /* ------- Textfields ------- */
+
+.text-field-error {
+  border-bottom: 2px solid #ff304f !important;
+}
+
+.text-field-error::placeholder {
+  color: #ff304f !important;
+}
 
 .text-field {
   background-color: transparent;
@@ -166,6 +170,10 @@ option {
 }
 
 .employee-data {
+  display: none;
+}
+
+.show-creation {
   display: flex;
 }
 
@@ -260,7 +268,8 @@ option {
 }
 
 .btn-delete,
-.btn-cancel {
+.btn-cancel,
+.btn-cancel-update {
   border: 2px solid rgb(201, 7, 7);
   color: rgb(201, 7, 7);
   box-shadow: 0 0 5px rgba(238, 146, 146, 0.822);
@@ -422,7 +431,7 @@ option {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
-  height: 530px;
+  height: 590px;
   width: 510px;
   box-shadow: 0 0 5px#797979;
 }
@@ -440,7 +449,7 @@ option {
 .employee-info,
 .employee-info__title {
   border-bottom: 1px solid rgb(184, 184, 184);
-  padding-bottom: 0.2em;
+  padding-bottom: 0.5em;
 }
 
 .employee-info__title {
@@ -465,8 +474,6 @@ option {
   border-radius: 3px;
   transition: all 0.7s;
 }
-
-
 
 .btn-edit ion-icon {
   font-size: 22px;
@@ -521,7 +528,12 @@ option {
 }
 
 .update-employee {
-  margin-bottom: 1em;
+  margin-bottom: 1.3em;
+  display: none;
+}
+
+.show-update {
+  display: block;
 }
 
 .update-employee__name {
@@ -539,5 +551,6 @@ option {
 }
 
 .paychecks-list {
-  height: 100%;
+  height: 250px;
 }
+

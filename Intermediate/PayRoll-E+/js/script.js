@@ -7,8 +7,6 @@ let DataController = (() => {
     this.age = age;
   };
 
-  
-
   console.log("Data Controller Working");
 })();
 
@@ -19,11 +17,17 @@ let UIController = (() => {
 
 // Global Controller
 let Controller = ((dataCtrl, uiCtrl) => {
+  console.log("Controller Working");
+
   document.querySelector(".close-button").addEventListener("click", () => {
     document.querySelector(".paychecks-section").classList.remove("show");
   });
 
   document.querySelector(".btn-new-employee").addEventListener("click", () => {
-    document.querySelector(".paychecks-section").classList.add("show");
+    document.querySelector(".employee-data").classList.add("show-creation");
+  });
+
+  document.querySelector(".btn-edit").addEventListener("click", () => {
+    document.querySelector(".update-employee").classList.toggle("show-update");
   });
 })(DataController, UIController);
