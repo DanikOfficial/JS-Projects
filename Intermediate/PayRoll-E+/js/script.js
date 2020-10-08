@@ -17,7 +17,9 @@ let UIController = (() => {
 
 // Global Controller
 let Controller = ((dataCtrl, uiCtrl) => {
-  console.log("Controller Working");
+  document.querySelector(".item").addEventListener("click", () => {
+    document.querySelector(".paychecks-section").classList.add("show");
+  });
 
   document.querySelector(".close-button").addEventListener("click", () => {
     document.querySelector(".paychecks-section").classList.remove("show");
@@ -25,6 +27,10 @@ let Controller = ((dataCtrl, uiCtrl) => {
 
   document.querySelector(".btn-new-employee").addEventListener("click", () => {
     document.querySelector(".employee-data").classList.add("show-creation");
+  });
+
+  document.querySelector(".btn-cancel").addEventListener("click", () => {
+    document.querySelector(".employee-data").classList.remove("show-creation");
   });
 
   document.querySelector(".btn-edit").addEventListener("click", () => {
