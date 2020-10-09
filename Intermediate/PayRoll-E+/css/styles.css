@@ -14,8 +14,7 @@ html {
   font-size: 19px;
   text-rendering: optimizeLegibility;
   color: #555;
-  background: linear-gradient(to right, rgb(142, 45, 226), rgb(74, 0, 224));
-  /* background: linear-gradient(to right, rgb(5, 117, 230), rgb(2, 27, 121)); */
+  background: linear-gradient(to right, rgb(5, 117, 230), rgb(2, 27, 121));
   font-family: "Roboto Condensed", sans-serif;
   box-sizing: border-box;
 }
@@ -553,4 +552,3 @@ select {
 .paychecks-list {
   height: 250px;
 }
-

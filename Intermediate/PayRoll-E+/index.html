@@ -9,10 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -44,6 +40,7 @@
                 class="text-field employee-name"
               />
               <select class="career-type">
+                <option value="Choose">--Choose Career--</option>
                 <option value="Designer">Designer</option>
                 <option value="Developer">Developer</option>
                 <option value="Tester">Tester</option>
@@ -71,8 +68,8 @@
         <!-- Search Section - End -->
         <!-- Employees Container - Start -->
         <div class="data-container">
-          <div class="items-list">
-            <div class="item" id="employee-id">
+          <div class="items-list js-employees-list">
+            <!--      <div class="item" id="employee-id">
               <span>Item 1</span>
               <button class="delete-employee">
                 <ion-icon
@@ -125,7 +122,7 @@
                   name="close-outline"
                 ></ion-icon>
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- Employees Container - End -->
