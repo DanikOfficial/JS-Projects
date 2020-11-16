@@ -163,17 +163,27 @@ select {
 /* -------------------- New Employee - Start  --------------------- */
 
 .new-employee-section {
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
 }
 
 .employee-data {
-  display: none;
+  position: absolute;
+  top: 40px;
+  left: -100%;
+  opacity: 0;
+  display: flex;
+  pointer-events: none;
+  transition: all 0.4s;
 }
 
 .show-creation {
-  display: flex;
+  top: 40px;
+  left: 0;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .employee-data,
@@ -309,6 +319,7 @@ select {
   display: flex;
   justify-content: center;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .search-field {
