@@ -27,10 +27,12 @@ let Controller = ((dataCtrl, uiCtrl) => {
 
   document.querySelector(".btn-new-employee").addEventListener("click", () => {
     document.querySelector(".employee-data").classList.add("show-creation");
+    document.querySelector(".search-section").classList.add("slide-down-search-section");
   });
 
   document.querySelector(".btn-cancel").addEventListener("click", () => {
     document.querySelector(".employee-data").classList.remove("show-creation");
+    document.querySelector(".search-section").classList.remove("slide-down-search-section");
   });
 
   document.querySelector(".btn-edit").addEventListener("click", () => {

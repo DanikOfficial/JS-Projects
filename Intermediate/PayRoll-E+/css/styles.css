@@ -134,7 +134,7 @@ select {
 .header-section {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5em;
+
 }
 
 /* ----------------- Application Icon and Name - Starts Here --------------- */
@@ -172,11 +172,12 @@ select {
 .employee-data {
   position: absolute;
   top: 40px;
-  left: -100%;
+  left: -200%;
   opacity: 0;
   display: flex;
   pointer-events: none;
-  transition: all 0.4s;
+  transition: all 0.3s;
+  width: 100%;
 }
 
 .show-creation {
@@ -235,7 +236,7 @@ select {
 /* ---- Employee Name ---- */
 
 .employee-name {
-  width: 60%;
+  width: 100%;
 }
 
 /* ---- Employee Career Type ---- */
@@ -319,7 +320,11 @@ select {
   display: flex;
   justify-content: center;
   margin-bottom: 1em;
-  margin-top: 1em;
+  transition: margin-top 0.3s ease-in-out;
+}
+
+.slide-down-search-section {
+  margin-top: 1.7em;
 }
 
 .search-field {
