@@ -134,7 +134,6 @@ select {
 .header-section {
   display: flex;
   flex-direction: column;
-
 }
 
 /* ----------------- Application Icon and Name - Starts Here --------------- */
@@ -180,6 +179,10 @@ select {
   width: 100%;
 }
 
+.slide-down-creation {
+  top: 70px !important;
+}
+
 .show-creation {
   top: 40px;
   left: 0;
@@ -200,7 +203,6 @@ select {
 }
 
 .error-label-register {
-  margin-bottom: 0.3em;
   display: none;
 }
 
@@ -323,8 +325,12 @@ select {
   transition: margin-top 0.3s ease-in-out;
 }
 
-.slide-down-search-section {
+.slide-down-search {
   margin-top: 1.7em;
+}
+
+.slide-again {
+  margin-top: 2.3em;
 }
 
 .search-field {
