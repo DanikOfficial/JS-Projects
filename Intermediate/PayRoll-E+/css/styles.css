@@ -14,19 +14,13 @@ html {
   font-size: 19px;
   text-rendering: optimizeLegibility;
   color: #555;
-  background: linear-gradient(to right, rgb(5, 117, 230), rgb(2, 27, 121));
   font-family: "Roboto Condensed", sans-serif;
   box-sizing: border-box;
 }
 
-.app {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+body {
+  overflow: none;
   height: 100vh;
-  width: 100%;
 }
 
 h1 {
@@ -63,7 +57,7 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4e667e;
+  background: rgb(85, 26, 9);
   margin-left: 5px;
   transition: background 0.3s;
 }
@@ -72,71 +66,34 @@ select {
   background: #34495e;
 }
 
-/* ---------------------------------------------
---------------- REUSABLE COMPONENTS ------------
-------------------------------------------------*/
+/* ------------ Reusable ---------- */
 
-/* ------- Textfields ------- */
-
-.text-field-error {
-  border-bottom: 2px solid #ff304f !important;
+.mr-1 {
+  margin-right: 15px;
 }
 
-.text-field-error::placeholder {
-  color: #ff304f !important;
+.mr-2 {
+  margin-right: 30px;
 }
 
-.text-field {
-  background-color: transparent;
-  color: #555;
-  border: 0;
-  border-bottom: 2px solid #033fa0;
-  height: 35px;
+.mr-3 {
+  margin-right: 45px;
 }
 
-.text-field:hover {
-  color: #3d6cb9;
-}
+/* --------------------------- */
 
-.text-field::placeholder {
-  color: #555;
-}
+/* ------------------------------------ Top ----------------------------------- */
 
-.text-field:hover::placeholder {
-  color: #033fa0;
-}
-
-/* ------- Buttons ---------- */
-
-/* -------- Icons ----------- */
-
-/*
-* ------------------------------- Application Styling ------------------------------
-*/
-
-/* -------------------- Container ----------------------*/
-
-.container {
-  z-index: 1;
-  overflow: none;
-  position: relative;
+.top {
   display: flex;
+  height: 38vh;
+  /* background: linear-gradient(to right, rgb(0, 180, 219), rgb(0, 131, 176)); */
+  background: linear-gradient(to right, rgb(35, 7, 77), rgb(204, 83, 51));
   flex-direction: column;
-  padding: 1em 1em 0;
-  background-color: #fff;
-  height: 650px;
-  width: 540px;
-  box-shadow: 0 0 8px #254b88;
+  align-items: center;
+  padding-top: 0.8em;
+  box-shadow: 20px 10px 3px rgb(17, 2, 41);
 }
-
-/* ------------------ Header Section - Start --------------- */
-
-.header-section {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ----------------- Application Icon and Name - Starts Here --------------- */
 
 .app-icon-name {
   display: flex;
@@ -144,11 +101,12 @@ select {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1em;
+  color: #fff;
 }
 
 /* --- Application Icon --- */
 .app-icon {
-  font-size: 450%;
+  font-size: 400%;
 }
 
 /* --- Application Name --- */
@@ -157,420 +115,144 @@ select {
   font-size: 240%;
 }
 
-/* ----------------- Application Icon and Name - Ends Here --------------- */
-
-/* -------------------- New Employee - Start  --------------------- */
-
-.new-employee-section {
-  position: relative;
+.employee-creation {
   display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-
-.employee-data {
-  position: absolute;
-  top: 40px;
-  left: -200%;
-  opacity: 0;
-  display: flex;
-  pointer-events: none;
-  transition: all 0.3s;
-  width: 100%;
-}
-
-.slide-down-creation {
-  top: 70px !important;
-}
-
-.show-creation {
-  top: 40px;
-  left: 0;
-  opacity: 1;
-  pointer-events: all;
-}
-
-.employee-data,
-.btn-new-employee,
-.error-label-register,
-.error-label-update {
-  margin-left: 0.5em;
-}
-
-.error-label {
-  color: #d31532;
-  font-size: 18px;
+  flex-direction: row;
+  margin-bottom: 1em;
 }
 
 .error-label-register {
-  display: none;
+  position: absolute;
+  top: -30px;
+  opacity: 0;
+  color: #fff;
+  transition: all 0.3s;
 }
 
-/* -------------------- New Employee Button - Start --------------------- */
-
-.btn-new-employee {
-  border: 2px solid transparent;
-  align-self: flex-start;
-  color: #fafaf6;
-  background-color: #2b1ac4;
-  padding: 2px 15px;
-  box-shadow: 0 0 5px rgba(80, 80, 80, 0.822);
-  cursor: pointer;
-  margin-bottom: 0.8em;
-  transition: all 0.4s;
+.show-error-register {
+  top: 0;
+  opacity: 1;
 }
 
-.btn-new-employee:hover {
-  background-color: #1d1281;
-  border: 2px solid #1d1281;
+.employee-name {
+  width: 350px;
+  color: #fff;
+  padding-left: 15px;
 }
 
-/* -------------------- New Employee Button - End -----------------------*/
+.employee-name::placeholder,
+.search-field::placeholder {
+  /* color: rgb(29, 9, 58); */
+  color: rgb(211, 211, 211);
+  padding-left: 15px;
+  transition: all 0.5s;
+}
 
-/* ------------------- Employee Fields - Start ------------------------- */
+.employee-name:hover::placeholder,
+.search-field:hover::placeholder {
+  color: rgb(116, 116, 116);
+}
 
 .employee-name,
 .career-type,
+.btn,
+.search-field {
+  background-color: rgba(35, 7, 77, 0.329);
+  border: 0;
+  border-radius: 5px;
+  height: 35px;
+}
+
 .btn {
-  margin-right: 2.5%;
+  width: 40px;
+  color: #fff;
+  padding: 5px 3px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 22px;
+  border: 1px solid transparent;
+  border-radius: 0;
 }
 
-/* ---- Employee Name ---- */
-
-.employee-name {
-  width: 100%;
+.btn:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: rgb(33, 3, 78);
 }
-
-/* ---- Employee Career Type ---- */
 
 .career-type {
-  border: 2.5px solid #2f5799;
-  color: #033fa0;
+  color: rgb(211, 211, 211);
+  transition: all 0.3s;
 }
 
 .career-type:hover {
-  background-color: #033fa0;
-  color: #fafaf6;
+  color: rgb(121, 121, 121);
+  background-color: rgba(35, 7, 77, 0.329);
 }
-
-/* ---- Add and Delete Actions ---- */
-
-.btn {
-  padding: 0 5px;
-  background-color: #fff;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 22px;
-  transition: background-color 0.3s, border 0.3s;
-}
-
-.btn-add,
-.btn-update {
-  border: 2px solid #2b1ac4;
-  background-color: #2b1ac4;
-  color: #fff;
-  box-shadow: 0 0 5px rgba(80, 80, 80, 0.822);
-}
-
-.btn-add:hover,
-.btn-update:hover {
-  border: 2px solid #0a2755;
-  background-color: #0a2755;
-  color: #fff;
-}
-
-.btn-delete,
-.btn-cancel,
-.btn-cancel-update {
-  border: 2px solid rgb(201, 7, 7);
-  color: rgb(201, 7, 7);
-  box-shadow: 0 0 5px rgba(238, 146, 146, 0.822);
-}
-
-.btn-delete {
-  background: rgb(201, 7, 7);
-  color: #fff;
-}
-
-.btn-cancel {
-  border-radius: 50%;
-}
-
-.btn-cancel:hover,
-.btn-delete:hover {
-  border: 2px solid #800;
-  background-color: #800;
-  color: #fff;
-}
-
-/* ---- Actions icon --- */
-
-.icon {
-  vertical-align: middle;
-  padding-bottom: 3px;
-}
-
-/* ------------------- Employee Fields - End ------------------------- */
-
-/* -------------------- New Employee - End  --------------------- */
-
-/* ------------------ Header Section - End ---------------- */
-
-/* ------------------ Search Section - Start --------------  */
 
 .search-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1em;
-  transition: margin-top 0.3s ease-in-out;
-}
-
-.slide-down-search {
-  margin-top: 1.7em;
-}
-
-.slide-again {
-  margin-top: 2.3em;
+  margin-bottom: 0.4em;
 }
 
 .search-field {
-  text-align: center;
-  background-image: url(images/search-sharp.svg);
-  background-position: right;
-  background-size: 25px;
-  background-repeat: no-repeat;
-  width: 70%;
+  width: 500px;
+  border: 0;
+  padding-left: 15px;
+  color: #fff;
 }
 
-.search-field:focus {
-  outline: none;
+.search-field::hover {
+  color: #fff;
 }
 
-/* ------------------ Search Section - End ---------------- */
-
-/* -------------- Data Container - Start -------------- */
-
-.data-container {
+.bottom {
+  overflow-x: hidden;
+  height: 62vh;
+  padding-top: 2em;
+  background-color: rgb(35, 7, 77);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  height: 40%;
-  border-radius: 5px;
-  padding-top: 5px;
-}
-
-.list-title {
-  align-self: center;
-  margin-bottom: 15px;
-}
-
-.items-list {
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  align-items: center;
 }
 
 .item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  height: 50px;
+  /* background-color: rgba(204, 84, 51, 0.514); */
+  background: linear-gradient(to left, rgb(35, 7, 77), rgb(204, 83, 51));
+  margin-bottom: 1.5em;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #000;
+  padding: 0 15px;
   cursor: pointer;
-  padding: 8px 5px;
-  border-bottom: 1px solid #ced1d6;
-  transition: All 0.3s;
+  transition: all 0.3s;
 }
 
-.item:nth-child(odd) {
-  background-color: #f0f0f0;
+.item span {
+  color: rgb(172, 172, 172);
+}
+
+.item button {
+  transform: translateX(15px);
+  opacity: 0;
+  background-color: rgb(35, 7, 77);
+  border: 1px solid rgb(204, 83, 51);
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 22px;
+  padding: 5px 2px;
+  color: #fff;
 }
 
 .item:hover {
-  background-color: #120392;
-  color: #f6f6f6;
+  border-left: 3px solid #ccc;
 }
 
-.item:hover > .delete-employee,
-.item:hover .btn-pay {
-  visibility: visible;
-  color: #fff;
-  border: 1px solid #ffffff;
-  margin-right: 15px;
-}
-
-/* -------------- Item Data ------------------- */
-
-.delete-employee,
-.btn-pay {
-  visibility: hidden;
-  background-color: transparent;
-  border: 1px solid #2011a8;
-  color: #2011a8;
-  border-radius: 50%;
-  transition: margin-right 0.3s;
-}
-
-.list-item-button {
-  padding-top: 3px;
-  line-height: 1%;
-  cursor: pointer;
-}
-
-/* ------------------------------------------------------
- --------------------- Paychecks UI ---------------------
---------------------------------------------------------- */
-
-.paychecks-section {
-  position: absolute;
-  overflow: auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  left: -100%;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0);
-  background-color: rgba(10, 19, 100, 0.048);
-
-  height: 100%;
-  width: 100%;
-
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 0.3s, left 0.3s;
-}
-
-.show {
+.item:hover > button {
+  transform: translateX(-10px);
   opacity: 1;
-  left: 0;
-}
-
-.paychecks-container {
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: #f6f6f6;
-  height: 590px;
-  width: 510px;
-  box-shadow: 0 0 5px#797979;
-}
-
-.wrapper {
-  margin: 0 1em 1em;
-}
-
-/* --------------------- Employee Information ----------------------- */
-.employee-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.employee-info,
-.employee-info__title {
-  border-bottom: 1px solid rgb(184, 184, 184);
-  padding-bottom: 0.5em;
-}
-
-.employee-info__title {
-  font-weight: 400;
-  color: #2f1dd1;
-  width: 100%;
-}
-
-.employee-info__label {
-  margin-top: 0.5em;
-}
-
-.btn-edit {
-  border: 2px solid transparent;
-  background-color: #482ff7;
-  color: #fff;
-  box-shadow: 0 0 4px #e8ffe8;
-  margin-top: 0.5em;
-  align-self: flex-start;
-  padding: 0 15px;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: all 0.7s;
-}
-
-.btn-edit ion-icon {
-  font-size: 22px;
-}
-
-.btn-edit:hover {
-  background-color: #2011a8;
-}
-
-/* -------------------- Header ----------------- */
-
-.header-paychecks__container {
-  height: 40px;
-  overflow: auto;
-  position: relative;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #2b1ac4;
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.paycheck-container__title {
-  color: #fff;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
-.close-button {
-  position: absolute;
-  right: 12px;
-  display: flex;
-  border: 0;
-  background-color: #2b1ac4;
-  cursor: pointer;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 100;
-  transition: all 0.5s;
-}
-
-.close-button:hover {
-  color: rgb(255, 5, 5);
-}
-
-.error-label-update {
-  margin: 1.5em 0;
-  visibility: hidden;
-}
-
-.update-employee {
-  margin-bottom: 1.3em;
-  display: none;
-}
-
-.show-update {
-  display: block;
-}
-
-.update-employee__name {
-  width: 47%;
-  margin-right: 10px;
-}
-
-/* --------------- Body  ---------------*/
-
-.paychecks-caption {
-  display: flex;
-  justify-content: space-between;
-  color: #000;
-  font-weight: bolder;
-}
-
-.paychecks-list {
-  height: 250px;
 }
