@@ -34,7 +34,6 @@ span {
 h3 {
   font-size: 140%;
   font-weight: 400;
-  color: #033fa0;
 }
 
 input,
@@ -93,6 +92,7 @@ select {
   align-items: center;
   padding-top: 0.8em;
   box-shadow: 20px 10px 3px rgb(17, 2, 41);
+  z-index: 1;
 }
 
 .app-icon-name {
@@ -115,11 +115,15 @@ select {
   font-size: 240%;
 }
 
+/* ---- Employee Creation Section ---- */
+
 .employee-creation {
   display: flex;
   flex-direction: row;
   margin-bottom: 1em;
 }
+
+/* -- Error Label -- */
 
 .error-label-register {
   position: absolute;
@@ -129,15 +133,22 @@ select {
   transition: all 0.3s;
 }
 
+/* -- Show Error Label -- */
 .show-error-register {
   top: 0;
   opacity: 1;
 }
 
-.employee-name {
-  width: 350px;
-  color: #fff;
-  padding-left: 15px;
+/* --- Employee, Career, Button and Search FIeld --- */
+
+.employee-name,
+.career-type,
+.btn,
+.search-field {
+  background-color: rgba(35, 7, 77, 0.329);
+  border: 0;
+  border-radius: 5px;
+  height: 35px;
 }
 
 .employee-name::placeholder,
@@ -153,15 +164,27 @@ select {
   color: rgb(116, 116, 116);
 }
 
-.employee-name,
-.career-type,
-.btn,
-.search-field {
-  background-color: rgba(35, 7, 77, 0.329);
-  border: 0;
-  border-radius: 5px;
-  height: 35px;
+/* --- Employee Name --- */
+
+.employee-name {
+  width: 350px;
+  color: #fff;
+  padding-left: 15px;
 }
+
+/* --- Career Type --- */
+
+.career-type {
+  color: rgb(211, 211, 211);
+  transition: all 0.3s;
+}
+
+.career-type:hover {
+  color: rgb(121, 121, 121);
+  background-color: rgba(35, 7, 77, 0.329);
+}
+
+/* --- Button --- */
 
 .btn {
   width: 40px;
@@ -180,19 +203,15 @@ select {
   color: rgb(33, 3, 78);
 }
 
-.career-type {
-  color: rgb(211, 211, 211);
-  transition: all 0.3s;
-}
+/* --------------- Employee Creation - Ending -------------- */
 
-.career-type:hover {
-  color: rgb(121, 121, 121);
-  background-color: rgba(35, 7, 77, 0.329);
-}
+/* --------------- Search Section --------------- */
 
 .search-section {
   margin-bottom: 0.4em;
 }
+
+/* --- Search Field --- */
 
 .search-field {
   width: 500px;
@@ -205,6 +224,8 @@ select {
   color: #fff;
 }
 
+/* -------------- Search Section Ending ------------------ */
+
 .bottom {
   overflow-x: hidden;
   height: 62vh;
@@ -214,6 +235,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 
 .item {
@@ -222,14 +244,14 @@ select {
   align-items: center;
   width: 600px;
   height: 50px;
-  /* background-color: rgba(204, 84, 51, 0.514); */
-  background: linear-gradient(to left, rgb(35, 7, 77), rgb(204, 83, 51));
+  background-color: rgb(24, 2, 58);
+  /* background: linear-gradient(to left, rgb(35, 7, 77), rgb(204, 83, 51)); */
   margin-bottom: 1.5em;
   border-radius: 5px;
-  box-shadow: 0 0 5px #000;
+  box-shadow: 0 0 2px #000;
   padding: 0 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 150ms;
 }
 
 .item span {
@@ -240,12 +262,17 @@ select {
   transform: translateX(15px);
   opacity: 0;
   background-color: rgb(35, 7, 77);
-  border: 1px solid rgb(204, 83, 51);
+  border: 1px solid #fff;
   border-radius: 50%;
   transition: all 0.3s;
-  font-size: 22px;
-  padding: 5px 2px;
   color: #fff;
+  cursor: pointer;
+}
+
+.list-item-button {
+  font-size: 18px;
+  padding-top: 3px;
+  pointer-events: none;
 }
 
 .item:hover {
@@ -255,4 +282,48 @@ select {
 .item:hover > button {
   transform: translateX(-10px);
   opacity: 1;
+}
+
+/* ----------------------------- Paychecks Section ------------------*/
+
+.paychecks-section {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.377);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paychecks-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 600px;
+  height: 630px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.close-modal {
+  position: absolute;
+  right: 3px;
+  height: 2px;
+  color: #000;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close-modal:hover {
+  color: rgb(255, 0, 0);
+}
+
+.payroll-info {
+  margin: 0.5em;
 }
