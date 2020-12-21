@@ -290,14 +290,20 @@ select {
   z-index: 2;
   position: absolute;
   top: 0;
-  left: 0;
-  opacity: 1;
+  left: -100%;
+  opacity: 0;
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.377);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s;
+}
+
+.show-paychecks-section {
+  left: 0;
+  opacity: 1;
 }
 
 .paychecks-container {
@@ -314,6 +320,7 @@ select {
   position: absolute;
   right: 3px;
   height: 2px;
+  margin-right: 0 !important;
   color: #000;
   font-size: 22px;
   cursor: pointer;
@@ -324,6 +331,63 @@ select {
   color: rgb(255, 0, 0);
 }
 
+.paychecks-container div,
+.paychecks-container > span,
+.paychecks-container h2 {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
 .payroll-info {
   margin: 0.5em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid #ccc;
+}
+
+.employee-information {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.4em;
+}
+
+.employee-information p {
+  margin-bottom: 0.3em;
+}
+
+.paychecks-list {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.paycheck {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(155, 155, 155, 0.425);
+  height: 30px;
+  align-items: center;
+  border-radius: 5px;
+  color: #000;
+  margin-bottom: 0.3em;
+  cursor: pointer;
+}
+
+.paycheck:hover {
+  background-color: rgb(35, 7, 77);
+  color: #fff;
+}
+
+.btn-pay {
+  border: 0;
+  margin-right: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  transform: translateX(20px);
+  opacity: 0;
+  transition: transform 0.3s;
+}
+
+.paycheck:hover > .btn-pay {
+  color: #fff;
+  transform: translateX(-20px);
+  opacity: 1;
 }
