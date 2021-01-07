@@ -85,13 +85,12 @@ select {
 
 .top {
   display: flex;
-  height: 38vh;
+  height: 40vh;
   /* background: linear-gradient(to right, rgb(0, 180, 219), rgb(0, 131, 176)); */
   background: linear-gradient(to right, rgb(35, 7, 77), rgb(204, 83, 51));
   flex-direction: column;
   align-items: center;
   padding-top: 0.8em;
-  box-shadow: 20px 10px 3px rgb(17, 2, 41);
   z-index: 1;
 }
 
@@ -217,6 +216,7 @@ select {
   width: 500px;
   border: 0;
   padding-left: 15px;
+  margin-bottom: 1em;
   color: #fff;
 }
 
@@ -228,7 +228,7 @@ select {
 
 .bottom {
   overflow-x: hidden;
-  height: 62vh;
+  height: 60vh;
   padding-top: 2em;
   background-color: rgb(35, 7, 77);
   overflow-y: auto;
@@ -373,6 +373,11 @@ select {
   margin-bottom: 0.3em;
 }
 
+.update-info {
+  margin: 0.3em 0;
+}
+
+
 .paychecks-list {
   overflow: auto;
   overflow-x: hidden;
@@ -381,13 +386,16 @@ select {
 .paycheck {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(155, 155, 155, 0.425);
-  height: 30px;
+  background-color: rgba(209, 209, 209, 0.425);
+  height: 35px;
   align-items: center;
-  border-radius: 5px;
   color: #000;
-  margin-bottom: 0.3em;
-  cursor: pointer;
+  padding-left: 0.3em;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.paycheck:nth-child(even) {
+  background-color: #fff;
 }
 
 .paycheck:hover {
@@ -407,6 +415,6 @@ select {
 
 .paycheck:hover > .btn-pay {
   color: #fff;
-  transform: translateX(-20px);
+  transform: translateX(-10px);
   opacity: 1;
 }
