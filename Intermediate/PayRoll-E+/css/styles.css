@@ -79,6 +79,20 @@ select {
   margin-right: 45px;
 }
 
+.btn {
+  width: 40px;
+  padding: 5px 3px;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 0;
+}
+
+.employee-creation,
+.employee-update {
+  display: flex;
+  flex-direction: row;
+}
+
 /* --------------------------- */
 
 /* ------------------------------------ Top ----------------------------------- */
@@ -116,12 +130,6 @@ select {
 
 /* ---- Employee Creation Section ---- */
 
-.employee-creation {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1em;
-}
-
 /* -- Error Label -- */
 
 .error-label-register {
@@ -140,13 +148,28 @@ select {
 
 /* --- Employee, Career, Button and Search FIeld --- */
 
+.employee-creation {
+  margin-bottom: 1em;
+}
+
 .employee-name,
 .career-type,
-.btn,
-.search-field {
+.search-field,
+.btn-add {
   background-color: rgba(35, 7, 77, 0.329);
   border: 0;
+}
+
+.employee-name,
+.career-type,
+.search-field {
   border-radius: 5px;
+}
+
+.employee-name,
+.career-type,
+.search-field,
+.btn-add {
   height: 35px;
 }
 
@@ -185,18 +208,13 @@ select {
 
 /* --- Button --- */
 
-.btn {
-  width: 40px;
+.btn-add {
   color: #fff;
-  padding: 5px 3px;
-  cursor: pointer;
-  transition: all 0.5s;
-  font-size: 22px;
   border: 1px solid transparent;
-  border-radius: 0;
+  transition: all 0.5s;
 }
 
-.btn:hover {
+.btn-add:hover {
   background-color: #fff;
   border: 1px solid #fff;
   color: rgb(33, 3, 78);
@@ -258,19 +276,8 @@ select {
   animation: 0.3s linear slide-out-removed forwards;
 }
 
-@keyframes slide-out-removed {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(-200%);
-    height: 0;
-    opacity: 0;
-    padding: 0;
-    margin: 0;
-  }
+.undo {
+  animation: 0.3s linear undo-remove forwards;
 }
 
 .item span {
@@ -325,6 +332,8 @@ select {
   opacity: 1;
 }
 
+/* ------------------ Paychecks Container ---------------------- */
+
 .paychecks-container {
   display: flex;
   flex-direction: column;
@@ -334,6 +343,8 @@ select {
   background-color: #fff;
   border-radius: 2px;
 }
+
+/* ------------------ Close Modal Button ---------------------- */
 
 .close-modal {
   position: absolute;
@@ -350,6 +361,8 @@ select {
   color: rgb(255, 0, 0);
 }
 
+/* ------------------ Paychecks Container General Components ---------------------- */
+
 .paychecks-container div,
 .paychecks-container > span,
 .paychecks-container h2 {
@@ -361,27 +374,129 @@ select {
   margin: 0.5em;
   padding-bottom: 0.4em;
   border-bottom: 1px solid #ccc;
+
+  /* ------------------ Employee Information ---------------------- */
 }
 
 .employee-information {
   margin-bottom: 1em;
   border-bottom: 1px solid #ccc;
   padding-bottom: 0.4em;
+  height: 180px;
+  transition: all 0.3s;
 }
 
 .employee-information p {
   margin-bottom: 0.3em;
 }
 
-.update-info {
-  margin: 0.3em 0;
+.scale-employee-information {
+  height: 270px;
 }
 
+/* ------------------ Update Info ---------------------- */
+
+.btn-update-info,
+.btn-delete-employee {
+  border-radius: 3px;
+  color: #fff;
+  padding: 5px 15px;
+  transition: all 0.3s;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-update-info {
+  margin: 0.3em 0.3em 0.3em 0;
+  background-color: rgb(58, 11, 128);
+}
+
+.btn-update-info:hover {
+  background-color: rgb(38, 7, 88);
+  color: rgb(207, 207, 207);
+}
+
+.btn-delete-employee {
+  background-color: rgb(209, 9, 9);
+}
+
+.btn-delete-employee:hover {
+  background-color: rgb(136, 7, 7);
+  color: rgb(207, 207, 207);
+}
+
+/* ------------------ Employee Manipulation ---------------------- */
+
+.employee-update {
+  position: absolute;
+  opacity: 0;
+  transform: translatex(-500px);
+  transition: all 0.5s 0.1s;
+}
+
+.show-employee-update {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.employee-name__update,
+.career-type__update {
+  border-radius: 5px;
+}
+
+.employee-name__update,
+.career-type__update,
+.btn-update,
+.btn-cancel {
+  height: 35px;
+  border: 0;
+  background-color: rgb(214, 214, 214);
+  color: rgb(80, 80, 80);
+}
+
+.btn-update,
+.btn-cancel {
+  color: #fff;
+}
+
+.employee-name__update {
+  width: 260px;
+  padding-left: 5px;
+}
+
+.btn-update {
+  background-color: rgb(63, 21, 126);
+  transition: all 0.3s;
+}
+
+.btn-update:hover {
+  background-color: rgb(42, 6, 95);
+  color: rgb(184, 184, 184);
+}
+
+.btn-cancel {
+  background-color: rgb(177, 0, 0);
+  transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+  background-color: rgb(83, 6, 6);
+  color: rgb(194, 194, 194);
+}
+
+/* ------------------ Paychecks List ---------------------- */
 
 .paychecks-list {
   overflow: auto;
   overflow-x: hidden;
+  transition: all 0.3s;
 }
+
+.move-list-down {
+  margin-bottom: 1em;
+}
+
+/* ------------------ Paycheck Element ---------------------- */
 
 .paycheck {
   display: flex;
@@ -403,6 +518,8 @@ select {
   color: #fff;
 }
 
+/* ------------------ Button Pay ---------------------- */
+
 .btn-pay {
   border: 0;
   margin-right: 5px;
@@ -417,4 +534,39 @@ select {
   color: #fff;
   transform: translateX(-10px);
   opacity: 1;
+}
+
+/* ---------------------------------- KeyFrames ----------------------------------- */
+
+@keyframes undo-remove {
+  from {
+    transform: translateX(-200%);
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    padding: 0 15px;
+    margin-bottom: 1.5em;
+    height: 50px;
+  }
+}
+
+@keyframes slide-out-removed {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-200%);
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
 }

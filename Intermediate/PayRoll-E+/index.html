@@ -113,27 +113,29 @@
             <span class="emp-registry-date">25th December</span>
           </p>
           <p>
-            <button class="update-info">Update</button>
+            <button class="btn-update-info">Update</button>
+            <button class="btn-delete-employee">Delete</button>
           </p>
-          <p>
-            <div class="employee-creation">
-              <input
-                type="text"
-                name=""
-                placeholder="Type employee name here..."
-                class="employee-name mr-1"
-              />
-              <select name="" id="" class="career-type mr-1">
-                <option value="Choose">--Choose Career--</option>
-                <option value="Designer">Designer</option>
-                <option value="Developer">Developer</option>
-                <option value="Tester">Tester</option>
-              </select>
-              <button class="btn btn-add">
-                <ion-icon class="icon" name="save-outline"></ion-icon>
-              </button>
-            </div>
-          </p>
+          <div class="employee-update">
+            <input
+              type="text"
+              name=""
+              placeholder="Type employee name here..."
+              class="employee-name__update mr-1"
+            />
+            <select name="" id="" class="career-type__update mr-1">
+              <option value="Choose">--Choose Career--</option>
+              <option value="Designer">Designer</option>
+              <option value="Developer" selected>Developer</option>
+              <option value="Tester">Tester</option>
+            </select>
+            <button class="btn btn-update mr-1">
+              <ion-icon class="icon" name="save-outline"></ion-icon>
+            </button>
+            <button class="btn btn-cancel">
+              <ion-icon class="icon" name="close-outline"></ion-icon>
+            </button>
+          </div>
         </div>
         <div class="paychecks-list">
           <div class="paycheck">
