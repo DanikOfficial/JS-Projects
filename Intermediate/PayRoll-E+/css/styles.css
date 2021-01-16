@@ -79,6 +79,10 @@ select {
   margin-right: 45px;
 }
 
+.ml-1 {
+  margin-left: 5px;
+}
+
 .btn {
   width: 40px;
   padding: 5px 3px;
@@ -144,6 +148,16 @@ select {
 .show-error-register {
   top: 0;
   opacity: 1;
+}
+
+/* ---- Delete Confirmation ---- */
+
+.delete-confirmation {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* --- Employee, Career, Button and Search FIeld --- */
@@ -290,9 +304,9 @@ select {
   background-color: rgb(35, 7, 77);
   border: 1px solid #fff;
   border-radius: 50%;
-  transition: all 0.3s;
   color: #fff;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .list-item-button {
@@ -310,6 +324,11 @@ select {
   opacity: 1;
 }
 
+.item:hover > button:hover {
+  color: rgb(133, 133, 133);
+  border: 1px solid rgb(119, 119, 119);
+}
+
 /* ----------------------------- Paychecks Section ------------------*/
 
 .paychecks-section {
@@ -320,7 +339,7 @@ select {
   opacity: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.377);
+  /* background-color: rgba(0, 0, 0, 0.2); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -382,16 +401,18 @@ select {
   margin-bottom: 1em;
   border-bottom: 1px solid #ccc;
   padding-bottom: 0.4em;
-  height: 180px;
-  transition: all 0.3s;
+  height: 210px;
+  transition: all 1.2s;
 }
 
 .employee-information p {
   margin-bottom: 0.3em;
+  display: flex;
+  flex-direction: row;
 }
 
 .scale-employee-information {
-  height: 270px;
+  height: 330px;
 }
 
 /* ------------------ Update Info ---------------------- */
@@ -418,6 +439,7 @@ select {
 
 .btn-delete-employee {
   background-color: rgb(209, 9, 9);
+  align-self: center;
 }
 
 .btn-delete-employee:hover {
@@ -430,8 +452,8 @@ select {
 .employee-update {
   position: absolute;
   opacity: 0;
-  transform: translatex(-500px);
-  transition: all 0.5s 0.1s;
+  transform: translatex(-100%);
+  transition: all 0.4s 0.1s;
 }
 
 .show-employee-update {
@@ -503,10 +525,15 @@ select {
   justify-content: space-between;
   background-color: rgba(209, 209, 209, 0.425);
   height: 35px;
+  width: 100%;
   align-items: center;
   color: #000;
   padding-left: 0.3em;
   border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.btn-pay {
+  margin-left: auto;
 }
 
 .paycheck:nth-child(even) {
@@ -523,17 +550,23 @@ select {
 .btn-pay {
   border: 0;
   margin-right: 5px;
+  padding-top: 3px;
+  font-size: 22px;
   background-color: transparent;
   cursor: pointer;
   transform: translateX(20px);
   opacity: 0;
-  transition: transform 0.3s;
+  transition: all 0.3s;
 }
 
 .paycheck:hover > .btn-pay {
   color: #fff;
-  transform: translateX(-10px);
+  transform: translateX(-15px);
   opacity: 1;
+}
+
+.paycheck:hover > .btn-pay:hover {
+  color: rgb(172, 172, 172);
 }
 
 /* ---------------------------------- KeyFrames ----------------------------------- */

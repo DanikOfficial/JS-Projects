@@ -20,6 +20,13 @@
       <label class="error-label error-label-register"
         >Error: The employee 'name' is mandatory!
       </label>
+      <div class="delete-confirmation">
+        <p>Are you sure you want to delete this employee?</p>
+        <div class="actions">
+          <button class="confirm">Confirm</button>
+          <button class="undo-action">Undo</button>
+        </div>
+      </div>
       <div class="employee-creation">
         <input
           type="text"
@@ -100,21 +107,32 @@
         <h2 class="payroll-info">Employee Information</h2>
         <div class="employee-information">
           <p>
-            <b><em>Id:</em></b> <span class="emp-id">1</span>
+            <b><em>Id:</em></b> <span class="emp-id ml-1">1</span>
           </p>
           <p>
-            <b><em>Name:</em></b> <span class="emp-name">John Doe</span>
+            <b><em>Name:</em></b> <span class="emp-name ml-1">John Doe</span>
           </p>
           <p>
-            <b><em>Career:</em></b> <span class="emp-career">Programmer</span>
+            <b><em>Career:</em></b>
+            <span class="emp-career ml-1">Programmer</span>
+          </p>
+          <p>
+            <b><em>Salary:</em></b> <span class="emp-salary ml-1">2500$</span>
           </p>
           <p>
             <b> <em>Registration Date:</em></b>
-            <span class="emp-registry-date">25th December</span>
+            <span class="emp-registry-date ml-1">25th December</span>
           </p>
           <p>
-            <button class="btn-update-info">Update</button>
-            <button class="btn-delete-employee">Delete</button>
+            <button class="btn-update-info">
+              Update<ion-icon
+                class="icon ml-1"
+                name="create-outline"
+              ></ion-icon>
+            </button>
+            <button class="btn-delete-employee">
+              Delete<ion-icon class="icon ml-1" name="trash-outline"></ion-icon>
+            </button>
           </p>
           <div class="employee-update">
             <input
@@ -133,93 +151,81 @@
               <ion-icon class="icon" name="save-outline"></ion-icon>
             </button>
             <button class="btn btn-cancel">
-              <ion-icon class="icon" name="close-outline"></ion-icon>
+              <ion-icon class="icon" name="close-circle-outline"></ion-icon>
             </button>
           </div>
         </div>
         <div class="paychecks-list">
           <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
+            <span class="month">January</span>
             <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">February</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">March</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">April</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">May</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">June</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">July</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">August</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">Septemeber</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">October</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="paycheck">
+            <span class="month">November</span>
+            <button class="btn-pay">
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
             </button>
           </div>
           <div class="paycheck">
             <span class="month">December</span>
-            <span class="status">Paid</span>
             <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Not Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="paycheck">
-            <span class="month">December</span>
-            <span class="status">Paid</span>
-            <button class="btn-pay">
-              <ion-icon name="card-outline"></ion-icon>
+              <ion-icon class="icon" name="cash-outline"></ion-icon>
             </button>
           </div>
         </div>
