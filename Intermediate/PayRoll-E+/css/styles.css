@@ -154,10 +154,35 @@ select {
 
 .delete-confirmation {
   position: absolute;
+  top: -20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  font-size: 15px;
+  z-index: 200;
+  transition: all 0.3s;
+}
+
+.show-delete-confirmation {
+  top: 8px;
+}
+
+.delete-confirmation p {
+  color: #fff;
+}
+
+.delete-confirmation button {
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  transition: all 0.5s;
+}
+
+.delete-confirmation button:hover {
+  color: rgb(240, 0, 0);
+  border-bottom: 1px solid rgb(240, 0, 0);
 }
 
 /* --- Employee, Career, Button and Search FIeld --- */
@@ -393,9 +418,10 @@ select {
   margin: 0.5em;
   padding-bottom: 0.4em;
   border-bottom: 1px solid #ccc;
-
-  /* ------------------ Employee Information ---------------------- */
+  font-weight: 300;
 }
+
+/* ------------------ Employee Information ---------------------- */
 
 .employee-information {
   margin-bottom: 1em;
