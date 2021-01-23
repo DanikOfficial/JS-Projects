@@ -194,43 +194,34 @@ select {
 .employee-name,
 .career-type,
 .search-field,
-.btn-add,
-.salary {
+.btn-add {
   background-color: rgba(35, 7, 77, 0.329);
   border: 0;
 }
 
 .employee-name,
 .career-type,
-.search-field,
-.salary {
+.search-field {
   border-radius: 5px;
 }
 
 .employee-name,
 .career-type,
 .search-field,
-.btn-add,
-.salary {
+.btn-add {
   height: 35px;
 }
 
 .employee-name::placeholder,
-.search-field::placeholder,
-.salary::placeholder {
+.search-field::placeholder {
   /* color: rgb(29, 9, 58); */
   color: rgb(211, 211, 211);
   padding-left: 15px;
   transition: all 0.5s;
 }
 
-.salary::placeholder {
-  padding-left: 10px !important;
-}
-
 .employee-name:hover::placeholder,
-.search-field:hover::placeholder,
-.salary:hover::placeholder {
+.search-field:hover::placeholder {
   color: rgb(116, 116, 116);
 }
 
@@ -241,13 +232,7 @@ select {
   padding-left: 15px;
 }
 
-.salary {
-  width: 200px;
-  padding-left: 10px;
-}
-
-.employee-name,
-.salary {
+.employee-name {
   color: #fff;
 }
 
@@ -400,7 +385,7 @@ select {
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 780px;
+  width: 600px;
   height: 630px;
   border-radius: 2px;
   background-color: rgb(245, 244, 244);
@@ -506,8 +491,7 @@ select {
 }
 
 .employee-name__update,
-.career-type__update,
-.salary__update {
+.career-type__update {
   border-radius: 5px;
   color: #000;
 }
@@ -515,8 +499,7 @@ select {
 .employee-name__update,
 .career-type__update,
 .btn-update,
-.btn-cancel,
-.salary__update {
+.btn-cancel {
   height: 35px;
   border: 0;
   background-color: rgb(214, 214, 214);
@@ -532,8 +515,7 @@ select {
   width: 260px;
 }
 
-.employee-name__update,
-.salary__update {
+.employee-name__update {
   padding-left: 5px;
 }
 
