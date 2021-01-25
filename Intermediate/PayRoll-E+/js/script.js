@@ -13,7 +13,7 @@ const DataController = (() => {
   };
 
   // Employee Function Constructor
-  let Employee = (id, name, career, registrationDate) => {
+  let Employee = function (id, name, career, registrationDate) {
     this.id = id;
     this.name = name;
     this.registrationDate = registrationDate;
@@ -21,7 +21,7 @@ const DataController = (() => {
   };
 
   // Paycheck Function Constructor
-  let Paycheck = (id, employeeId, month, value, status = "Not Paid") => {
+  let Paycheck = function (id, employeeId, month, value, status = "Not Paid") {
     this.id = id;
     this.employeeId = employeeId;
     this.month = month;
@@ -34,7 +34,7 @@ const DataController = (() => {
     let id, date, registrationDate;
 
     // Gets the last Employee and increments his id by 1
-    if (data.employees.length === 0) {
+    if (data.employees.length !== 0) {
       id = data.employees[data.employees.length - 1].id + 1;
     } else {
       id = 0;
@@ -58,7 +58,10 @@ const DataController = (() => {
     // Adds the paychecks
     addPaychecks(id, careerObj.value);
 
-    return id;
+    return {
+      id,
+      name,
+    };
   };
 
   // Adds paychecks to newly created employee
@@ -70,7 +73,7 @@ const DataController = (() => {
     // Adds a paycheck for each month
     for (let i = 0; i < 12; i++) {
       // Generates an id for each paycheck
-      if (data.paychecks.length === 0) {
+      if (data.paychecks.length !== 0) {
         id = data.paychecks[data.paychecks.length - 1].id + 1;
       } else {
         id = 0;
@@ -93,7 +96,12 @@ const DataController = (() => {
   console.log("Data Controller Running");
 
   return {
-    addEmployee: (name, career) => {},
+    addEmployee: (name, career) => {
+      // Adds employee and returns his id and name
+      const employee = addNewEmployee(name, career);
+
+      return employee;
+    },
     testing: () => {
       console.log(data);
     },
@@ -104,16 +112,36 @@ const DataController = (() => {
 const UIController = (() => {
   const DOMStrings = {
     btnNewEmployee: ".btn-add",
-    EmployeeName: ".employee-name",
-    EmployeeCareer: ".career-type",
+    employeeName: ".employee-name",
+    employeeCareer: ".career-type",
+    employeesList: ".js--employees_list",
   };
 
   return {
-    getNewEmployeeInput: () => {
+    getRegistrationInput: () => {
       return {
-        name: document.querySelector(DomStrings.EmployeeName).value,
-        careerType: document.querySelector(DomStrings.EmployeeCareer).value,
+        name: document.querySelector(DOMStrings.employeeName).value.trim(),
+        careerType: document.querySelector(DOMStrings.employeeCareer).value,
       };
+    },
+    addEmployeeItem: (employee) => {
+      const employeesList = document.querySelector(DOMStrings.employeesList);
+
+      employeesList.insertAdjacentHTML(
+        "afterend",
+        `
+      <div class="item item-1" id="${employee.id}">
+    <span>${employee.name}</span>
+    <button class="delete-employee">
+      <ion-icon class="list-item-button" name="close-outline"></ion-icon>
+    </button>
+  </div>`
+      );
+    },
+    clearFields: () => {
+      console.log("Inside Clear Fields");
+      console.log(document.querySelector(DOMStrings.employeeName).value);
+      document.querySelector(DOMStrings.employeeName).value = "";
     },
     getDOMStrings: () => {
       return DOMStrings;
@@ -122,56 +150,47 @@ const UIController = (() => {
 })();
 
 // Global Controller
-const Controller = ((dataCtrl, uiCtrl) => {
+const Controller = ((DataCtrl, UICtrl) => {
   const setUpEventListeners = () => {
-    const DOM = uiCtrl.getDOMStrings();
-
-    document.querySelector(".item-1").addEventListener("click", () => {
-      document
-        .querySelector(".paychecks-section")
-        .classList.add("show-paychecks-section");
-    });
-
-    document.querySelector(".close-modal").addEventListener("click", () => {
-      document
-        .querySelector(".paychecks-section")
-        .classList.remove("show-paychecks-section");
-    });
-
-    document.querySelector(".btn-update-info").addEventListener("click", () => {
-      document
-        .querySelector(".employee-update")
-        .classList.add("show-employee-update");
-      document.querySelector(".paychecks-list").classList.add("move-list-down");
-      document
-        .querySelector(".employee-information")
-        .classList.add("scale-employee-information");
-    });
-
-    document.querySelector(".btn-cancel").addEventListener("click", () => {
-      document
-        .querySelector(".employee-update")
-        .classList.remove("show-employee-update");
-
-      document
-        .querySelector(".employee-information")
-        .classList.remove("scale-employee-information");
-    });
+    const DOM = UICtrl.getDOMStrings();
 
     document
-      .querySelector(".employee-information")
-      .addEventListener("transitionend", () => {});
+      .querySelector(DOM.btnNewEmployee)
+      .addEventListener("click", ctrlAddEmployee);
+
+    document.addEventListener("keypress", (event) => {
+      if (event.keyCode === 13 || event.which === 13) ctrlAddEmployee();
+    });
   };
 
   const ctrlAddEmployee = () => {
-    //1. Get the Employee Data from UI
-    //2. Send the Data to the Data Controller
-    //3. Display the Data in the UI
+    // Get the Employee Data from UI
+    const input = UICtrl.getRegistrationInput();
+
+    if (validateFields(input)) {
+      // Send the Data to the Data Controller
+      const employee = DataCtrl.addEmployee(input.name, input.careerType);
+
+      // Display the Data in the UI
+      UICtrl.addEmployeeItem(employee);
+
+      // Clear Fields
+      UICtrl.clearFields();
+    }
   };
 
   const ctrlUpdateEmployee = () => {};
 
   const ctrlDeleteEmployee = () => {};
+
+  const validateFields = (input) => {
+    let response = false;
+
+    if (input.name !== "" && !input.careerType.includes("Choose"))
+      response = true;
+
+    return response;
+  };
 
   return {
     init: () => {
