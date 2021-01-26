@@ -125,18 +125,25 @@ const UIController = (() => {
       };
     },
     addEmployeeItem: (employee) => {
-      const employeesList = document.querySelector(DOMStrings.employeesList);
+      let employeesList = document.querySelector(DOMStrings.employeesList);
 
       employeesList.insertAdjacentHTML(
-        "afterend",
+        "afterbegin",
         `
-      <div class="item item-1" id="${employee.id}">
+      <div class="item new-item" id="emp-${employee.id}">
     <span>${employee.name}</span>
     <button class="delete-employee">
       <ion-icon class="list-item-button" name="close-outline"></ion-icon>
     </button>
   </div>`
       );
+
+      const element = document.querySelector(`#emp-${employee.id}`);
+
+      element.onanimationend = () => {
+        if (element.classList.contains("new-item"))
+          element.classList.remove("new-item");
+      };
     },
     clearFields: () => {
       console.log("Inside Clear Fields");

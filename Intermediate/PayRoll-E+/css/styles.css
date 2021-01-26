@@ -305,21 +305,12 @@ select {
   width: 600px;
   height: 50px;
   background-color: rgb(24, 2, 58);
-  /* background: linear-gradient(to left, rgb(35, 7, 77), rgb(204, 83, 51)); */
   margin-bottom: 1.5em;
   border-radius: 5px;
   box-shadow: 0 0 2px #000;
   padding: 0 15px;
   cursor: pointer;
   transition: all 150ms;
-}
-
-.removed {
-  animation: 0.3s linear slide-out-removed forwards;
-}
-
-.undo {
-  animation: 0.3s linear undo-remove forwards;
 }
 
 .item span {
@@ -602,37 +593,63 @@ select {
   color: rgb(172, 172, 172);
 }
 
+/* -------- Animations -------- */
+.removed {
+  animation: 0.3s linear slide-out-removed forwards;
+}
+
+.undo {
+  animation: 0.3s linear undo-remove forwards;
+}
+
+.new-item {
+  animation: 0.5s linear new-list-item forwards;
+}
+
 /* ---------------------------------- KeyFrames ----------------------------------- */
 
-@keyframes undo-remove {
+@keyframes new-list-item {
   from {
-    transform: translateX(-200%);
+    transform: translate(0, -500px);
+    margin-bottom: 0;
     height: 0;
-    opacity: 0;
-    padding: 0;
-    margin: 0;
   }
-
   to {
-    transform: translateX(0);
-    opacity: 1;
-    padding: 0 15px;
+    transform: translate(0, 0);
     margin-bottom: 1.5em;
     height: 50px;
   }
 }
 
+@keyframes undo-remove {
+  from {
+    transform: translate(-200%, 0);
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+    padding: 0 15px;
+    margin-bottom: 1.5em;
+  }
+}
+
 @keyframes slide-out-removed {
   from {
-    transform: translateX(0);
+    transform: translate(0, 0);
+    margin-bottom: 1.5em;
+    height: 50px;
     opacity: 1;
   }
 
   to {
-    transform: translateX(-200%);
-    height: 0;
+    transform: translate(-200%, 0);
     opacity: 0;
     padding: 0;
     margin: 0;
+    height: 0;
   }
 }
