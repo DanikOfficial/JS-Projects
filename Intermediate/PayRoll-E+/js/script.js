@@ -144,6 +144,16 @@ const UIController = (() => {
         if (element.classList.contains("new-item"))
           element.classList.remove("new-item");
       };
+
+      // Sets default attribute
+      let el = document.querySelector(".default");
+
+      if (el.hasAttribute("selected")) {
+        el.removeAttribute("selected");
+        el.setAttribute("selected", "");
+      } else {
+        el.setAttribute("selected", "");
+      }
     },
     clearFields: () => {
       console.log("Inside Clear Fields");
