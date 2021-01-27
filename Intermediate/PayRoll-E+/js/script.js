@@ -93,7 +93,34 @@ const DataController = (() => {
     }
   };
 
-  console.log("Data Controller Running");
+  // Deletes the Employee
+  const deleteEmployee = (id) => {
+    let index;
+
+    // Finds the index of the employee id
+    index = data.employees.findIndex((element) => element.id === id);
+
+    data.employees.splice(index, 1);
+
+    // Deletes the paychecks related to the employee
+    deletePaycheck(id);
+  };
+
+  // Deletes the paychecks related to the employee ID
+  const deletePaychecks = (employeeId) => {
+    let indexes;
+
+    /* 
+    data.paychecks = data.paychecks.filter(
+      (element) => element.employeeId !== employeeId
+    ); */
+
+    for (let i = 0; i < data.paychecks.length; i++) {
+      if (data.paychecks[i].employeeId === employeeId) {
+        data.paychecks.splice(i, 1);
+      }
+    }
+  };
 
   return {
     addEmployee: (name, career) => {
@@ -101,6 +128,10 @@ const DataController = (() => {
       const employee = addNewEmployee(name, career);
 
       return employee;
+    },
+    deleteEmployee: (id) => {
+      // Deletes the Id
+      deleteEmployee(id);
     },
     testing: () => {
       console.log(data);
@@ -117,6 +148,43 @@ const UIController = (() => {
     employeesList: ".js--employees_list",
   };
 
+  const addEmployeeItem = (employee) => {
+    let employeesList = document.querySelector(DOMStrings.employeesList);
+
+    employeesList.insertAdjacentHTML(
+      "afterbegin",
+      `
+    <div class="item new-item" id="emp-${employee.id}">
+  <span>${employee.name}</span>
+  <button class="delete-employee">
+    <ion-icon class="list-item-button" name="close-outline"></ion-icon>
+  </button>
+</div>`
+    );
+
+    const element = document.querySelector(`#emp-${employee.id}`);
+
+    element.onanimationend = () => {
+      if (element.classList.contains("new-item"))
+        element.classList.remove("new-item");
+    };
+
+    // Sets default attribute
+    let el = document.querySelector(".default");
+
+    if (el.hasAttribute("selected")) {
+      el.removeAttribute("selected");
+      el.setAttribute("selected", "");
+    } else {
+      el.setAttribute("selected", "");
+    }
+  };
+
+  const deleteItem = (id) => {
+    let element = document.getElementById(id);
+    element.remove();
+  };
+
   return {
     getRegistrationInput: () => {
       return {
@@ -125,39 +193,12 @@ const UIController = (() => {
       };
     },
     addEmployeeItem: (employee) => {
-      let employeesList = document.querySelector(DOMStrings.employeesList);
-
-      employeesList.insertAdjacentHTML(
-        "afterbegin",
-        `
-      <div class="item new-item" id="emp-${employee.id}">
-    <span>${employee.name}</span>
-    <button class="delete-employee">
-      <ion-icon class="list-item-button" name="close-outline"></ion-icon>
-    </button>
-  </div>`
-      );
-
-      const element = document.querySelector(`#emp-${employee.id}`);
-
-      element.onanimationend = () => {
-        if (element.classList.contains("new-item"))
-          element.classList.remove("new-item");
-      };
-
-      // Sets default attribute
-      let el = document.querySelector(".default");
-
-      if (el.hasAttribute("selected")) {
-        el.removeAttribute("selected");
-        el.setAttribute("selected", "");
-      } else {
-        el.setAttribute("selected", "");
-      }
+      addEmployeeItem(employee);
+    },
+    deleteEmployeeItem: (id) => {
+      deleteItem(id);
     },
     clearFields: () => {
-      console.log("Inside Clear Fields");
-      console.log(document.querySelector(DOMStrings.employeeName).value);
       document.querySelector(DOMStrings.employeeName).value = "";
     },
     getDOMStrings: () => {
@@ -168,8 +209,13 @@ const UIController = (() => {
 
 // Global Controller
 const Controller = ((DataCtrl, UICtrl) => {
+  // Sets ups all event listeners
   const setUpEventListeners = () => {
     const DOM = UICtrl.getDOMStrings();
+
+    document
+      .querySelector(DOM.employeesList)
+      .addEventListener("click", ctrlDeleteEmployee);
 
     document
       .querySelector(DOM.btnNewEmployee)
@@ -198,7 +244,19 @@ const Controller = ((DataCtrl, UICtrl) => {
 
   const ctrlUpdateEmployee = () => {};
 
-  const ctrlDeleteEmployee = () => {};
+  const ctrlDeleteEmployee = (event) => {
+    let id, employeeID;
+
+    id = event.target.id;
+
+    employeeID = parseInt(id.split("-")[1]);
+
+    // Deletes the employee in the DataStructure
+    DataCtrl.deleteEmployee(employeeID);
+
+    //Deletes the employee from the UI
+    UICtrl.deleteEmployeeItem(id);
+  };
 
   const validateFields = (input) => {
     let response = false;
