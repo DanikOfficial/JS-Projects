@@ -103,23 +103,26 @@ const DataController = (() => {
     data.employees.splice(index, 1);
 
     // Deletes the paychecks related to the employee
-    deletePaycheck(id);
+    deletePaychecks(id);
   };
 
   // Deletes the paychecks related to the employee ID
   const deletePaychecks = (employeeId) => {
-    let indexes;
-
-    /* 
     data.paychecks = data.paychecks.filter(
       (element) => element.employeeId !== employeeId
-    ); */
+    );
 
-    for (let i = 0; i < data.paychecks.length; i++) {
-      if (data.paychecks[i].employeeId === employeeId) {
-        data.paychecks.splice(i, 1);
+    /*
+    let indexes = data.paychecks.reduce((data, element, index) => {
+      if (element.employeeId === employeeId) {
+        data.push(index);
       }
-    }
+      return data;
+    }, []);
+
+    console.log(indexes);
+
+    indexes.forEach((element) => data.paychecks.splice(element, 1));*/
   };
 
   return {
@@ -156,7 +159,7 @@ const UIController = (() => {
       `
     <div class="item new-item" id="emp-${employee.id}">
   <span>${employee.name}</span>
-  <button class="delete-employee">
+  <button class="delete-employee zxzc">
     <ion-icon class="list-item-button" name="close-outline"></ion-icon>
   </button>
 </div>`
@@ -180,7 +183,7 @@ const UIController = (() => {
     }
   };
 
-  const deleteItem = (id) => {
+  const deleteEmployeeItem = (id) => {
     let element = document.getElementById(id);
     element.remove();
   };
@@ -196,7 +199,7 @@ const UIController = (() => {
       addEmployeeItem(employee);
     },
     deleteEmployeeItem: (id) => {
-      deleteItem(id);
+      deleteEmployeeItem(id);
     },
     clearFields: () => {
       document.querySelector(DOMStrings.employeeName).value = "";
@@ -245,17 +248,21 @@ const Controller = ((DataCtrl, UICtrl) => {
   const ctrlUpdateEmployee = () => {};
 
   const ctrlDeleteEmployee = (event) => {
-    let id, employeeID;
+    let list = event.target.classList.toString();
 
-    id = event.target.id;
+    if (list.includes("delete")) {
+      let id, employeeID;
 
-    employeeID = parseInt(id.split("-")[1]);
+      id = event.target.parentNode.id;
 
-    // Deletes the employee in the DataStructure
-    DataCtrl.deleteEmployee(employeeID);
+      employeeID = parseInt(id.split("-")[1]);
 
-    //Deletes the employee from the UI
-    UICtrl.deleteEmployeeItem(id);
+      // Deletes the employee in the DataStructure
+      DataCtrl.deleteEmployee(employeeID);
+
+      //Deletes the employee from the UI
+      UICtrl.deleteEmployeeItem(id);
+    }
   };
 
   const validateFields = (input) => {
