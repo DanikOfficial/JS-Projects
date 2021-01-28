@@ -111,18 +111,6 @@ const DataController = (() => {
     data.paychecks = data.paychecks.filter(
       (element) => element.employeeId !== employeeId
     );
-
-    /*
-    let indexes = data.paychecks.reduce((data, element, index) => {
-      if (element.employeeId === employeeId) {
-        data.push(index);
-      }
-      return data;
-    }, []);
-
-    console.log(indexes);
-
-    indexes.forEach((element) => data.paychecks.splice(element, 1));*/
   };
 
   return {
