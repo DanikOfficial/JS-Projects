@@ -158,9 +158,9 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15px;
+  font-size: 17px;
   z-index: 200;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .show-delete-confirmation {
@@ -310,7 +310,7 @@ select {
   box-shadow: 0 0 2px #000;
   padding: 0 15px;
   cursor: pointer;
-  transition: all 150ms;
+  /* transition: all 0.3s; */
 }
 
 .item span {
@@ -594,16 +594,13 @@ select {
 }
 
 /* -------- Animations -------- */
-.removed {
-  animation: 0.3s linear slide-out-removed forwards;
-}
-
-.undo {
-  animation: 0.3s linear undo-remove forwards;
-}
 
 .new-item {
   animation: 0.5s linear new-list-item forwards;
+}
+
+.remove {
+  animation: 1s linear removed-item forwards;
 }
 
 /* ---------------------------------- KeyFrames ----------------------------------- */
@@ -621,35 +618,28 @@ select {
   }
 }
 
-@keyframes undo-remove {
-  from {
-    transform: translate(-200%, 0);
-    opacity: 0;
-    padding: 0;
-    margin: 0;
-  }
-
-  to {
-    transform: translate(0, 0);
-    opacity: 1;
-    padding: 0 15px;
+@keyframes removed-item {
+  0% {
     margin-bottom: 1.5em;
-  }
-}
-
-@keyframes slide-out-removed {
-  from {
     transform: translate(0, 0);
-    margin-bottom: 1.5em;
     height: 50px;
-    opacity: 1;
   }
 
-  to {
-    transform: translate(-200%, 0);
-    opacity: 0;
-    padding: 0;
-    margin: 0;
+  20% {
+    transform: translate(20%, 0);
+  }
+
+  90% {
+    height: 25px;
+  }
+
+  95% {
+    height: 10px;
+  }
+
+  100% {
+    margin-bottom: 0;
+    transform: translate(-500%, 0);
     height: 0;
   }
 }

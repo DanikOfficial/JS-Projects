@@ -137,6 +137,9 @@ const UIController = (() => {
     employeeName: ".employee-name",
     employeeCareer: ".career-type",
     employeesList: ".js--employees_list",
+    errorLabel: ".error-label-register",
+    searchField: ".search-field",
+    deleteConfirmation: ".delete-confirmation",
   };
 
   const addEmployeeItem = (employee) => {
@@ -147,7 +150,7 @@ const UIController = (() => {
       `
     <div class="item new-item" id="emp-${employee.id}">
   <span>${employee.name}</span>
-  <button class="delete-employee zxzc">
+  <button class="delete-employee">
     <ion-icon class="list-item-button" name="close-outline"></ion-icon>
   </button>
 </div>`
@@ -202,18 +205,51 @@ const UIController = (() => {
 const Controller = ((DataCtrl, UICtrl) => {
   // Sets ups all event listeners
   const setUpEventListeners = () => {
+    let employeesList, careerType, searchField, employeeName, btnAdd, app;
+
     const DOM = UICtrl.getDOMStrings();
 
-    document
-      .querySelector(DOM.employeesList)
-      .addEventListener("click", ctrlDeleteEmployee);
+    btnAdd = document.querySelector(DOM.btnNewEmployee);
 
-    document
-      .querySelector(DOM.btnNewEmployee)
-      .addEventListener("click", ctrlAddEmployee);
+    employeeName = document.querySelector(DOM.employeeName);
 
-    document.addEventListener("keypress", (event) => {
+    employeesList = document.querySelector(DOM.employeesList);
+
+    careerType = document.querySelector(DOM.employeeCareer);
+
+    employeesList.addEventListener("click", ctrlDeleteEmployee);
+
+    searchField = document.querySelector(DOM.searchField);
+
+    btnAdd.addEventListener("click", ctrlAddEmployee);
+
+    app = document;
+
+    app.addEventListener("keypress", (event) => {
       if (event.keyCode === 13 || event.which === 13) ctrlAddEmployee();
+    });
+
+    careerType.addEventListener("click", () => {
+      let employeeField = document.querySelector(DOM.employeeName).value;
+
+      if (employeeField.trim() === "") {
+        document
+          .querySelector(DOM.errorLabel)
+          .classList.add("show-error-register");
+        document.querySelector(DOM.employeeName).focus();
+      }
+    });
+
+    searchField.addEventListener("keypress", () => {});
+
+    employeeName.addEventListener("keypress", () => {
+      let employeeField = document.querySelector(employeeName).value;
+
+      if (employeeField.trim() === "") {
+        document
+          .querySelector(DOM.errorLabel)
+          .classList.remove("show-error-register");
+      }
     });
   };
 
@@ -239,17 +275,31 @@ const Controller = ((DataCtrl, UICtrl) => {
     let list = event.target.classList.toString();
 
     if (list.includes("delete")) {
-      let id, employeeID;
+      let id, employeeID, element, deleteNotification;
 
       id = event.target.parentNode.id;
 
       employeeID = parseInt(id.split("-")[1]);
 
-      // Deletes the employee in the DataStructure
-      DataCtrl.deleteEmployee(employeeID);
+      element = document.getElementById(id);
 
-      //Deletes the employee from the UI
-      UICtrl.deleteEmployeeItem(id);
+      element.classList.add("remove");
+
+      deleteNotification = document.querySelector(
+        UICtrl.getDOMStrings().deleteConfirmation
+      );
+
+      deleteNotification.classList.add("show-delete-confirmation");
+
+      element.onanimationend = () => {
+        // Deletes the employee in the DataStructure
+        DataCtrl.deleteEmployee(employeeID);
+
+        //Deletes the employee from the UI
+        UICtrl.deleteEmployeeItem(id);
+
+        deleteNotification.classList.remove("show-delete-confirmation");
+      };
     }
   };
 
