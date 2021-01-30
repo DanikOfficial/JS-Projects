@@ -118,11 +118,16 @@ select {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1em;
+}
+
+.app-icon-name,
+.not-found-icon {
   color: #fff;
 }
 
 /* --- Application Icon --- */
-.app-icon {
+.app-icon,
+.not-found-icon {
   font-size: 400%;
 }
 
@@ -600,7 +605,7 @@ select {
 }
 
 .remove {
-  animation: 1s linear removed-item forwards;
+  animation: 0.9s linear removed-item forwards;
 }
 
 /* ---------------------------------- KeyFrames ----------------------------------- */
@@ -629,17 +634,27 @@ select {
     transform: translate(20%, 0);
   }
 
-  90% {
-    height: 25px;
-  }
-
-  95% {
-    height: 10px;
-  }
-
   100% {
     margin-bottom: 0;
     transform: translate(-500%, 0);
     height: 0;
   }
+}
+
+/* ----- Not Found ---- */
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found-paragraph {
+  color: rgb(241, 241, 241);
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+.not-found-icon {
+  margin-bottom: 0.2em;
 }

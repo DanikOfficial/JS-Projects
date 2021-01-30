@@ -124,6 +124,9 @@ const DataController = (() => {
       // Deletes the Id
       deleteEmployee(id);
     },
+    getEmployees: () => {
+      return data.employees;
+    },
     testing: () => {
       console.log(data);
     },
@@ -142,9 +145,34 @@ const UIController = (() => {
     deleteConfirmation: ".delete-confirmation",
   };
 
-  const addEmployeeItem = (employee) => {
-    let employeesList = document.querySelector(DOMStrings.employeesList);
+  const addEmployee = (employee, employeesList, operation) => {
+    if (operation === "new") {
+      employeesList.insertAdjacentHTML(
+        "afterbegin",
+        `
+      <div class="item new-item" id="emp-${employee.id}">
+    <span>${employee.name}</span>
+    <button class="delete-employee">
+      <ion-icon class="list-item-button" name="close-outline"></ion-icon>
+    </button>
+  </div>`
+      );
+    } else if (operation === "filter") {
+      employeesList.insertAdjacentHTML(
+        "afterbegin",
+        `
+      <div class="item" id="emp-${employee.id}">
+    <span>${employee.name}</span>
+    <button class="delete-employee">
+      <ion-icon class="list-item-button" name="close-outline"></ion-icon>
+    </button>
+  </div>`
+      );
+    }
+  };
 
+  const addEmployeeItem = (employee) => {
+    /*
     employeesList.insertAdjacentHTML(
       "afterbegin",
       `
@@ -154,7 +182,11 @@ const UIController = (() => {
     <ion-icon class="list-item-button" name="close-outline"></ion-icon>
   </button>
 </div>`
-    );
+    );*/
+
+    let employeesList = document.querySelector(DOMStrings.employeesList);
+
+    addEmployee(employee, employeesList, "new");
 
     const element = document.querySelector(`#emp-${employee.id}`);
 
@@ -172,11 +204,38 @@ const UIController = (() => {
     } else {
       el.setAttribute("selected", "");
     }
+
+    element.focus();
   };
 
   const deleteEmployeeItem = (id) => {
     let element = document.getElementById(id);
     element.remove();
+  };
+
+  const filterEmployees = (name, employees) => {
+    const list = document.querySelector(DOMStrings.employeesList);
+
+    list.innerHTML = "";
+
+    employees.forEach((element) => {
+      if (element.name.toUpperCase().indexOf(name.toUpperCase()) > -1) {
+        addEmployee(element, list, "filter");
+      }
+    });
+
+    const result = document.querySelectorAll(".item");
+
+    console.log("result: " + result.length);
+
+    if (result.length === 0) {
+      list.innerHTML = `<div class="not-found">
+      <ion-icon class="not-found-icon" name="newspaper-outline"></ion-icon>
+      <p class="not-found-paragraph">
+        There are no employees with this name!
+      </p>
+    </div>`;
+    }
   };
 
   return {
@@ -191,6 +250,9 @@ const UIController = (() => {
     },
     deleteEmployeeItem: (id) => {
       deleteEmployeeItem(id);
+    },
+    filterEmployees: (name, employees) => {
+      filterEmployees(name, employees);
     },
     clearFields: () => {
       document.querySelector(DOMStrings.employeeName).value = "";
@@ -230,9 +292,7 @@ const Controller = ((DataCtrl, UICtrl) => {
     });
 
     careerType.addEventListener("click", () => {
-      let employeeField = document.querySelector(DOM.employeeName).value;
-
-      if (employeeField.trim() === "") {
+      if (employeeName.value.trim() === "") {
         document
           .querySelector(DOM.errorLabel)
           .classList.add("show-error-register");
@@ -240,12 +300,10 @@ const Controller = ((DataCtrl, UICtrl) => {
       }
     });
 
-    searchField.addEventListener("keypress", () => {});
+    searchField.addEventListener("keyup", ctrlFilterEmployee);
 
-    employeeName.addEventListener("keypress", () => {
-      let employeeField = document.querySelector(employeeName).value;
-
-      if (employeeField.trim() === "") {
+    employeeName.addEventListener("keyup", () => {
+      if (employeeName.value.trim() !== "") {
         document
           .querySelector(DOM.errorLabel)
           .classList.remove("show-error-register");
@@ -301,6 +359,12 @@ const Controller = ((DataCtrl, UICtrl) => {
         deleteNotification.classList.remove("show-delete-confirmation");
       };
     }
+  };
+
+  const ctrlFilterEmployee = () => {
+    let input = document.querySelector(UICtrl.getDOMStrings().searchField);
+
+    UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
   };
 
   const validateFields = (input) => {
