@@ -113,19 +113,33 @@ const DataController = (() => {
     );
   };
 
+  const getEmployeeAndPaychecks = (id) => {
+    const employee = data.employees.find((element) => element.id === id);
+
+    const paychecks = data.paychecks.filter(
+      (element) => element.employeeId === id
+    );
+
+    return {
+      employee,
+      paychecks,
+    };
+  };
+
   return {
     addEmployee: (name, career) => {
-      // Adds employee and returns his id and name
       const employee = addNewEmployee(name, career);
-
       return employee;
     },
     deleteEmployee: (id) => {
-      // Deletes the Id
       deleteEmployee(id);
     },
     getEmployees: () => {
       return data.employees;
+    },
+    getEmployeeAndPaychecks: (id) => {
+      const data = getEmployeeAndPaychecks(id);
+      return data;
     },
     testing: () => {
       console.log(data);
@@ -279,7 +293,7 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     careerType = document.querySelector(DOM.employeeCareer);
 
-    employeesList.addEventListener("click", ctrlDeleteEmployee);
+    employeesList.addEventListener("click", ctrlDisplayOrDeleteEmployee);
 
     searchField = document.querySelector(DOM.searchField);
 
@@ -329,11 +343,25 @@ const Controller = ((DataCtrl, UICtrl) => {
 
   const ctrlUpdateEmployee = () => {};
 
-  const ctrlDeleteEmployee = (event) => {
-    let list = event.target.classList.toString();
+  const ctrlDisplayOrDeleteEmployee = (event) => {
+    let id, employeeID, list;
+     list = event.target.classList.toString();
 
+    // Displays the paycheck
+    if (list.includes("item")) {
+
+      id = event.target.id;
+
+      employeeID = parseInt(id.split("-")[1]);
+
+      //Get the Employee and his paychecks
+      const employee = DataCtrl.getEmployeeAndPaychecks(employeeID);
+
+    }
+
+    // Delete the clicked employee
     if (list.includes("delete")) {
-      let id, employeeID, element, deleteNotification;
+      element, deleteNotification;
 
       id = event.target.parentNode.id;
 
@@ -366,6 +394,8 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
   };
+
+  const ctrlDisplayEmployee = (id) => {};
 
   const validateFields = (input) => {
     let response = false;
