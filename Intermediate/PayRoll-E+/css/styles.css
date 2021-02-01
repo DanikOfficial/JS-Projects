@@ -395,7 +395,8 @@ select {
   height: 2px;
   margin-right: 0 !important;
   color: #000;
-  font-size: 22px;
+  font-size: 25px;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s;
 }

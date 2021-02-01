@@ -170,6 +170,9 @@ const UIController = (() => {
     empRegDate: ".emp-reg-date",
     paychecksList: ".js--paychecks_list",
     closeBtn: ".close-modal",
+    btnUpdate: ".btn-update-info",
+    employeeUpdate: ".employee-update",
+    employeeInformation: ".employee-information",
   };
 
   const addEmployee = (employee, employeesList, operation) => {
@@ -277,6 +280,8 @@ const UIController = (() => {
   };
 
   const showEmployee = (data) => {
+    const paychecksList = document.querySelector(DOMStrings.paychecksList);
+
     document.querySelector(DOMStrings.empId).textContent = data.employee.id;
     document.querySelector(DOMStrings.empName).textContent = data.employee.name;
     document.querySelector(DOMStrings.empCareer).textContent =
@@ -290,6 +295,24 @@ const UIController = (() => {
     document
       .querySelector(DOMStrings.paychecksSection)
       .classList.add("show-paychecks-section");
+
+    paychecksList.innerHTML = "";
+
+    data.paychecks.forEach((element) => {
+      paychecksList.insertAdjacentHTML(
+        "beforeend",
+        `<div class="paycheck" id="paycheck-${element.id}">
+  <span class="month">${element.month}</span>
+  ${
+    element.status === "<span>Paid</span>"
+      ? "Paid"
+      : `<button class="btn-pay">
+  <ion-icon class="icon" name="cash-outline"></ion-icon>
+</button>`
+  }
+</div>`
+      );
+    });
   };
 
   const closeModal = () => {
@@ -323,6 +346,9 @@ const UIController = (() => {
     clearFields: () => {
       document.querySelector(DOMStrings.employeeName).value = "";
     },
+    displayUpdateBox: () => {
+
+    },
     getDOMStrings: () => {
       return DOMStrings;
     },
@@ -334,7 +360,7 @@ const Controller = ((DataCtrl, UICtrl) => {
   // Sets ups all event listeners
   const setUpEventListeners = () => {
     let employeesList, careerType, searchField, employeeName;
-    let btnAdd, app, btnClose;
+    let btnAdd, app, btnClose, btnDisplayUpdateBox;
 
     const DOM = UICtrl.getDOMStrings();
 
@@ -352,7 +378,11 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     btnClose = document.querySelector(DOM.closeBtn);
 
+    btnDisplayUpdateBox = document.querySelector(DOM.btnUpdate);
+
     btnAdd.addEventListener("click", ctrlAddEmployee);
+
+    btnDisplayUpdateBox.addEventListener("click", ctrlDisplayUpdateBox);
 
     btnClose.addEventListener("click", ctrlCloseModal);
 
@@ -419,31 +449,35 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     // Delete the clicked employee
     if (list.includes("delete")) {
-      element, deleteNotification;
+      let element, deleteNotification;
 
-      id = event.target.parentNode.id;
+      let bool = confirm("Are you sure you want to remove this employee?");
 
-      employeeID = parseInt(id.split("-")[1]);
+      if (bool) {
+        id = event.target.parentNode.id;
 
-      element = document.getElementById(id);
+        employeeID = parseInt(id.split("-")[1]);
 
-      element.classList.add("remove");
+        element = document.getElementById(id);
 
-      deleteNotification = document.querySelector(
-        UICtrl.getDOMStrings().deleteConfirmation
-      );
+        element.classList.add("remove");
 
-      deleteNotification.classList.add("show-delete-confirmation");
+        deleteNotification = document.querySelector(
+          UICtrl.getDOMStrings().deleteConfirmation
+        );
 
-      element.onanimationend = () => {
-        // Deletes the employee in the DataStructure
-        DataCtrl.deleteEmployee(employeeID);
+        deleteNotification.classList.add("show-delete-confirmation");
 
-        //Deletes the employee from the UI
-        UICtrl.deleteEmployeeItem(id);
+        element.onanimationend = () => {
+          // Deletes the employee in the DataStructure
+          DataCtrl.deleteEmployee(employeeID);
 
-        deleteNotification.classList.remove("show-delete-confirmation");
-      };
+          //Deletes the employee from the UI
+          UICtrl.deleteEmployeeItem(id);
+
+          deleteNotification.classList.remove("show-delete-confirmation");
+        };
+      }
     }
   };
 
@@ -451,6 +485,10 @@ const Controller = ((DataCtrl, UICtrl) => {
     let input = document.querySelector(UICtrl.getDOMStrings().searchField);
 
     UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
+  };
+
+  const ctrlDisplayUpdateBox = () => {
+    UICtrl.displayUpdateBox();
   };
 
   const ctrlCloseModal = () => {
