@@ -106,6 +106,37 @@ const DataController = (() => {
     deletePaychecks(id);
   };
 
+  const updateEmployee = (id, name, career) => {
+    let salary, employee;
+
+    // Finds the employee
+    employee = data.employees.find((element) => element.id === id);
+
+    // Updates his data
+    employee.name = name;
+    employee.career = career;
+
+    salary = data.career.find((element) => element.type === employee.career);
+
+    // Updates paychecks related to the employee
+    updateEmployeePaychecks(employee.id, employee.career, salary);
+
+    return {
+      name,
+      career,
+      salary: salary.value,
+    };
+  };
+
+  const updateEmployeePaychecks = (id, newCareer, salary) => {
+    data.paychecks.forEach((element) => {
+      if (element.employeeId === id) {
+        element.career = newCareer;
+        element.value = salary;
+      }
+    });
+  };
+
   // Deletes the paychecks related to the employee ID
   const deletePaychecks = (employeeId) => {
     data.paychecks = data.paychecks.filter(
@@ -173,6 +204,8 @@ const UIController = (() => {
     btnUpdate: ".btn-update-info",
     employeeUpdate: ".employee-update",
     employeeInformation: ".employee-information",
+    employeeNameUpdate: ".employee-name__update",
+    employeeCareerUpdate: ".career-type__update",
   };
 
   const addEmployee = (employee, employeesList, operation) => {
@@ -313,6 +346,34 @@ const UIController = (() => {
 </div>`
       );
     });
+
+    document.querySelector(
+      DOMStrings.employeeNameUpdate
+    ).value = document.querySelector(DOMStrings.empName).textContent;
+
+    let careerOptions = Array.from(document.querySelectorAll(".update_career"));
+    let career = document.querySelector(DOMStrings.empCareer).textContent;
+
+    careerOptions.forEach((element) => {
+      if (element.value !== career && element.hasAttribute("selected")) {
+        element.removeAttribute("selected");
+      } else if (element.value === career) {
+        element.setAttribute("selected", "");
+      }
+    });
+  };
+
+  const displayUpdateBox = () => {
+    document
+      .querySelector(DOMStrings.employeeUpdate)
+      .classList.add("show-employee-update");
+
+    document
+      .querySelector(DOMStrings.paychecksList)
+      .classList.add("move-list-down");
+    document
+      .querySelector(DOMStrings.employeeInformation)
+      .classList.add("scale-employee-information");
   };
 
   const closeModal = () => {
@@ -347,7 +408,7 @@ const UIController = (() => {
       document.querySelector(DOMStrings.employeeName).value = "";
     },
     displayUpdateBox: () => {
-
+      displayUpdateBox();
     },
     getDOMStrings: () => {
       return DOMStrings;
