@@ -120,8 +120,13 @@ const DataController = (() => {
       (element) => element.employeeId === id
     );
 
+    const salary = data.careers.find(
+      (element) => element.type === employee.career
+    );
+
     return {
       employee,
+      salary: salary.value,
       paychecks,
     };
   };
@@ -157,6 +162,14 @@ const UIController = (() => {
     errorLabel: ".error-label-register",
     searchField: ".search-field",
     deleteConfirmation: ".delete-confirmation",
+    paychecksSection: ".paychecks-section",
+    empId: ".emp-id",
+    empName: ".emp-name",
+    empCareer: ".emp-career",
+    empSalary: ".emp-salary",
+    empRegDate: ".emp-reg-date",
+    paychecksList: ".js--paychecks_list",
+    closeBtn: ".close-modal",
   };
 
   const addEmployee = (employee, employeesList, operation) => {
@@ -252,6 +265,39 @@ const UIController = (() => {
     }
   };
 
+  const formatSalary = (salary) => {
+    let stringSalary = "" + salary;
+
+    return stringSalary.length > 3
+      ? stringSalary.substr(0, stringSalary.length - 3) +
+          "," +
+          stringSalary.substr(stringSalary.length - 3, stringSalary.length) +
+          ".00$"
+      : stringSalary + ".00$";
+  };
+
+  const showEmployee = (data) => {
+    document.querySelector(DOMStrings.empId).textContent = data.employee.id;
+    document.querySelector(DOMStrings.empName).textContent = data.employee.name;
+    document.querySelector(DOMStrings.empCareer).textContent =
+      data.employee.career;
+    document.querySelector(DOMStrings.empSalary).textContent = formatSalary(
+      data.salary
+    );
+    document.querySelector(DOMStrings.empRegDate).textContent =
+      data.employee.registrationDate;
+
+    document
+      .querySelector(DOMStrings.paychecksSection)
+      .classList.add("show-paychecks-section");
+  };
+
+  const closeModal = () => {
+    document
+      .querySelector(DOMStrings.paychecksSection)
+      .classList.remove("show-paychecks-section");
+  };
+
   return {
     getRegistrationInput: () => {
       return {
@@ -268,6 +314,12 @@ const UIController = (() => {
     filterEmployees: (name, employees) => {
       filterEmployees(name, employees);
     },
+    showEmployee: (data) => {
+      showEmployee(data);
+    },
+    closeModal: () => {
+      closeModal();
+    },
     clearFields: () => {
       document.querySelector(DOMStrings.employeeName).value = "";
     },
@@ -281,9 +333,12 @@ const UIController = (() => {
 const Controller = ((DataCtrl, UICtrl) => {
   // Sets ups all event listeners
   const setUpEventListeners = () => {
-    let employeesList, careerType, searchField, employeeName, btnAdd, app;
+    let employeesList, careerType, searchField, employeeName;
+    let btnAdd, app, btnClose;
 
     const DOM = UICtrl.getDOMStrings();
+
+    app = document;
 
     btnAdd = document.querySelector(DOM.btnNewEmployee);
 
@@ -293,17 +348,19 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     careerType = document.querySelector(DOM.employeeCareer);
 
-    employeesList.addEventListener("click", ctrlDisplayOrDeleteEmployee);
-
     searchField = document.querySelector(DOM.searchField);
+
+    btnClose = document.querySelector(DOM.closeBtn);
 
     btnAdd.addEventListener("click", ctrlAddEmployee);
 
-    app = document;
+    btnClose.addEventListener("click", ctrlCloseModal);
 
     app.addEventListener("keypress", (event) => {
       if (event.keyCode === 13 || event.which === 13) ctrlAddEmployee();
     });
+
+    employeesList.addEventListener("click", ctrlDisplayOrDeleteEmployee);
 
     careerType.addEventListener("click", () => {
       if (employeeName.value.trim() === "") {
@@ -345,18 +402,19 @@ const Controller = ((DataCtrl, UICtrl) => {
 
   const ctrlDisplayOrDeleteEmployee = (event) => {
     let id, employeeID, list;
-     list = event.target.classList.toString();
+    list = event.target.classList.toString();
 
     // Displays the paycheck
     if (list.includes("item")) {
-
       id = event.target.id;
 
       employeeID = parseInt(id.split("-")[1]);
 
       //Get the Employee and his paychecks
-      const employee = DataCtrl.getEmployeeAndPaychecks(employeeID);
+      const result = DataCtrl.getEmployeeAndPaychecks(employeeID);
 
+      //Show the Employee and his data
+      UICtrl.showEmployee(result);
     }
 
     // Delete the clicked employee
@@ -395,7 +453,9 @@ const Controller = ((DataCtrl, UICtrl) => {
     UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
   };
 
-  const ctrlDisplayEmployee = (id) => {};
+  const ctrlCloseModal = () => {
+    UICtrl.closeModal();
+  };
 
   const validateFields = (input) => {
     let response = false;

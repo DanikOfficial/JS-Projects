@@ -1,16 +1,16 @@
-let careers = [
-  { type: "Developer", value: 2500 },
-  { type: "Deve", value: 2000 },
-  { type: "Designer", value: 1500 },
-];
+const formatSalary = (salary) => {
+  let stringSalary = "" + salary;
+};
 
-let careerObj = careers.find((el) => el.type === "Developer");
+let salary = 1500;
+let stringSalary = "" + salary;
 
-let date = new Date();
+let s =
+  stringSalary.length > 3
+    ? stringSalary.substr(0, stringSalary.length - 3) +
+      "," +
+      stringSalary.substr(stringSalary.length - 3, stringSalary.length) +
+      ".00"
+    : stringSalary + ".00";
 
-for (let i = 0; i < 12; i++) {
-  date.setMonth(i);
-  console.log(date.toString().split(" ")[1]);
-}
-
-// console.log("Type: " + careerObj.type, "Value: " + careerObj.value);
+console.log(s);
