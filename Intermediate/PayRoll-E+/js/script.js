@@ -115,10 +115,10 @@ const DataController = (() => {
     employee.name = name;
     employee.career = career;
 
-    salary = data.career.find((element) => element.type === employee.career);
+    salary = data.careers.find((element) => element.type === employee.career);
 
     // Updates paychecks related to the employee
-    updateEmployeePaychecks(employee.id, employee.career, salary);
+    updateEmployeePaychecks(employee.id, employee.career, salary.value);
 
     return {
       name,
@@ -366,6 +366,23 @@ const UIController = (() => {
     });
   };
 
+  const updateEmployee = (id, name, career, salary) => {
+    document.querySelector(DOMStrings.empName).textContent = name;
+    document.querySelector(DOMStrings.empCareer).textContent = career;
+    document.querySelector(DOMStrings.empSalary).textContent = formatSalary(
+      salary
+    );
+    document.querySelector("#emp-" + id + " span").textContent = name;
+
+    document.querySelector(".alert").classList.add("show-alert");
+
+    document.querySelector(".alert").ontransitionend = () => {
+      document.querySelector(".alert").classList.remove("show-alert");
+    };
+
+    cancelUpdate();
+  };
+
   const displayUpdateBox = () => {
     document
       .querySelector(DOMStrings.employeeUpdate)
@@ -423,10 +440,12 @@ const UIController = (() => {
     },
     displayUpdateBox: () => {
       displayUpdateBox();
-      s;
     },
     cancelUpdate: () => {
       cancelUpdate();
+    },
+    updateEmployee: (id, name, career, salary) => {
+      updateEmployee(id, name, career, salary);
     },
     getUpdateInput: () => {
       return {
@@ -530,8 +549,22 @@ const Controller = ((DataCtrl, UICtrl) => {
   };
 
   const ctrlUpdateEmployee = () => {
-    const employee = UICtrl.getUpdateInput();
-    document.
+    const data = UICtrl.getUpdateInput();
+
+    //1. Update the data in data structure
+    const employee = DataCtrl.updateEmployee(
+      parseInt(data.id),
+      data.name,
+      data.career
+    );
+
+    //2. Update the data in UI
+    UICtrl.updateEmployee(
+      data.id,
+      employee.name,
+      employee.career,
+      employee.salary
+    );
   };
 
   const ctrlDisplayOrDeleteEmployee = (event) => {
