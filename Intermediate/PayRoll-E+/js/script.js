@@ -143,6 +143,14 @@ const DataController = (() => {
     );
   };
 
+  const paySalary = (id) => {
+    const paycheck = data.paychecks.find((element) => element.id === id);
+
+    paycheck.status = "Paid";
+
+    return paycheck.month;
+  };
+
   const getEmployeeAndPaychecks = (id) => {
     const employee = data.employees.find((element) => element.id === id);
 
@@ -174,6 +182,9 @@ const DataController = (() => {
     },
     getEmployees: () => {
       return data.employees;
+    },
+    paySalary: (id) => {
+      return paySalary(id);
     },
     getEmployeeAndPaychecks: (id) => {
       const data = getEmployeeAndPaychecks(id);
@@ -340,8 +351,8 @@ const UIController = (() => {
         `<div class="paycheck" id="paycheck-${element.id}">
   <span class="month">${element.month}</span>
   ${
-    element.status === "<span>Paid</span>"
-      ? "Paid"
+    element.status === "Paid"
+      ? `<span class="status">Paid</span>`
       : `<button class="btn-pay">
   <ion-icon class="icon" name="cash-outline"></ion-icon>
 </button>`
@@ -381,6 +392,17 @@ const UIController = (() => {
     };
 
     cancelUpdate();
+  };
+
+  const payItemSalary = (id, month) => {
+    let element;
+
+    element = document.getElementById(id);
+
+    element.innerHTML = `
+    <span class="month">${month}</span>
+    <span class="status">Paid</span>
+  `;
   };
 
   const displayUpdateBox = () => {
@@ -447,6 +469,9 @@ const UIController = (() => {
     updateEmployee: (id, name, career, salary) => {
       updateEmployee(id, name, career, salary);
     },
+    paySalary: (id, month) => {
+      payItemSalary(id, month);
+    },
     getUpdateInput: () => {
       return {
         id: document.querySelector(DOMStrings.empId).textContent,
@@ -468,7 +493,7 @@ const Controller = ((DataCtrl, UICtrl) => {
   const setUpEventListeners = () => {
     let employeesList, careerType, searchField, employeeName;
     let btnAdd, app, btnClose, btnDisplayUpdateBox, btnCancel;
-    let deleteEmployeeBtn, updateEmployeeBtn;
+    let deleteEmployeeBtn, updateEmployeeBtn, paychecksList;
 
     const DOM = UICtrl.getDOMStrings();
 
@@ -494,6 +519,8 @@ const Controller = ((DataCtrl, UICtrl) => {
 
     updateEmployeeBtn = document.querySelector(DOM.updateEmployeeBtn);
 
+    paychecksList = document.querySelector(DOM.paychecksList);
+
     btnAdd.addEventListener("click", ctrlAddEmployee);
 
     btnDisplayUpdateBox.addEventListener("click", ctrlDisplayUpdateBox);
@@ -511,6 +538,8 @@ const Controller = ((DataCtrl, UICtrl) => {
     });
 
     employeesList.addEventListener("click", ctrlDisplayOrDeleteEmployee);
+
+    paychecksList.addEventListener("click", ctrlPaySalary);
 
     careerType.addEventListener("click", () => {
       if (employeeName.value.trim() === "") {
@@ -575,8 +604,6 @@ const Controller = ((DataCtrl, UICtrl) => {
     // Displays the paycheck
     if (list.includes("item") && id.includes("emp")) {
       employeeID = parseInt(id.split("-")[1]);
-
-      console.log("I'm in");
 
       //Get the Employee and his paychecks
       const result = DataCtrl.getEmployeeAndPaychecks(employeeID);
@@ -658,6 +685,23 @@ const Controller = ((DataCtrl, UICtrl) => {
         //Resets the employees list
         ctrlFilterEmployee();
       };
+    }
+  };
+
+  const ctrlPaySalary = (event) => {
+    let id, paycheckID, month;
+    const action = event.target.parentNode.classList.toString();
+
+    if (action === "btn-pay") {
+      id = event.target.parentNode.parentNode.id;
+
+      paycheckID = parseInt(id.split("-")[1]);
+
+      //Update paycheck in data structure
+      month = DataCtrl.paySalary(paycheckID);
+
+      //Update paycheck in the UI
+      UICtrl.paySalary(id, month);
     }
   };
 

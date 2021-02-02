@@ -601,7 +601,19 @@ select {
   transition: all 0.3s;
 }
 
-.paycheck:hover > .btn-pay {
+.status {
+  margin-right: 5px;
+  margin-bottom: 3px;
+  font-weight: 200;
+  color: #fff;
+  opacity: 0;
+  transform: translate(20px);
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.paycheck:hover > .btn-pay,
+.paycheck:hover > .status {
   color: #fff;
   transform: translateX(-15px);
   opacity: 1;
