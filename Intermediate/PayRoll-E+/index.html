@@ -12,30 +12,133 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="app">
-      <div class="container">
-        <div class="header-section">
-          <ion-icon class="app-icon" name="people-sharp"></ion-icon>
-          <h1 class="app-name">Payroll-E+</h1>
-          <button class="btn-add-new-employee">
-            New Employee
-            <ion-icon class="icon-small" name="person-add-outline"></ion-icon>
-          </button>
-        </div>
-        <div class="search-section">
-          <input
-            type="text"
-            id=""
-            placeholder="Search Employee here..."
-            class="search-field"
-          />
-        </div>
-        <div class="employee-info"></div>
-        <div class="employees-container"></div>
+    <div class="top">
+      <div class="app-icon-name">
+        <ion-icon class="app-icon" name="people-sharp"></ion-icon>
+        <h1 class="app-name">PayRoll-E+</h1>
+      </div>
+      <label class="error-label error-label-register"
+        >Error: The employee 'name' is mandatory!
+      </label>
+      <div class="delete-confirmation">
+        <p>Employee removed!</p>
+      </div>
+      <div class="employee-creation">
+        <input
+          type="text"
+          maxlength="35"
+          placeholder="Type employee name here..."
+          class="employee-name mr-1"
+        />
+        <select class="career-type mr-1">
+          <option class="default" value="Choose Career">
+            --Choose Career--
+          </option>
+          <option value="Designer">Designer</option>
+          <option value="Developer">Developer</option>
+          <option value="Tester">Tester</option>
+        </select>
+        <button class="btn btn-add">
+          <ion-icon class="icon" name="save-outline"></ion-icon>
+        </button>
+      </div>
+      <div class="search-section">
+        <input
+          type="text"
+          placeholder="Search any employee here..."
+          class="search-field"
+        />
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="items-list js--employees_list"></div>
+      <div class="empty-state">
+        <h2 class="empty-state__title">Ouch. This is so scary!</h2>
+        <ion-icon
+          class="not-found-icon empty-state__icon"
+          name="file-tray-outline"
+        ></ion-icon>
+        <p class="empty-state__text">We don't have any employees yet!</p>
+        <p class="empty-state__text">
+          Tip: Fill the fields above and hit the
+          <span class="highlight">Enter</span> key so we can be happy :)
+        </p>
       </div>
     </div>
 
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <!-- Modal - Paychecks Section -->
+
+    <div class="paychecks-section">
+      <div class="paychecks-container">
+        <span class="close-modal">X</span>
+        <h2 class="payroll-info">Employee Information</h2>
+        <div class="employee-information">
+          <p>
+            <b><em>Id:</em></b> <span class="emp-id ml-1">1</span>
+          </p>
+          <p>
+            <b><em>Name:</em></b> <span class="emp-name ml-1">John Doe</span>
+          </p>
+          <p>
+            <b><em>Career:</em></b>
+            <span class="emp-career ml-1">Programmer</span>
+          </p>
+          <p>
+            <b><em>Salary:</em></b> <span class="emp-salary ml-1">2500$</span>
+          </p>
+          <p>
+            <b> <em>Registration Date:</em></b>
+            <span class="emp-reg-date ml-1">25th December</span>
+          </p>
+          <p>
+            <button class="btn-update-info">
+              Update<ion-icon
+                class="icon ml-1"
+                name="create-outline"
+              ></ion-icon>
+            </button>
+            <button class="btn-delete-employee">
+              Delete<ion-icon class="icon ml-1" name="trash-outline"></ion-icon>
+            </button>
+            <span class="alert ml-1">Employee Updated!</span>
+          </p>
+          <div class="employee-update">
+            <input
+              type="text"
+              maxlength="35"
+              placeholder="Type employee name here..."
+              class="employee-name__update mr-1"
+            />
+            <select name="" id="" class="career-type__update mr-1">
+              <option value="Choose Career" selected>
+                -- Choose Career --
+              </option>
+              <option class="update_career" value="Designer">Designer</option>
+              <option class="update_career" value="Developer">Developer</option>
+              <option class="update_career" value="Tester">Tester</option>
+            </select>
+            <button class="btn btn-update mr-1">
+              <ion-icon class="icon" name="save-outline"></ion-icon>
+            </button>
+            <button class="btn btn-cancel">
+              <ion-icon class="icon" name="close-circle-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+        <div class="paychecks-list js--paychecks_list"></div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="js/script.js"></script>
   </body>
 </html>
+
+<!--   <ion-icon class="app-icon" name="newspaper-outline"></ion-icon> -->

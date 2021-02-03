@@ -11,108 +11,672 @@
 }
 
 html {
-  font-size: 22px;
+  font-size: 19px;
   text-rendering: optimizeLegibility;
   color: #555;
-  background-color: #3d6cb9; /* Pale Blue 4 */
   font-family: "Roboto Condensed", sans-serif;
   box-sizing: border-box;
 }
 
-.app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+body {
+  overflow: hidden;
   height: 100vh;
-  width: 100%;
+  background-color: rgb(35, 7, 77);
 }
 
 h1 {
   margin: 0;
 }
 
+span {
+  top: 0;
+}
+
+h3 {
+  font-size: 140%;
+  font-weight: 400;
+}
+
+input,
+button,
+select {
+  outline: none;
+  background-color: #f6f6f6;
+}
+
+select {
+  cursor: pointer;
+}
+
 /*
-* ------------------------------- Application Styling ------------------------------
+*** -------------------------------- Customized Native Components ----------------------------****
 */
-
-/* -------------------- Container ----------------------*/
-
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 2em 1em 0;
-  background-color: #fff;
-  height: 600px;
-  width: 500px;
-  border-radius: 0.1em;
-  box-shadow: 0 0 8px #254b88;
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
 }
 
-.container div {
-  margin-bottom: 1.5em;
+::-webkit-scrollbar-thumb {
+  background: rgb(85, 26, 9);
+  margin-left: 5px;
+  transition: background 0.3s;
 }
 
-/* ------------------ Header Section - Start --------------- */
+::-webkit-scrollbar-thumb:hover {
+  background: #34495e;
+}
 
-.header-section {
+/* ------------ Reusable ---------- */
+
+.mr-1 {
+  margin-right: 15px;
+}
+
+.mr-2 {
+  margin-right: 30px;
+}
+
+.mr-3 {
+  margin-right: 45px;
+}
+
+.ml-1 {
+  margin-left: 5px;
+}
+
+.btn {
+  width: 40px;
+  padding: 5px 3px;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 0;
+}
+
+.employee-creation,
+.employee-update {
   display: flex;
+  flex-direction: row;
+}
+
+/* --------------------------- */
+
+/* ------------------------------------ Top ----------------------------------- */
+
+.top {
+  display: flex;
+  height: 34vh;
+  /* background: linear-gradient(to right, rgb(0, 180, 219), rgb(0, 131, 176)); */
+  background: linear-gradient(to right, rgb(35, 7, 77), rgb(204, 83, 51));
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 0.8em;
+  z-index: 1;
+  transition: all 0.6s;
 }
 
-.app-icon {
-  font-size: 300%;
+.scale-top {
+  height: 40vh;
 }
 
+.app-icon-name {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.app-icon-name,
+.not-found-icon {
+  color: #fff;
+}
+
+/* --- Application Icon --- */
+.app-icon,
+.not-found-icon {
+  font-size: 400%;
+}
+
+/* --- Application Name --- */
 .app-name {
   font-weight: 400;
   font-size: 240%;
 }
 
-/* ------------------ Header Section - End ---------------- */
+/* ---- Employee Creation Section ---- */
 
-/* ------------------ Search Section - Start --------------  */
+/* -- Error Label -- */
 
-.search-section {
+.error-label-register {
+  position: absolute;
+  top: -30px;
+  opacity: 0;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+/* -- Show Error Label -- */
+.show-error-register {
+  top: 0;
+  opacity: 1;
+}
+
+/* ---- Delete Confirmation ---- */
+
+.delete-confirmation {
+  position: absolute;
+  top: -20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  z-index: 200;
+  transition: all 0.7s;
 }
+
+.show-delete-confirmation {
+  top: 8px;
+}
+
+.delete-confirmation p {
+  color: #fff;
+}
+
+.delete-confirmation button {
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  transition: all 0.5s;
+}
+
+.delete-confirmation button:hover {
+  color: rgb(240, 0, 0);
+  border-bottom: 1px solid rgb(240, 0, 0);
+}
+
+/* --- Employee, Career, Button and Search FIeld --- */
+
+.employee-creation {
+  margin-bottom: 1em;
+}
+
+.employee-name,
+.career-type,
+.search-field,
+.btn-add {
+  background-color: rgba(35, 7, 77, 0.329);
+  border: 0;
+}
+
+.employee-name,
+.career-type,
+.search-field {
+  border-radius: 5px;
+}
+
+.employee-name,
+.career-type,
+.search-field,
+.btn-add {
+  height: 35px;
+}
+
+.employee-name::placeholder,
+.search-field::placeholder {
+  /* color: rgb(29, 9, 58); */
+  color: rgb(211, 211, 211);
+  padding-left: 15px;
+  transition: all 0.5s;
+}
+
+.employee-name:hover::placeholder,
+.search-field:hover::placeholder {
+  color: rgb(116, 116, 116);
+}
+
+/* --- Employee Name and Salary --- */
+
+.employee-name {
+  width: 350px;
+  padding-left: 15px;
+}
+
+.employee-name {
+  color: #fff;
+}
+
+/* --- Career Type --- */
+
+.career-type {
+  color: rgb(211, 211, 211);
+  transition: all 0.3s;
+}
+
+.career-type:hover {
+  color: rgb(121, 121, 121);
+  background-color: rgba(35, 7, 77, 0.329);
+}
+
+/* --- Button --- */
+
+.btn-add {
+  color: #fff;
+  border: 1px solid transparent;
+  transition: all 0.5s;
+}
+
+.btn-add:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: rgb(33, 3, 78);
+}
+
+/* --------------- Employee Creation - Ending -------------- */
+
+/* --------------- Search Section --------------- */
+
+.search-section {
+  margin-bottom: 0.4em;
+  opacity: 0;
+  transition: all 0.1s;
+}
+
+.show-search-section {
+  opacity: 1;
+}
+
+/* --- Search Field --- */
 
 .search-field {
-  color: #555;
+  width: 500px;
   border: 0;
-  border-bottom: 2px solid #033fa0;
-  width: 80%;
+  padding-left: 15px;
+  margin-bottom: 1em;
+  color: #fff;
+}
+
+.search-field::hover {
+  color: #fff;
+}
+
+/* -------------- Search Section Ending ------------------ */
+
+.bottom {
+  overflow-x: hidden;
+  height: 66vh;
+  padding-top: 2em;
+  background-color: rgb(35, 7, 77);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  transition: all 0.7s;
+}
+
+.scale-bottom {
+  height: 60vh;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  height: 50px;
+  background-color: rgb(24, 2, 58);
+  margin-bottom: 1.5em;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #000;
+  padding: 0 15px;
+  cursor: pointer;
+  /* transition: all 0.3s; */
+}
+
+.item span {
+  color: rgb(172, 172, 172);
+}
+
+.item button {
+  transform: translateX(15px);
+  opacity: 0;
+  background-color: rgb(35, 7, 77);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.list-item-button {
+  font-size: 18px;
+  padding-top: 3px;
+  pointer-events: none;
+}
+
+.item:hover {
+  border-left: 3px solid #ccc;
+}
+
+.item:hover > button {
+  transform: translateX(-10px);
+  opacity: 1;
+}
+
+.item:hover > button:hover {
+  color: rgb(133, 133, 133);
+  border: 1px solid rgb(119, 119, 119);
+}
+
+/* ----------------------------- Paychecks Section ------------------*/
+
+.paychecks-section {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  opacity: 0;
+  height: 100vh;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.show-paychecks-section {
+  left: 0;
+  opacity: 1;
+}
+
+/* ------------------ Paychecks Container ---------------------- */
+
+.paychecks-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 600px;
+  height: 630px;
+  border-radius: 2px;
+  background-color: rgb(245, 244, 244);
+}
+
+/* ------------------ Close Modal Button ---------------------- */
+
+.close-modal {
+  position: absolute;
+  right: 3px;
+  height: 2px;
+  margin-right: 0 !important;
+  color: #000;
+  font-size: 25px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close-modal:hover {
+  color: rgb(255, 0, 0);
+}
+
+/* ------------------ Paychecks Container General Components ---------------------- */
+
+.paychecks-container div,
+.paychecks-container > span,
+.paychecks-container h2 {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.payroll-info {
+  margin: 0.5em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid #ccc;
+  font-weight: 300;
+}
+
+/* ------------------ Employee Information ---------------------- */
+
+.employee-information {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.4em;
+  height: 210px;
+  transition: all 1.2s;
+}
+
+.employee-information p {
+  margin-bottom: 0.3em;
+  display: flex;
+  flex-direction: row;
+}
+
+.scale-employee-information {
+  height: 330px;
+}
+
+/* ------------------ Update Info ---------------------- */
+
+.btn-update-info,
+.btn-delete-employee {
+  border-radius: 3px;
+  color: #fff;
+  padding: 5px 15px;
+  transition: all 0.3s;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-update-info {
+  margin: 0.3em 0.3em 0.3em 0;
+  background-color: rgb(58, 11, 128);
+}
+
+.btn-update-info:hover {
+  background-color: rgb(38, 7, 88);
+  color: rgb(207, 207, 207);
+}
+
+.btn-delete-employee {
+  background-color: rgb(209, 9, 9);
+  align-self: center;
+}
+
+.btn-delete-employee:hover {
+  background-color: rgb(136, 7, 7);
+  color: rgb(207, 207, 207);
+}
+
+.alert {
+  margin-top: 7px;
+  font-weight: 400;
+  color: rgb(28, 4, 66);
+  opacity: 0;
+  transition: all 0.6s 0.3s;
+}
+
+.show-alert {
+  opacity: 1;
+}
+
+/* ------------------ Employee Manipulation ---------------------- */
+
+.employee-update {
+  position: absolute;
+  opacity: 0;
+  transform: translatex(-100%);
+  transition: all 0.4s 0.1s;
+}
+
+.show-employee-update {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.employee-name__update,
+.career-type__update {
+  border-radius: 5px;
+  color: #000;
+}
+
+.employee-name__update,
+.career-type__update,
+.btn-update,
+.btn-cancel {
   height: 35px;
-  text-align: center;
-  background-image: url(images/search-sharp.svg);
-  background-position: right;
-  background-size: 25px;
-  background-repeat: no-repeat;
+  border: 0;
+  background-color: rgb(214, 214, 214);
+  color: rgb(80, 80, 80);
 }
 
-.search-field:hover {
-  color: #3d6cb9;
+.btn-update,
+.btn-cancel {
+  color: #fff;
 }
 
-.search-field::placeholder {
-  color: #555;
+.employee-name__update {
+  width: 280px;
 }
 
-.search-field:hover::placeholder {
-  color: #033fa0;
+.employee-name__update {
+  padding-left: 5px;
 }
 
-
-
-.search-field:focus {
-  outline: none;
+.btn-update {
+  background-color: rgb(63, 21, 126);
+  transition: all 0.3s;
 }
 
+.btn-update:hover {
+  background-color: rgb(42, 6, 95);
+  color: rgb(184, 184, 184);
+}
 
+.btn-cancel {
+  background-color: rgb(177, 0, 0);
+  transition: all 0.3s;
+}
 
+.btn-cancel:hover {
+  background-color: rgb(83, 6, 6);
+  color: rgb(194, 194, 194);
+}
+
+/* ------------------ Paychecks List ---------------------- */
+
+.paychecks-list {
+  overflow: auto;
+  overflow-x: hidden;
+  transition: all 0.3s;
+}
+
+.move-list-down {
+  margin-bottom: 1em;
+}
+
+/* ------------------ Paycheck Element ---------------------- */
+
+.paycheck {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(209, 209, 209, 0.425);
+  height: 35px;
+  width: 100%;
+  align-items: center;
+  color: #000;
+  padding-left: 0.3em;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.btn-pay {
+  margin-left: auto;
+}
+
+.paycheck:nth-child(even) {
+  background-color: #fff;
+}
+
+.paycheck:hover {
+  background-color: rgb(35, 7, 77);
+  color: #fff;
+}
+
+/* ------------------ Button Pay ---------------------- */
+
+.btn-pay {
+  border: 0;
+  margin-right: 5px;
+  padding-top: 3px;
+  font-size: 22px;
+  background-color: transparent;
+  cursor: pointer;
+  transform: translateX(20px);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.status {
+  margin-right: 5px;
+  margin-bottom: 3px;
+  font-weight: 200;
+  color: #fff;
+  opacity: 0;
+  transform: translate(20px);
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.paycheck:hover > .btn-pay,
+.paycheck:hover > .status {
+  color: #fff;
+  transform: translateX(-15px);
+  opacity: 1;
+}
+
+.paycheck:hover > .btn-pay:hover {
+  color: rgb(172, 172, 172);
+}
+
+/* -------- Animations -------- */
+
+.new-item {
+  animation: 0.5s linear new-list-item forwards;
+}
+
+.remove {
+  animation: 0.9s linear removed-item forwards;
+}
+
+/* ---------------------------------- KeyFrames ----------------------------------- */
+
+@keyframes new-list-item {
+  from {
+    transform: translate(0, -500px);
+    margin-bottom: 0;
+    height: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    margin-bottom: 1.5em;
+    height: 50px;
+  }
+}
+
+@keyframes removed-item {
+  0% {
+    margin-bottom: 1.5em;
+    transform: translate(0, 0);
+    height: 50px;
+  }
+
+  20% {
+    transform: translate(20%, 0);
+  }
+
+<<<<<<< HEAD
 /* ------------------ Search Section - End ---------------- */
 
 
@@ -120,3 +684,79 @@ h1 {
 /* ---------------------------- ------------------------------------------
 -------------------------- Keyframes -----------------------------------
 */
+=======
+  100% {
+    margin-bottom: 0;
+    transform: translate(-500%, 0);
+    height: 0;
+  }
+}
+
+/* ----- Not Found ---- */
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found-title {
+  font-size: 200%;
+  font-weight: 300;
+  color: #fff;
+}
+
+.not-found-paragraph {
+  color: rgb(241, 241, 241);
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+.not-found-icon {
+  margin-bottom: 0.2em;
+}
+
+/* ---------- Empty State Prompt ---------- */
+
+.empty-state__title {
+  font-weight: 300;
+  font-size: 200%;
+}
+
+.empty-state__text {
+  font-size: 20px;
+}
+
+.empty-state__title,
+.empty-state__text {
+  margin-bottom: 0.5em;
+}
+
+.highlight {
+  position: relative;
+  border: 2px solid #fff;
+  padding: 0 25px;
+  margin: 0 4px;
+}
+
+.empty-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  display: none;
+  margin-top: 1em;
+}
+
+.items-list:empty {
+  display: none;
+}
+
+.items-list:empty + .empty-state {
+  display: flex;
+}
+
+.empty-state__icon {
+  font-size: 400%;
+}
+>>>>>>> Building-PayRoll-E-Functionality
