@@ -290,6 +290,11 @@ const UIController = (() => {
   const deleteEmployeeItem = (id) => {
     let element = document.getElementById(id);
     element.remove();
+
+    const items = document.querySelectorAll(".item");
+    // Fixed empty state not showing automatically
+    if (items.length === 0)
+      document.querySelector(DOMStrings.employeesList).innerHTML = "";
   };
 
   const filterEmployees = (name, employees) => {
@@ -307,9 +312,10 @@ const UIController = (() => {
 
     if (result.length === 0) {
       list.innerHTML = `<div class="not-found">
-      <ion-icon class="not-found-icon" name="newspaper-outline"></ion-icon>
+      <h2 class="not-found-title">Oops, I didn't find them!</h2>
+      <ion-icon class="not-found-icon" name="search-outline"></ion-icon>
       <p class="not-found-paragraph">
-        There are no employees with this name!
+        Try to type their names with your eyes open. :)
       </p>
     </div>`;
     }
@@ -708,7 +714,11 @@ const Controller = ((DataCtrl, UICtrl) => {
   const ctrlFilterEmployee = () => {
     let input = document.querySelector(UICtrl.getDOMStrings().searchField);
 
-    UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
+    const result = document.querySelectorAll(".item");
+
+    if (result.length > 0) {
+      UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
+    }
   };
 
   const ctrlCancelUpdate = () => {

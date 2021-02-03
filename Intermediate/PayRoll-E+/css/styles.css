@@ -110,6 +110,7 @@ select {
   align-items: center;
   padding-top: 0.8em;
   z-index: 1;
+  transition: all 0.5s;
 }
 
 .app-icon-name {
@@ -273,6 +274,11 @@ select {
 
 .search-section {
   margin-bottom: 0.4em;
+  opacity: 0;
+}
+
+.show-search-section {
+  opacity: 1;
 }
 
 /* --- Search Field --- */
@@ -674,6 +680,12 @@ select {
   align-items: center;
 }
 
+.not-found-title {
+  font-size: 200%;
+  font-weight: 300;
+  color: #fff;
+}
+
 .not-found-paragraph {
   color: rgb(241, 241, 241);
   font-size: 1.3em;
@@ -682,4 +694,47 @@ select {
 
 .not-found-icon {
   margin-bottom: 0.2em;
+}
+
+/* ---------- Empty State Prompt ---------- */
+
+.empty-state__title {
+  font-weight: 300;
+  font-size: 200%;
+}
+
+.empty-state__text {
+  font-size: 20px;
+}
+
+.empty-state__title,
+.empty-state__text {
+  margin-bottom: 0.5em;
+}
+
+.highlight {
+  position: relative;
+  border: 2px solid #fff;
+  padding: 0 25px;
+  margin: 0 4px;
+}
+
+.empty-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  display: none;
+}
+
+.items-list:empty {
+  display: none;
+}
+
+.items-list:empty + .empty-state {
+  display: flex;
+}
+
+.empty-state__icon {
+  font-size: 400%;
 }
