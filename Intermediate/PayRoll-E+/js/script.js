@@ -417,6 +417,7 @@ const UIController = (() => {
     );
     document.querySelector("#emp-" + id + " span").textContent = name;
 
+    document.querySelector(".alert").textContent = "Employee Updated!";
     document.querySelector(".alert").classList.add("show-alert");
 
     document.querySelector(".alert").ontransitionend = () => {
@@ -435,6 +436,13 @@ const UIController = (() => {
     <span class="month">${month}</span>
     <span class="status">Paid</span>
   `;
+
+    document.querySelector(".alert").textContent = "Salary Paid!";
+    document.querySelector(".alert").classList.add("show-alert");
+
+    document.querySelector(".alert").ontransitionend = () => {
+      document.querySelector(".alert").classList.remove("show-alert");
+    };
   };
 
   const displayUpdateBox = () => {
