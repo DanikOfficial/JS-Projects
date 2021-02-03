@@ -676,15 +676,6 @@ select {
     transform: translate(20%, 0);
   }
 
-<<<<<<< HEAD
-/* ------------------ Search Section - End ---------------- */
-
-
-
-/* ---------------------------- ------------------------------------------
--------------------------- Keyframes -----------------------------------
-*/
-=======
   100% {
     margin-bottom: 0;
     transform: translate(-500%, 0);
@@ -736,7 +727,7 @@ select {
   position: relative;
   border: 2px solid #fff;
   padding: 0 25px;
-  margin: 0 4px;
+  margin: 0 2px;
 }
 
 .empty-state {
@@ -759,4 +750,3 @@ select {
 .empty-state__icon {
   font-size: 400%;
 }
->>>>>>> Building-PayRoll-E-Functionality
