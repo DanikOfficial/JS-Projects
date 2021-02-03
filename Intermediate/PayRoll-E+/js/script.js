@@ -222,6 +222,9 @@ const UIController = (() => {
     cancelBtn: ".btn-cancel",
     deleteEmployeeBtn: ".btn-delete-employee",
     updateEmployeeBtn: ".btn-update",
+    top: ".top",
+    bottom: ".bottom",
+    searchSection: ".search-section",
   };
 
   const addEmployee = (employee, employeesList, operation) => {
@@ -285,6 +288,17 @@ const UIController = (() => {
     }
 
     element.focus();
+
+    let top = document.querySelector(DOMStrings.top);
+    let bottom = document.querySelector(DOMStrings.bottom);
+    let searchSection = document.querySelector(DOMStrings.searchSection);
+
+    top.classList.add("scale-top");
+
+    top.ontransitionend = () => {
+      bottom.classList.add("scale-bottom");
+      searchSection.classList.add("show-search-section");
+    };
   };
 
   const deleteEmployeeItem = (id) => {
@@ -293,8 +307,20 @@ const UIController = (() => {
 
     const items = document.querySelectorAll(".item");
     // Fixed empty state not showing automatically
-    if (items.length === 0)
+    if (items.length === 0) {
       document.querySelector(DOMStrings.employeesList).innerHTML = "";
+
+      let top = document.querySelector(DOMStrings.top);
+      let bottom = document.querySelector(DOMStrings.bottom);
+      let searchSection = document.querySelector(DOMStrings.searchSection);
+
+      top.classList.remove("scale-top");
+
+      top.ontransitionend = () => {
+        bottom.classList.remove("scale-bottom");
+        searchSection.classList.remove("show-search-section");
+      };
+    }
   };
 
   const filterEmployees = (name, employees) => {
@@ -714,11 +740,7 @@ const Controller = ((DataCtrl, UICtrl) => {
   const ctrlFilterEmployee = () => {
     let input = document.querySelector(UICtrl.getDOMStrings().searchField);
 
-    const result = document.querySelectorAll(".item");
-
-    if (result.length > 0) {
-      UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
-    }
+    UICtrl.filterEmployees(input.value.trim(), DataCtrl.getEmployees());
   };
 
   const ctrlCancelUpdate = () => {

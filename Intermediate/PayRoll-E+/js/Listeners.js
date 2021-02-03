@@ -14,8 +14,8 @@ document.querySelector(".btn-update-info").addEventListener("click", () => {
   document
     .querySelector(".employee-update")
     .classList.add("show-employee-update");
-  
-    document.querySelector(".paychecks-list").classList.add("move-list-down");
+
+  document.querySelector(".paychecks-list").classList.add("move-list-down");
   document
     .querySelector(".employee-information")
     .classList.add("scale-employee-information");

@@ -19,8 +19,9 @@ html {
 }
 
 body {
-  overflow: none;
+  overflow: hidden;
   height: 100vh;
+  background-color: rgb(35, 7, 77);
 }
 
 h1 {
@@ -103,14 +104,18 @@ select {
 
 .top {
   display: flex;
-  height: 40vh;
+  height: 34vh;
   /* background: linear-gradient(to right, rgb(0, 180, 219), rgb(0, 131, 176)); */
   background: linear-gradient(to right, rgb(35, 7, 77), rgb(204, 83, 51));
   flex-direction: column;
   align-items: center;
   padding-top: 0.8em;
   z-index: 1;
-  transition: all 0.5s;
+  transition: all 0.6s;
+}
+
+.scale-top {
+  height: 40vh;
 }
 
 .app-icon-name {
@@ -275,6 +280,7 @@ select {
 .search-section {
   margin-bottom: 0.4em;
   opacity: 0;
+  transition: all 0.1s;
 }
 
 .show-search-section {
@@ -299,7 +305,7 @@ select {
 
 .bottom {
   overflow-x: hidden;
-  height: 60vh;
+  height: 66vh;
   padding-top: 2em;
   background-color: rgb(35, 7, 77);
   overflow-y: auto;
@@ -307,6 +313,11 @@ select {
   flex-direction: column;
   align-items: center;
   z-index: 1;
+  transition: all 0.7s;
+}
+
+.scale-bottom {
+  height: 60vh;
 }
 
 .item {
@@ -725,6 +736,7 @@ select {
   justify-content: center;
   color: #fff;
   display: none;
+  margin-top: 1em;
 }
 
 .items-list:empty {
