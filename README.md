@@ -1,7 +1,7 @@
 # Vanilla JavaScript Projects - Built from scrach
 
 Author: Pete João Chiboleca
-You may now me by Jack...
+You may now me by Jack or Jackson...
 
 ## From Beginner to Advanced
 
